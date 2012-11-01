@@ -1,0 +1,75 @@
+root {
+	display: block;
+}
+body {
+	background-color: black;
+}
+#wrap {
+	position: relative;
+	width: 640px;
+	height: 1136px;
+	background: url('../../images/home/bg@2x.png') scroll no-repeat;
+}
+header h1 {
+	display: inline-block;
+	width: 548px;
+	height: 88px;
+	position: absolute;
+	top: 636px;
+	left: 50px;
+	text-indent: -9999px;
+	background: url('../../images/home/logo@2x.png') scroll no-repeat;
+}
+section form {
+	display: block;
+	width: 572px;
+	height: 348px;
+	position: absolute;
+	top: 760px;
+	left: 34px;
+	background: url('../../images/home/auth-bg@2x.png') scroll no-repeat;
+}
+fieldset input {
+	background: transparent;
+	border: none;
+}
+section form fieldset:first-child {
+	position: absolute;
+	top: 66px;
+	left: 44px;
+	width: 472px;
+	height: 170px;
+}
+section form fieldset:first-child input {
+	width: 448px;
+	height: 48px;
+	padding-left: 10px;
+}
+section form fieldset:first-child input:first-child {
+	position: absolute;
+	top: -10px;
+	left: 0px;
+}
+section form fieldset:first-child input:last-child {
+	position: absolute;
+	top: 86px;
+	left: 0px;
+}
+section form fieldset:last-child {
+	position: absolute;
+	top: 250px;
+	left: 302px;
+	width: 214px;
+	height: 66px;
+}
+section form fieldset:last-child input {
+	width: 214px;
+	height: 66px;
+	background: url('../../images/home/auth-button-bg@2x.png') scroll no-repeat;
+}
+section form fieldset:last-child input:active {
+	-webkit-filter: invert(1);
+}
+section form fieldset:last-child input:hover {
+	-webkit-filter: saturate(10);
+}
