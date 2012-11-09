@@ -45,7 +45,8 @@ public function __construct()  	{
 
 		while(list($key, $val) = each($css_class)){
 		    $aCSSObj = explode("{", $val);
-		    $cSel = strtolower(trim($aCSSObj[0]));
+//		    $cSel = strtolower(trim($aCSSObj[0]));
+                    $cSel = trim($aCSSObj[0]);
 			if($cSel){
 				$this->cssprops[] = $cSel;
 	    	    $a = explode(";", $aCSSObj[1]);
@@ -183,8 +184,34 @@ public function __construct()  	{
             $this->css = $newCSS;
             return true;
         }
+    
+    /**
+    * divides a number by half
+    *
+    * @param array $input an array of regex output, the first item is expected
+    *              to be the number returned from a regex on a string
+    * @return int Returns half the number taken from the regular expression
+    */
+        private function halveNumbers($input) {
+            return ((0 + $input[0]) / 2);
+        }
+    /**
+    * takes a css background rule and parses it for positioning values (shorthand)
+    *
+    * @param array $input an array of output from regex, the first item is
+    *              expected to be both position values of the shorthand expression 
+    * @return string Returns a string with halved positioning values in same units
+    */
+        private function printMatches($input) {
+            $arr = explode(' ', $input[0]);
+            $patch = array();
+            for($i = 0; $i < count($arr); $i++) {
+                $patch[] = preg_replace_callback('#[0-9]+#', array($this, 'halveNumbers'), $arr[$i]);
+            }
+            return implode(' ', $patch);
+        }
         
-        /**
+    /**
     * parses the css and sets the css object to new retina css
     *
     * @param object $newCSS CSS style rules
@@ -219,6 +246,11 @@ public function __construct()  	{
 
                         if(strpos($value, '.gif')) {
                             $str = str_replace('@2x.gif', '.gif', $value);
+                        }
+                        
+                        if(strpos($value, 'px')) {
+                            // TODO: add support for background positions
+                            $str = preg_replace_callback('#(\-?)[0-9]+(px|\%)?\s(\-?)[0-9]+(px|\%)?#', array($this, 'printMatches'), $str);
                         }
 
                         $element[$key] = $str;

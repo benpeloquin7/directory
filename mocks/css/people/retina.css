@@ -1,0 +1,98 @@
+root {
+    display: block;
+}
+body {
+    background-color: black;
+}
+#wrap {
+    position: relative;
+    width: 640px;
+    height: 1136px;
+    background: url('../../images/people/bg@2x.png') scroll no-repeat;
+}
+header {
+    width: 640px;
+    height: 264px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url('../../images/people/top-nav@2x.png') scroll no-repeat;
+}
+
+header form {
+    position: absolute;
+    width: 583px;
+    height: 103px;
+    top: 124px;
+    left: 30px;
+    display: block;
+}
+
+header form #inputs input {
+    width: 522px;
+    background: none;
+    border: none;
+}
+
+header form #submit input {
+    position: absolute;
+    top: 60px;
+    right: 18px;
+    
+    width: 98px;
+    height: 39px;
+    background: url('../../images/people/submit@2x.png') scroll no-repeat;
+    
+    text-indent: -9999px;
+    
+    background: none;
+    border: none;
+}
+
+footer {
+    width: 640px;
+    height: 106px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+footer nav {
+    width: 583px;
+    margin: 0 auto;
+}
+
+footer nav a {
+    display: block;
+    float: left;
+    height: 80px;
+    text-indent: -9999px;
+}
+
+#homeNavLink {
+    width: 177px;
+    background: url('../../images/people/bottom-nav-sprite@2x.png') 0 0 scroll no-repeat;
+}
+
+#partnersNavLink {
+    width: 217px;
+    background: url('../../images/people/bottom-nav-sprite@2x.png') -186px 0 scroll no-repeat;
+    /*\b[0-9]+(px)?\b*/
+}
+
+#blogsNavLink {
+    width: 186px;
+    background: url('../../images/people/bottom-nav-sprite@2x.png') -404px 0px scroll no-repeat;
+}
+
+#homeNavLink:hover {
+    background-position: 0 -52px;
+}
+
+#partnersNavLink:hover {
+    background-position: -93px -52px;
+}
+
+#blogsNavLink:hover {
+    background-position: -202px -52px;
+}
