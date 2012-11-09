@@ -255,6 +255,12 @@ public function __construct()  	{
 
                         $element[$key] = $str;
                     }
+                    
+                    if($key === 'background-position') {
+                        $pos = preg_replace_callback('#(\-?)[0-9]+(px|\%)?\s(\-?)[0-9]+(px|\%)?#', array($this, 'printMatches'), $value);
+                        
+                        $element[$key] = $pos;
+                    }
 
                 }
 

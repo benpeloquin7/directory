@@ -86,13 +86,13 @@ footer nav a {
 }
 
 #homeNavLink:hover {
-    background-position: 0 -52px;
+    background-position: 0 -104px;
 }
 
 #partnersNavLink:hover {
-    background-position: -93px -52px;
+    background-position: -186px -104px;
 }
 
 #blogsNavLink:hover {
-    background-position: -202px -52px;
+    background-position: -404px -104px;
 }
