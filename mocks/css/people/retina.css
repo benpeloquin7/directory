@@ -12,18 +12,18 @@ body {
 }
 header {
     width: 640px;
-    height: 264px;
+    height: 306px;
     position: absolute;
     top: 0;
     left: 0;
-    background: url('../../images/people/top-nav@2x.png') scroll no-repeat;
+    background: url('../../images/common/top-nav@2x.png') 0 79px scroll no-repeat;
 }
 
 header form {
     position: absolute;
     width: 583px;
     height: 103px;
-    top: 124px;
+    top: 203px;
     left: 30px;
     display: block;
 }
@@ -36,12 +36,12 @@ header form #inputs input {
 
 header form #submit input {
     position: absolute;
-    top: 60px;
+    top: 46px;
     right: 18px;
     
     width: 98px;
     height: 39px;
-    background: url('../../images/people/submit@2x.png') scroll no-repeat;
+    background: url('../../images/common/submit@2x.png') scroll no-repeat;
     
     text-indent: -9999px;
     
@@ -49,50 +49,135 @@ header form #submit input {
     border: none;
 }
 
-footer {
+header nav {
     width: 640px;
-    height: 106px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-}
-
-footer nav {
-    width: 583px;
+    height: 79px;
     margin: 0 auto;
 }
 
-footer nav a {
+header nav a {
     display: block;
     float: left;
-    height: 80px;
+    height: 79px;
     text-indent: -9999px;
 }
 
 #homeNavLink {
-    width: 177px;
-    background: url('../../images/people/bottom-nav-sprite@2x.png') 0 0 scroll no-repeat;
+    width: 209px;
+    background: url('../../images/common/header-nav-sprite@2x.png') 0 0 scroll no-repeat;
 }
 
 #partnersNavLink {
     width: 217px;
-    background: url('../../images/people/bottom-nav-sprite@2x.png') -186px 0 scroll no-repeat;
+    background: url('../../images/common/header-nav-sprite@2x.png') -209px 0 scroll no-repeat;
     /*\b[0-9]+(px)?\b*/
 }
 
 #blogsNavLink {
-    width: 186px;
-    background: url('../../images/people/bottom-nav-sprite@2x.png') -404px 0px scroll no-repeat;
+    width: 214px;
+    background: url('../../images/common/header-nav-sprite@2x.png') -426px 0px scroll no-repeat;
 }
 
-#homeNavLink:hover {
-    background-position: 0 -104px;
+#homeNavLink:hover,
+#homeNavLink:active {
+    background-position: 0 -79px;
 }
 
-#partnersNavLink:hover {
-    background-position: -186px -104px;
+#partnersNavLink:hover,
+#partnersNavLink:active {
+    background-position: -209px -79px;
 }
 
-#blogsNavLink:hover {
-    background-position: -404px -104px;
+#blogsNavLink:hover,
+#blogsNavLink:active {
+    background-position: -426px -79px;
 }
+
+section {
+    position: absolute;
+    top: 337px;
+    left: 26px;
+}
+
+section ul {
+    display: block;
+    width: 586px;
+    height: 737px;
+    overflow: scroll;
+}
+
+section ul li {
+    display: block;
+    width: 100%;
+    border-bottom: 2px solid #3a3b3a;
+    margin: 0;
+    padding: 0;
+}
+
+.person {
+    width: 100%;
+    position: relative;
+    height: 124px;
+}
+
+.person .description {
+    width: 384px;
+    height: 124px;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-decoration: none;
+}
+
+.description img {
+    position: absolute;
+    width: 100px;
+    top: 10px;
+    left: 10px;
+}
+
+.description h1 {
+    position: absolute;
+    top: 18px;
+    left: 144px;
+    
+    font-weight: bold;
+    font-size: 21px;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    color: #ededed;
+}
+
+.description p {
+    position: absolute;
+    top: 49px;
+    left: 144px;
+    
+    font-weight: 100;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    color: #404040;
+}
+
+.email {
+    width: 77px;
+    height: 42px;
+    display: block;
+    position: absolute;
+    top: 73px;
+    right: 124px;
+    background: url('../../images/people/contact-buttons-sprite@2x.png') 0 0 scroll no-repeat;
+}
+
+.telephone {
+    width: 78px;
+    height: 42px;
+    display: block;
+    position: absolute;
+    top: 73px;
+    right: 47px;
+    background: url('../../images/people/contact-buttons-sprite@2x.png') -77px 0 scroll no-repeat;
+}
+

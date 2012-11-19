@@ -15,7 +15,7 @@ header h1 {
 	width: 548px;
 	height: 88px;
 	position: absolute;
-	top: 636px;
+	top: 536px;
 	left: 50px;
 	text-indent: -9999px;
 	background: url('../../images/home/logo@2x.png') scroll no-repeat;
@@ -25,7 +25,7 @@ section form {
 	width: 572px;
 	height: 348px;
 	position: absolute;
-	top: 760px;
+	top: 658px;
 	left: 34px;
 	background: url('../../images/home/auth-bg@2x.png') scroll no-repeat;
 }
