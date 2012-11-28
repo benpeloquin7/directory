@@ -220,8 +220,8 @@ public function __construct()  	{
     *
     * @param object $newCSS CSS style rules
     * @return boolean Returns true when succeeded
-    */       
-        public function parse_for_retina($keys = array('top', 'right', 'bottom', 'left', 'width', 'height', 'margin', 'margin-top', 'margin-right', 'margin-bottom', 'margin-left', 'padding', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left', 'background-position', 'background')) {
+    */     
+        public function parse_for_retina($keys = array('top', 'right', 'bottom', 'left', 'width', 'height', 'margin', 'margin-top', 'margin-right', 'margin-bottom', 'margin-left', 'padding', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left', 'background-position', 'background', 'font', 'font-size')) {
             
             $output = $this->css;
             
@@ -235,6 +235,7 @@ public function __construct()  	{
                     }
                     
                     if($key === 'background') {
+                        
                         $str = $value;
                         
                         if(strpos($value, '.png')) {
@@ -255,6 +256,7 @@ public function __construct()  	{
                         }
 
                         $element[$key] = $str;
+                        
                     }
                     
 

@@ -13,13 +13,6 @@ body {
     width: 640px;
     height: 1136px;
     background: url('../../images/template/bg@2x.png') scroll no-repeat;
-    
-    top: 120px;
-    right: 10px;
-    left: 120px;
-    bottom: 10px;
-    width: 110px;
-    height: 1110px;
 }
 header {
     width: 640px;
