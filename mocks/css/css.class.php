@@ -203,6 +203,10 @@ public function __construct()  	{
     * @return string Returns a string with halved positioning values in same units
     */
         private function printMatches($input) {
+            
+//            echo "<pre>";
+//            print_r($input);
+            
             $arr = explode(' ', $input[0]);
             $patch = array();
             for($i = 0; $i < count($arr); $i++) {
@@ -217,22 +221,19 @@ public function __construct()  	{
     * @param object $newCSS CSS style rules
     * @return boolean Returns true when succeeded
     */       
-        public function parse_for_retina($keys) {
-            
-            
+        public function parse_for_retina($keys = array('top', 'right', 'bottom', 'left', 'width', 'height', 'margin', 'margin-top', 'margin-right', 'margin-bottom', 'margin-left', 'padding', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left', 'background-position', 'background')) {
             
             $output = $this->css;
             
             foreach($output as $pKey => $element) {
     
                 foreach ($element as $key => $value) {
-
+                    
                     if(in_array($key, $keys) && strpos($value, 'px')) {
-                        $int = intval(str_replace('px', '', $value));
-                        $int /= 2;
-                        $element[$key] = $int . 'px';
+                        $str = preg_replace_callback('#(\-?)([0-9]+(px))?\s?#', array($this, 'printMatches'), $value);
+                        $element[$key] = $str;
                     }
-
+                    
                     if($key === 'background') {
                         $str = $value;
                         
@@ -256,11 +257,41 @@ public function __construct()  	{
                         $element[$key] = $str;
                     }
                     
-                    if($key === 'background-position') {
-                        $pos = preg_replace_callback('#(\-?)[0-9]+(px|\%)?\s(\-?)[0-9]+(px|\%)?#', array($this, 'printMatches'), $value);
-                        
-                        $element[$key] = $pos;
-                    }
+
+//                    if(in_array($key, $keys) && strpos($value, 'px')) {
+//                        $int = intval(str_replace('px', '', $value));
+//                        $int /= 2;
+//                        $element[$key] = $int . 'px';
+//                    }
+//
+//                    if($key === 'background') {
+//                        $str = $value;
+//                        
+//                        if(strpos($value, '.png')) {
+//                            $str = str_replace('@2x.png', '.png', $value);
+//                        }
+//
+//                        if(strpos($value, '.jpg')) {
+//                            $str = str_replace('@2x.jpg', '.jpg', $value);
+//                        }
+//
+//                        if(strpos($value, '.gif')) {
+//                            $str = str_replace('@2x.gif', '.gif', $value);
+//                        }
+//                        
+//                        if(strpos($value, 'px')) {
+//                            // TODO: add support for background positions
+//                            $str = preg_replace_callback('#(\-?)[0-9]+(px|\%)?\s(\-?)[0-9]+(px|\%)?#', array($this, 'printMatches'), $str);
+//                        }
+//
+//                        $element[$key] = $str;
+//                    }
+//                    
+//                    if($key === 'background-position') {
+//                        $pos = preg_replace_callback('#(\-?)[0-9]+(px|\%)?\s(\-?)[0-9]+(px|\%)?#', array($this, 'printMatches'), $value);
+//                        
+//                        $element[$key] = $pos;
+//                    }
 
                 }
 

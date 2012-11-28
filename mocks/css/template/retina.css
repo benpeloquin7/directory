@@ -1,5 +1,9 @@
+/* this is a comment */
+
 root {
     display: block;
+    
+    /* spaces and comments are allowed */
 }
 body {
     background-color: black;
@@ -8,7 +12,14 @@ body {
     position: relative;
     width: 640px;
     height: 1136px;
-    background: url('../../images/person/bg@2x.png') scroll no-repeat;
+    background: url('../../images/template/bg@2x.png') scroll no-repeat;
+    
+    top: 120px;
+    right: 10px;
+    left: 120px;
+    bottom: 10px;
+    width: 110px;
+    height: 1110px;
 }
 header {
     width: 640px;
@@ -16,7 +27,7 @@ header {
     position: absolute;
     top: 0;
     left: 0;
-    background: url('../../images/common/top-nav@2x.png') 0 79px scroll no-repeat;
+    background: url('../../images/template/top-nav@2x.png') 0 79px scroll no-repeat;
 }
 
 header form {
@@ -38,13 +49,10 @@ header form #submit input {
     position: absolute;
     top: 46px;
     right: 18px;
-    
     width: 98px;
     height: 39px;
-    background: url('../../images/common/submit@2x.png') scroll no-repeat;
-    
+    background: url('../../images/template/submit@2x.png') scroll no-repeat;
     text-indent: -9999px;
-    
     background: none;
     border: none;
 }
@@ -64,18 +72,18 @@ header nav a {
 
 #homeNavLink {
     width: 209px;
-    background: url('../../images/common/header-nav-sprite@2x.png') 0 0 scroll no-repeat;
+    background: url('../../images/template/header-nav-sprite@2x.png') 0 0 scroll no-repeat;
 }
 
 #partnersNavLink {
     width: 217px;
-    background: url('../../images/common/header-nav-sprite@2x.png') -209px 0 scroll no-repeat;
+    background: url('../../images/template/header-nav-sprite@2x.png') -209px 0 scroll no-repeat;
     /*\b[0-9]+(px)?\b*/
 }
 
 #blogsNavLink {
     width: 214px;
-    background: url('../../images/common/header-nav-sprite@2x.png') -426px 0px scroll no-repeat;
+    background: url('../../images/template/header-nav-sprite@2x.png') -426px 0px scroll no-repeat;
 }
 
 #homeNavLink:hover,
@@ -130,20 +138,15 @@ section article h1 {
     position: absolute;
     top: 25px;
     right: 25px;
-    
     width: 99px;
     height: 40px;
-    background: url('../../images/person/back@2x.png') scroll no-repeat;
+    background: url('../../images/template/back@2x.png') scroll no-repeat;
 }
 
 section article img {
     width: 585px;
     margin-left: -25px;
     margin-top: 40px;
-}
-
-section article ul {
-    
 }
 
 section article ul li {
@@ -175,6 +178,6 @@ section article ul li a {
     
     width: 43px;
     height: 40px;
-    background: url('../../images/person/plus@2x.png') scroll no-repeat;
+    background: url('../../images/template/plus@2x.png') 2px 120px scroll no-repeat;
 }
 
