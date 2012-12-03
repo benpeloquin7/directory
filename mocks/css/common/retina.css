@@ -1,0 +1,111 @@
+/* this is a comment */
+
+root {
+    display: block;
+    
+    /* spaces and comments are allowed */
+}
+body {
+    background-color: black;
+}
+#wrap {
+    position: relative;
+    width: 640px;
+    height: 1136px;
+    background: url('../../images/common/bg@2x.png') scroll no-repeat;
+}
+header {
+    width: 640px;
+    height: 306px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url('../../images/common/top-nav@2x.png') 0 79px scroll no-repeat;
+}
+
+header form {
+    position: absolute;
+    width: 583px;
+    height: 103px;
+    top: 203px;
+    left: 30px;
+    display: block;
+}
+
+header form #inputs input {
+    width: 522px;
+    background: none;
+    border: none;
+}
+
+header form #submit input {
+    position: absolute;
+    top: 54px;
+    right: 18px;
+    width: 98px;
+    height: 39px;
+    background: url('../../images/common/submit@2x.png') scroll no-repeat;
+    text-indent: -9999px;
+    border: none;
+}
+
+header nav {
+    width: 640px;
+    height: 79px;
+    margin: 0 auto;
+}
+
+header nav a {
+    display: block;
+    float: left;
+    height: 79px;
+    text-indent: -9999px;
+}
+
+#homeNavLink {
+    width: 209px;
+    background: url('../../images/common/header-nav-sprite@2x.png') 0 0 scroll no-repeat;
+}
+
+#partnersNavLink {
+    width: 217px;
+    background: url('../../images/common/header-nav-sprite@2x.png') -209px 0 scroll no-repeat;
+    /*\b[0-9]+(px)?\b*/
+}
+
+#blogsNavLink {
+    width: 214px;
+    background: url('../../images/common/header-nav-sprite@2x.png') -426px 0px scroll no-repeat;
+}
+
+#homeNavLink:hover,
+#homeNavLink:active {
+    background-position: 0 -79px;
+}
+
+#partnersNavLink:hover,
+#partnersNavLink:active {
+    background-position: -209px -79px;
+}
+
+#blogsNavLink:hover,
+#blogsNavLink:active {
+    background-position: -426px -79px;
+}
+
+section {
+    position: absolute;
+    top: 338px;
+    left: 30px;
+    width: 585px;
+    height: 768px;
+}
+
+section article {
+    position: relative;
+    width: 535px;
+    height: 718px;
+    padding: 25px;
+}
+
+
