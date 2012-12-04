@@ -8,6 +8,22 @@ root {
 body {
     background-color: black;
 }
+
+h1 {
+    font-size: 42px;
+    line-height: 45px;
+}
+
+h2 {
+    font-size: 34px;
+    line-height: 37px;
+}
+
+p {
+    font-size: 36px;
+    line-height: 39px;
+}
+
 #wrap {
     position: relative;
     width: 640px;
@@ -106,6 +122,10 @@ section article {
     width: 535px;
     height: 718px;
     padding: 25px;
+}
+
+.clear {
+    clear: both;
 }
 
 

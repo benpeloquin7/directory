@@ -1,0 +1,81 @@
+.arrow {
+    display: block;
+    width: 73px;
+    height: 91px;
+    position: absolute;
+}
+
+.arrowLeft {
+    top: 339px;
+    left: -20px;
+}
+
+.arrowRight {
+    top: 339px;
+    right: -20px;
+}
+
+.arrowLeftSelectable {
+    background: url('../../images/partner/') scroll 0px -91px no-repeat;
+}
+
+.arrowLeftUnselectable {
+    background: url('../../images/partner/arrows@2x.png') scroll 0px 0 no-repeat;
+}
+
+.arrowRightSelectable {
+    background: url('../../images/partner/arrows@2x.png') scroll -73px -91px no-repeat;
+}
+
+.arrowRightUnselectable {
+    background: url('../../images/partner/arrows@2x.png') scroll -73px 0px no-repeat;
+}
+
+section article h1 {
+    font-size: 41px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ededed;
+}
+
+section article p {
+    color: #404040;
+}
+
+#patch {
+    width: 361px;
+    height: 358px;
+    margin: 50px auto;
+    background: url('../../images/partner/default@2x.png') scroll no-repeat;
+}
+
+section article h2 {
+    text-transform: uppercase;
+    color: white;
+    margin: 0 auto;
+    
+    font-size: 24px;
+    line-height: 27px;
+    text-align: center;
+}
+
+#amp {
+    color: red;
+}
+
+#slideContainer {
+    position: relative;
+    width: 1915px;
+    height: 718px;
+}
+
+.slide {
+    width: 535px;
+    height: 718px;
+    float: left;
+    margin-right: 100px;
+    
+    background-color: red;
+}
+

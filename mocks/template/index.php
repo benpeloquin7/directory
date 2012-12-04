@@ -39,9 +39,9 @@ and open the template in the editor.
                     
                 </article>
             </section>
-            <footer>
-                
-            </footer>
+            
+            <?php include_once '../includes/footer.php'; ?>
+            
         </div>
         <?php include_once '../includes/scripts.php'; ?>
     </body>

@@ -7,5 +7,7 @@
 ?>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <!--<script type="text/javascript" src="../js/retina.js"></script>-->
+        <script src="../js/cufon.js"></script>
+        <script src="../js/goodby.font.js"></script>
         <script src="../js/class.js"></script>
         <script src="../js/app.js"></script>
