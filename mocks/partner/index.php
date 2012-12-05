@@ -26,31 +26,34 @@ and open the template in the editor.
                     
                 <article>
                     
-                    <div id="slideContainer">
-                        <div class="slide slide1">
-                            <h1>WELCOME <span></span></h1>
-                            <p>Should our next holiday party be at slims or sfmoma?</p>
-
-                            <div id="patch"></div>
-
-                            <h2><span id="logoDefault">GOODBY SILVERSTEIN</span> <span id="amp">&</span> <span id="logoFirstName">leah</span></h2>
-                        </div>
-                        
-                        <div class="slide slide2">
+                    <div id="slideWindow">
+                        <div id="slideContainer">
                             
-                        </div>
-                        
-                        <div class="slide slide3">
+                            <div class="slide slide2">
+
+                            </div>
                             
+                            <div class="slide slide1">
+                                <h1>WELCOME <span></span></h1>
+                                <p>Should our next holiday party be at slims or sfmoma?</p>
+
+                                <div id="patch"></div>
+
+                                <h2><span id="logoDefault">GOODBY SILVERSTEIN</span> <span id="amp">&</span> <span id="logoFirstName">leah</span></h2>
+                            </div>
+
+                            
+
+                            <div class="slide slide3">
+
+                            </div>
+
+                            <div class="clear"></div>
                         </div>
-                        
-                        <div class="clear"></div>
                     </div>
-                    
-                            
-                    
-                    <a class="arrow arrowLeft arrowLeftUnselectable" href="#"></a>
-                    <a class="arrow arrowRight arrowRightSelectable" href="#"></a>
+                        
+                    <a class="arrow arrowLeft arrowLeftOff" href="#"></a>
+                    <a class="arrow arrowRight arrowRightOn" href="#"></a>
                     
                 </article>
             </section>

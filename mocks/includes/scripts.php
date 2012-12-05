@@ -16,6 +16,7 @@
         <script type="text/javascript">
             (function($) {
                 $(window).load(function() {
+                    
                     var base = new Base();
                     var scroller = new Scroller('#slideContainer');
                     var app = new App();
@@ -24,12 +25,3 @@
             })(jQuery);
         </script>
         
-        <script type="text/javascript">
-            var str = 'url(http://localhost.com/images/stuff/image.png)';
-            
-            var regex = new RegExp("http://[a-zA-Z0-9\.\/]+", "g");
-            
-            var result = regex.exec(str);
-            
-            console.dir(result);
-        </script>
