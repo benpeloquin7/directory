@@ -3,8 +3,10 @@
  * and open the template in the editor.
  */
 
-var App = Class.extend({
+var App = Base.extend({
     init: function() {
+        
+        this._super();
         
         var self = this;
         
@@ -34,7 +36,7 @@ var App = Class.extend({
      * @return  array arr with full name, first name = arr[1], last name = arr[2]
      *          or -1 if we don't have a valid email format
      */
-    parseEmail: function() {
+    parseEmail: function(e) {
         
         if(e.search('_') === -1) {
             return false;
@@ -42,17 +44,9 @@ var App = Class.extend({
         
         var regex = /([a-zA-Z]+)\_([a-zA-Z]+)/;
 
-        var fullName = regex.exec(email);
+        var fullName = regex.exec(e);
 
         return fullName;
         
     }
 });
-
-(function($) {
-    $(window).load(function() {
-        var app = new App();
-    });
-})(jQuery);
-
-
