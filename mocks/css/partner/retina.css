@@ -57,14 +57,20 @@ section article p {
     background: url('../../images/partner/default@2x.png') scroll no-repeat;
 }
 
-section article h2 {
+section article h2, 
+section article h3,
+section article h4 {
     text-transform: uppercase;
-    color: white;
-    margin: 0 auto;
+    color: #ededed;
     
-    font-size: 24px;
-    line-height: 27px;
-    text-align: center;
+    font-size: 30px;
+    line-height: 31px;
+    
+    margin-bottom: 27px;
+}
+
+section article h4 {
+    margin-bottom: 40px;
 }
 
 #amp {
@@ -89,3 +95,76 @@ section article h2 {
     margin-right: 100px;
 }
 
+/*
+    sizes
+*/
+
+.sizes {
+    margin-top: 20px
+}
+
+ul.sizes li {
+   display: inline;
+   float: left;
+}
+
+.size {
+    display: block;
+    margin-right: 14px;
+    margin-bottom: 20px;
+    text-indent: -9999px;
+    height: 93px;
+}
+
+.small {
+    width: 76px;
+    
+    background: url('../../images/partner/sizes-sprite@2x.png') 0 0 scroll no-repeat;
+}
+
+.medium {
+    width: 97px;
+    
+    background: url('../../images/partner/sizes-sprite@2x.png') -74px 0 scroll no-repeat;
+}
+
+.large {
+    width: 124px;
+    
+    background: url('../../images/partner/sizes-sprite@2x.png') -173px 0 scroll no-repeat;
+}
+
+.extraLarge {
+    width: 158px;
+    
+    background: url('../../images/partner/sizes-sprite@2x.png') -299px 0 scroll no-repeat;
+}
+
+/*
+    hoodie
+*/
+
+.hoodie {
+    width: 381px;
+    height: 417px;
+    margin: 0 auto;
+    
+    background: url('../../images/partner/hoodie@2x.png') scroll no-repeat;
+    margin-bottom: 40px;
+    margin-top: 23px;
+}
+
+/*
+    send order button
+*/
+
+.sendOrder {
+    width: 209px;
+    height: 40px;
+    margin: 0 auto;
+    display: block;
+    
+    border: none;
+    
+    background: url('../../images/partner/send-order@2x.png') scroll no-repeat;
+}

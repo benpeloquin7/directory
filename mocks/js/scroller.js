@@ -24,11 +24,10 @@ var Scroller = Base.extend({
     slideWidth: 0,
     
     /**
-     * Arrow background image dimensions and path
-     * slide in the correct place. (slide width + margin-right)
+     * Position indicates the position of the slide 1 = first slide, 2,3 etc.
      * @access  public
      */
-//    arrowMeta: {},
+    slidePosition: 
     
     /**
      * Initialization function
@@ -88,11 +87,18 @@ var Scroller = Base.extend({
             
             evt.preventDefault();
             
-            if($(evt.currentTarget).hasClass('arrowLeft')) {
+            var _elem = $(evt.currentTarget);
+            
+            // catch the arrows that are off and do nothing
+            if(_elem.hasClass('arrowRightOff') || _elem.hasClass('arrowLeftOff')) {
+                return;
+            }
+            
+            if(_elem.hasClass('arrowLeft')) {
                 self.moveRight();
             }
             
-            if($(evt.currentTarget).hasClass('arrowRight')) {
+            if(_elem.hasClass('arrowRight')) {
                 self.moveLeft();
             }
         });
@@ -134,13 +140,6 @@ var Scroller = Base.extend({
         this.container.css({
             'margin-left': (ml + this.slideWidth) + 'px'
         });
-        
-//        var self = this;
-//        setTimeout(function() {
-//            self.checkMovement();
-//        }, 200);
-        
-        
         
     },
     
