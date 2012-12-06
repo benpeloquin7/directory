@@ -27,7 +27,7 @@ var Scroller = Base.extend({
      * Position indicates the position of the slide 1 = first slide, 2,3 etc.
      * @access  public
      */
-    slidePosition: 
+    slidePos: 0,
     
     /**
      * Initialization function
@@ -95,11 +95,20 @@ var Scroller = Base.extend({
             }
             
             if(_elem.hasClass('arrowLeft')) {
-                self.moveRight();
+                if(self.slidePos > 0 && self.slidePos <= (self.slideCount - 1)) {
+                    self.slidePos--;
+                }
+                
+                self.move();
             }
             
             if(_elem.hasClass('arrowRight')) {
-                self.moveLeft();
+                
+                if(self.slidePos >= 0 && self.slidePos < (self.slideCount - 1)) {
+                    self.slidePos++;
+                }
+                
+                self.move();
             }
         });
         
@@ -110,198 +119,41 @@ var Scroller = Base.extend({
     },
     
     /**
-     * Move the slide container left
+     * Move the slide container to the new position
      * @access  public
      * @return  array arr with full name, first name = arr[1], last name = arr[2]
      *          or -1 if we don't have a valid email format
      */
-    moveLeft: function() {
+    move: function() {
         
-        // get the current margin
-        var ml = this.getMarginLeft();
+        console.log(this.slidePos)
         
         this.container.css({
-            'margin-left': (ml - this.slideWidth) + 'px'
+            'margin-left': '-' + (this.slidePos * this.slideWidth) + 'px'
         });
-        
     },
     
     /**
-     * Move the slide container to the right
+     * Check the movement of the slides and determin if we need to turn an arrow
+     * on or off
      * @access  public
-     * @return  array arr with full name, first name = arr[1], last name = arr[2]
-     *          or -1 if we don't have a valid email format
      */
-    moveRight: function() {
-        
-        // get the current margin
-        var ml = this.getMarginLeft();
-        
-        this.container.css({
-            'margin-left': (ml + this.slideWidth) + 'px'
-        });
-        
-    },
-    
     checkMovement: function(ml, lastSlide) {
         
-        var ml = this.getMarginLeft();
-        var lastSlide = ((this.slideWidth * (this.slideCount -1)) * -1);
-        
-        if(ml == lastSlide) {
+        if(this.slidePos == (this.slideCount - 1)) {
             $(window).trigger('laOn');
             $(window).trigger('raOff');
         }
         
-        if((ml != lastSlide) && (ml != 0)) {
+        if((this.slidePos != 0) && (this.slidePos != (this.slideCount - 1))) {
             $(window).trigger('raOn');
             $(window).trigger('laOn');
         }
         
-        if(ml == 0) {
+        if(this.slidePos == 0) {
             $(window).trigger('raOn');
             $(window).trigger('laOff');
         }
-    },
-    
-    getMarginLeft: function() {
-        return parseInt(this.container.css('margin-left').replace('px', ''));
-    },
-    
-    /**
-     * Make the right arrow selectable
-     * @access  public
-     * @return  array arr with full name, first name = arr[1], last name = arr[2]
-     *          or -1 if we don't have a valid email format
-     */
-//    makeRightSelectable: function() {
-//        
-////        console.log('make right on')
-//        
-//        var arrowRight = $('.arrowRight');
-//        
-//        // use arrow meta
-//        
-////        var left = -1 * (this.arrowMeta.w/2);
-////        var top = -1 * (this.arrowMeta.h/2);
-////        
-////        arrowRight.css({
-////            'background': 'url(' + this.arrowMeta.path + ') ' + left + 'px ' + top + 'px scroll no-repeat'
-////        });
-//        
-//        arrowRight.removeClass('arrowRightOn');
-//        
-//    },
-//    
-//    /**
-//     * Make the right arrow selectable
-//     * @access  public
-//     * @return  array arr with full name, first name = arr[1], last name = arr[2]
-//     *          or -1 if we don't have a valid email format
-//     */
-//    makeRightUnselectable: function() {
-//        
-////        console.log('turn right off')
-//        
-//        var arrowRight = $('.arrowRight');
-//        
-//        // use arrow meta
-//        
-////        var left = -1* (this.arrowMeta.w/2);
-////        var top = 0;
-////        
-////        arrowRight.css({
-////            'background': 'url(' + this.arrowMeta.path + ') ' + left + 'px ' + top + 'px scroll no-repeat'
-////        });
-//        
-//        arrowRight.addClass('arrowRightOff');
-//    },
-//    
-//    /**
-//     * Make the right arrow selectable
-//     * @access  public
-//     * @return  array arr with full name, first name = arr[1], last name = arr[2]
-//     *          or -1 if we don't have a valid email format
-//     */
-//    makeLeftSelectable: function() {
-//        
-////        console.log('turn left on')
-//        
-//        var arrowRight = $('.arrowLeft');
-//        
-//        // use arrow meta
-//        
-////        var left = 0;
-////        var top = -1 * (this.arrowMeta.h/2);
-////        
-////        arrowRight.css({
-////            'background': 'url(' + this.arrowMeta.path + ') ' + left + 'px ' + top + 'px scroll no-repeat'
-////        });
-//        
-//        arrowRight.removeClass('arrowLeftOn');
-//    },
-//    
-//    /**
-//     * Make the right arrow selectable
-//     * @access  public
-//     * @return  array arr with full name, first name = arr[1], last name = arr[2]
-//     *          or -1 if we don't have a valid email format
-//     */
-//    makeLeftUnselectable: function() {
-//        
-////        console.log('turn left off')
-//        
-//        var arrowRight = $('.arrowLeft');
-//        
-//        // use arrow meta
-////        
-////        var left = 0;
-////        var top = 0;
-////        
-////        arrowRight.css({
-////            'background': 'url(' + this.arrowMeta.path + ') ' + left + 'px ' + top + 'px scroll no-repeat'
-////        });
-//        
-//        arrowRight.addClass('arrowLeftOff');
-//    },
-    
-    /**
-     * Get background image path from the background property CSS
-     * @access  public
-     * @return  string The full path of the background image
-     */
-//    getArrowMeta: function(className) {
-//        
-//        if(className === undefined) {
-//            var className = '.arrow';
-//        }
-//        
-//        var imageName = $(className).css('background-image');
-//        var self = this;
-//
-//        var regex = new RegExp("http://[a-zA-Z0-9\.\/@]+", "g");
-//        var imagePath = regex.exec(imageName);
-//        
-//        var img = new Image();
-//        
-//        $(img).on('load', function(evt) {
-//            
-//            var w = parseInt(this.width);
-//            var h = parseInt(this.height);
-//            
-//            self.arrowMeta = {
-//                w: w,
-//                h: h,
-//                path: imagePath[0],
-//                name: imageName
-//            };
-//            
-//        });
-//            
-//        img.src = imagePath[0];
-//        
-//        return 'be patient, the answers are coming neo';
-//        
-//    }
+    }
     
 });
