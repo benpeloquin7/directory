@@ -1,3 +1,6 @@
+<?php
+    require_once '../includes/config.php';
+?>
 <!-- 
     Author: Mike Newell © 2012
 -->
@@ -22,7 +25,7 @@ and open the template in the editor.
             <section>
                 <form action="#" autocomplete="on">
                     <fieldset id="email">
-                        <input type="text" name="search" placeholder="Name or email of the person you're searching for..." autocomplete="on" required>
+                        <input type="text" name="search" placeholder="Name or email of the person you're searching for..." autocomplete="on" value="<?php echo $email; ?>" required>
                     </fieldset>
                     <fieldset id="submit">
                         <input type="submit">
@@ -30,9 +33,6 @@ and open the template in the editor.
                 </form>
             </section>
         </div>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-        <!--<script type="text/javascript" src="../js/retina.js"></script>-->
-        <script src="../js/class.js"></script>
-        <script src="../js/app.js"></script>
+        <?php include_once '../includes/scripts.php'; ?>
     </body>
 </html>

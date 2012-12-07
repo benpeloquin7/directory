@@ -22,7 +22,8 @@ var App = Base.extend({
                     opacity: 0
                 }, 1000, function() {
                     // complete
-                })
+                    
+                });
             }
                 
         });
@@ -42,11 +43,31 @@ var App = Base.extend({
             return false;
         }
         
+        if(!this.validateEmail(e)) {
+            return false;
+        }
+        
         var regex = /([a-zA-Z]+)\_([a-zA-Z]+)/;
 
         var fullName = regex.exec(e);
 
         return fullName;
         
-    }
+    },
+    
+    /**
+     * Check a string for a valid email
+     * @access  public
+     * @param   string email an email address
+     * @return  true if valid, false if not
+     */
+    validateEmail: function(email) {
+        var x = email;
+        var atpos=x.indexOf("@");
+        var dotpos=x.lastIndexOf(".");
+        if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+            return false;
+        }
+        return true;
+    }   
 });

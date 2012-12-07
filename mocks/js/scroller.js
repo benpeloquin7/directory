@@ -38,20 +38,13 @@ var Scroller = Base.extend({
         
         this._super();
         
-        // set some events
         this.container = $(container);
         
-        // count all the slides
         this.slideCount = $('.slide').length;
         
-        // set slide width plus margin
         var slideMargin = parseInt($('.slide').css('margin-right').replace('px', ''));
         this.slideWidth = ($('.slide').width() + slideMargin);
         
-        // get arrow meta for later
-//        this.getArrowMeta();
-        
-                
         // set some events
         var self = this;
         
@@ -110,6 +103,35 @@ var Scroller = Base.extend({
                 
                 self.move();
             }
+        });
+        
+        $$('article').swipeRight(function() {
+            
+            var self = self;
+            
+            setTimeout(function() {
+                if(self.slidePos > 0 && self.slidePos <= (self.slideCount - 1)) {
+                    self.slidePos--;
+                }
+
+                self.move();
+            }, 300);
+            
+        });
+        
+        $$('article').swipeLeft(function() {
+            
+            var self = self;
+            
+            setTimeout(function() {
+                if(self.slidePos >= 0 && self.slidePos < (self.slideCount - 1)) {
+                    self.slidePos++;
+                }
+
+                self.move();
+            }, 300);
+            
+                
         });
         
         this.container.on('webkitTransitionEnd transitionend oTransitionEnd', function() {

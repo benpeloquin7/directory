@@ -9,6 +9,7 @@
         <!--<script type="text/javascript" src="../js/retina.js"></script>-->
         <script src="../js/cufon.js"></script>
         <script src="../js/goodby.font.js"></script>
+        <script src="../js/quo.js"></script>
         <script src="../js/class.js"></script>
         <script src="../js/base.js"></script>
         <script src="../js/scroller.js"></script>
