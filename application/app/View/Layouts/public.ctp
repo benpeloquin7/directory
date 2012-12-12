@@ -21,12 +21,10 @@ and open the template in the editor.
         <?php echo $this->Html->css(array('common'), 'stylesheet', array('media' => 'only screen and (-webkit-min-device-pixel-ratio: 1)')); ?>
         <?php echo $this->Html->css(array('common-retina'), 'stylesheet', array('media' => 'only screen and (-webkit-min-device-pixel-ratio: 2)')); ?>
         
+        <!-- specific page box layout -->
         <?php echo $this->fetch('hoodieStyle'); ?>
         <?php echo $this->fetch('hoodieStyleRetina'); ?>
-        
-        <!-- specific page box layout -->
-<!--        <link rel="stylesheet" type="text/css" href="../css/partner/style.css.php" media="only screen and (-webkit-min-device-pixel-ratio: 1)" />
-        <link rel="stylesheet" type="text/css" href="../css/partner/retina.css" media="only screen and (-webkit-min-device-pixel-ratio: 2)" />-->
+
     </head>
     <body>
         <div id="wrap">

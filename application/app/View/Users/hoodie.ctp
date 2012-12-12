@@ -1,6 +1,7 @@
 <?php
 //    $this->Html->script('carousel', array('block' => 'scriptBottom'));
-    
+
+    // define custom styles for the <head>
     $this->Html->css(array('hoodie'), 'stylesheet', array('media' => 'only screen and (-webkit-min-device-pixel-ratio: 1)', 'block' => 'hoodieStyle'));
     $this->Html->css(array('hoodie-retina'), 'stylesheet', array('media' => 'only screen and (-webkit-min-device-pixel-ratio: 2)', 'block' => 'hoodieStyleRetina'));
 ?>
