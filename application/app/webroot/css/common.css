@@ -1,0 +1,114 @@
+/* this is a comment */
+
+root {
+	display: block;
+}
+body {
+	background-color: black;
+}
+h1 {
+	font-size: 21px;
+	line-height: 22.5px;
+}
+h2 {
+	font-size: 17px;
+	line-height: 18.5px;
+}
+p {
+	font-size: 18px;
+	line-height: 19.5px;
+}
+#wrap {
+	position: relative;
+	width: 320px;
+	height: 568px;
+	background: url('../img/common/bg.png') scroll no-repeat;
+}
+header {
+	width: 320px;
+	height: 153px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: url('../img/common/top-nav.png') 0 39.5px scroll no-repeat;
+}
+header form {
+	position: absolute;
+	width: 291.5px;
+	height: 51.5px;
+	top: 101.5px;
+	left: 15px;
+	display: block;
+}
+header form #inputs input {
+	width: 261px;
+	background: none;
+	border: none;
+}
+header form #submit input {
+	position: absolute;
+	top: 27px;
+	right: 9px;
+	width: 49px;
+	height: 19.5px;
+	background: url('../img/common/submit.png') scroll no-repeat;
+	text-indent: -9999px;
+	border: none;
+}
+header nav {
+	width: 320px;
+	height: 39.5px;
+	margin: 0 auto;
+}
+header nav a {
+	display: block;
+	float: left;
+	height: 39.5px;
+	text-indent: -9999px;
+}
+#homeNavLink {
+	width: 104.5px;
+	background: url('../img/common/header-nav-sprite.png') 0 0 scroll no-repeat;
+}
+#partnersNavLink {
+	width: 108.5px;
+	background: url('../img/common/header-nav-sprite.png') -104.5px 0 scroll no-repeat;
+}
+#blogsNavLink {
+	width: 107px;
+	background: url('../img/common/header-nav-sprite.png') -213px 0px scroll no-repeat;
+}
+#homeNavLink:hover {
+	background-position: 0 -39.5px;
+}
+#homeNavLink:active {
+	background-position: 0 -39.5px;
+}
+#partnersNavLink:hover {
+	background-position: -104.5px -39.5px;
+}
+#partnersNavLink:active {
+	background-position: -104.5px -39.5px;
+}
+#blogsNavLink:hover {
+	background-position: -213px -39.5px;
+}
+#blogsNavLink:active {
+	background-position: -213px -39.5px;
+}
+section {
+	position: absolute;
+	top: 169px;
+	left: 15px;
+	width: 292.5px;
+	height: 384px;
+}
+section article {
+	position: relative;
+	width: 267.5px;
+	height: 359px;
+	padding: 12.5px;
+}
+.clear {
+	clear: both;
+}

@@ -6,6 +6,19 @@ App::uses('AppController', 'Controller');
  * @property User $User
  */
 class UsersController extends AppController {
+    
+/**
+ * mob method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function hoodie() {
+            $this->layout = 'public';
+            $this->set('title', 'GSP Partner App || Partner App');
+            // shows the directory app to anyone
+	}
 
 /**
  * index method
@@ -94,4 +107,5 @@ class UsersController extends AppController {
 		$this->Session->setFlash(__('User was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+        
 }

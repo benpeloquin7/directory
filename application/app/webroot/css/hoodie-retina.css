@@ -1,0 +1,170 @@
+.arrow {
+    display: block;
+    width: 73px;
+    height: 91px;
+    position: absolute;
+}
+
+.arrowLeft {
+    top: 339px;
+    left: -20px;
+}
+
+.arrowRight {
+    top: 339px;
+    right: -20px;
+}
+
+.arrowLeftOn {
+    background: url('../img/hoodie/arrows@2x.png') scroll 0px -91px no-repeat;
+}
+
+.arrowLeftOff {
+    background: url('../img/hoodie/arrows@2x.png') scroll 0px 0 no-repeat;
+}
+
+.arrowRightOn {
+    background: url('../img/hoodie/arrows@2x.png') scroll -73px -91px no-repeat;
+}
+
+.arrowRightOff {
+    background: url('../img/hoodie/arrows@2x.png') scroll -73px 0px no-repeat;
+}
+
+#slideWindow{
+    position: relative;
+    width: 535px;
+    height: 718px;
+    overflow: hidden;
+}
+
+section article h1 {
+    font-size: 41px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ededed;
+}
+
+section article p {
+    color: #404040;
+}
+
+#patch {
+    width: 361px;
+    height: 358px;
+    margin: 50px auto;
+    background: url('../img/hoodie/default@2x.png') scroll no-repeat;
+}
+
+section article h2, 
+section article h3,
+section article h4 {
+    text-transform: uppercase;
+    color: #ededed;
+    
+    font-size: 30px;
+    line-height: 31px;
+    
+    margin-bottom: 27px;
+}
+
+section article h4 {
+    margin-bottom: 40px;
+}
+
+#amp {
+    color: red;
+}
+
+#slideContainer {
+    position: relative;
+    width: 1915px;
+    height: 718px;
+    
+    transition: margin ease-in 0.3s;
+    -moz-transition: margin ease-in 0.3s;
+    -webkit-transition: margin ease-in 0.3s;
+    -o-transition: margin ease-in 0.3s;
+}
+
+.slide {
+    width: 535px;
+    height: 718px;
+    float: left;
+    margin-right: 100px;
+}
+
+/*
+    sizes
+*/
+
+.sizes {
+    margin-top: 20px
+}
+
+ul.sizes li {
+   display: inline;
+   float: left;
+}
+
+.size {
+    display: block;
+    margin-right: 14px;
+    margin-bottom: 20px;
+    text-indent: -9999px;
+    height: 92px;
+}
+
+.small {
+    width: 76px;
+    
+    background: url('../img/hoodie/sizes-sprite@2x.png') 0 0 scroll no-repeat;
+}
+
+.medium {
+    width: 97px;
+    
+    background: url('../img/hoodie/sizes-sprite@2x.png') -74px 0 scroll no-repeat;
+}
+
+.large {
+    width: 124px;
+    
+    background: url('../img/hoodie/sizes-sprite@2x.png') -173px 0 scroll no-repeat;
+}
+
+.extraLarge {
+    width: 158px;
+    
+    background: url('../img/hoodie/sizes-sprite@2x.png') -299px 0 scroll no-repeat;
+}
+
+/*
+    hoodie
+*/
+
+.hoodie {
+    width: 381px;
+    height: 417px;
+    margin: 0 auto;
+    
+    background: url('../img/hoodie/hoodie@2x.png') scroll no-repeat;
+    margin-bottom: 40px;
+    margin-top: 23px;
+}
+
+/*
+    send order button
+*/
+
+.sendOrder {
+    width: 209px;
+    height: 40px;
+    margin: 0 auto;
+    display: block;
+    
+    border: none;
+    
+    background: url('../img/hoodie/send-order@2x.png') scroll no-repeat;
+}
