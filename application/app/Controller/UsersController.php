@@ -7,6 +7,69 @@ App::uses('AppController', 'Controller');
  */
 class UsersController extends AppController {
     
+    // Pass settings in $components array
+    public $components = array(
+//        'Auth' => array(
+//            'loginAction' => array(
+//                'controller' => 'users',
+//                'action' => 'login'
+//            ),
+//            'authError' => 'Did you really think you are allowed to see that?',
+//            'authenticate' => array(
+//                'Form' => array(
+//                    'fields' => array('username' => 'email')
+//                )
+//            )
+//        ),
+        'Cookie',
+        'Session'
+    );
+    
+    function beforeFilter() {
+        parent::beforeFilter();
+        
+//        $this->Auth->authenticate = array('Form');
+    }
+    
+/**
+ * authenticate new users
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function auth() {
+            if($this->Cookie->check('GSPPartnerAppUser')) {
+                // get the value, 
+                // check the database for completion of things
+                // redirect to whatever they havent completed or to the directory listing
+            } else {
+                $this->layout = 'auth';
+                $this->set('title', 'GSP Partner App || Partner App');
+            }
+	}
+        
+/**
+ * authenticate new users
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function login() {
+            
+            $this->autoRender = false;
+            
+            if ($this->request->is('post')) {
+                // check the form data
+//                if () {
+//                    return $this->redirect($this->Auth->redirect());
+//                } else {
+//                    $this->Session->setFlash(__('Username or password is incorrect'), 'default', array(), 'auth');
+//                }
+            }
+	}
+    
 /**
  * mob method
  *

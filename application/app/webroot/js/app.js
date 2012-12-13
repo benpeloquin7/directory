@@ -10,21 +10,16 @@ var App = Base.extend({
         
         var self = this;
         
-        $('#submit input').on('click touchend', function(evt) {
+        $('.submit input[type=submit]').on('click touchend', function(evt) {
             evt.preventDefault();
             var email = $('#email input').val();
-            var result = self.parseEmail(email);
             
-            if(result) {
-                // TODO: make ajax call for next page
-
-                $('#wrap').animate({
-                    opacity: 0
-                }, 1000, function() {
-                    // complete
-                    
-                });
+            if(!this.validateEmail(email)) {
+                return false;
             }
+            
+            // make ajax call to confirm email
+            
                 
         });
         
