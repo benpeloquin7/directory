@@ -25,6 +25,20 @@ and open the template in the editor.
                 <?php echo $this->fetch('content'); ?>
             </section>
         </div>
-        <?php //include_once '../includes/scripts.php'; ?>
+        <?php echo $this->Html->script('//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'); ?>
+        <?php echo $this->Html->script(array('cufon', 'goodby.font', 'quo', 'class', 'base', 'app')); ?>
+        <script type="text/javascript">
+            (function($) {
+                $(window).load(function() {
+                    
+                    var base = new Base();
+                    var app = new App();
+                    
+                });
+            })(jQuery);
+        </script>
+        <script type="text/javascript">
+            Cufon.replace('h1');
+        </script>
     </body>
 </html>

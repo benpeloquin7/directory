@@ -31,16 +31,19 @@ and open the template in the editor.
             
             <header>
                 <nav>
-                    <a href="#" id="homeNavLink">HOME</a>
+                    <?php echo $this->Html->link('HOME', array('controller' => 'users', 'action' => 'auth'), array('id' => 'homeNavLink')); ?>
+                    <?php echo $this->Html->link('PARTNERS', array('controller' => 'users', 'action' => 'hoodie'), array('id' => 'partnersNavLink')); ?>
+                    <?php echo $this->Html->link('BLOGS', array('controller' => 'users', 'action' => 'blog'), array('id' => 'blogsNavLink')); ?>
+<!--                    <a href="#" id="">HOME</a>
                     <a href="#" id="partnersNavLink">PARTNERS</a>
-                    <a href="#" id="blogsNavLink">BLOGS</a>
+                    <a href="#" id="blogsNavLink">BLOGS</a>-->
                 </nav>
                 <form action="search.php" autocomplete="on">
                     <fieldset id="inputs">
-                        <input type="text" name="search" placeholder="Name or email of the person you're searching for..." autocomplete="on" required>
+                        <input type="text" name="search" placeholder="Name or email of the person you're searching for..." autocomplete="on" required />
                     </fieldset>
                     <fieldset id="submit">
-                        <input type="submit">
+                        <input type="submit" />
                     </fieldset>
                 </form>
             </header>

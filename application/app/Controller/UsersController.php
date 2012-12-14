@@ -28,7 +28,24 @@ class UsersController extends AppController {
     function beforeFilter() {
         parent::beforeFilter();
         
-//        $this->Auth->authenticate = array('Form');
+        // if we have a cookie but we don't have a session
+        if($this->Cookie->check('GSPPartnerAppUser') && !$this->Session->check('User.email')) {
+            $checkAgainstDb = $this->Cookie->read('GSPPartnerAppUser');
+            $options = array('conditions' => array('User.email' => $checkAgainstDb['email']));
+            $result = $this->User->find('first', $options);
+            
+            if($result) {
+                $nameArr = $this->parseEmailForName($result['User']['email']);
+                
+                $this->Session->write('User.email', $result['User']['email']);
+                $this->Session->write('User.firstName', $nameArr[0]);
+                $this->Session->write('User.lastName', $nameArr[1]);
+            }
+        }
+        
+        if(!$this->Cookie->check('GSPPartnerAppUser') && $this->Session->check('User.email')) {
+            $this->Session->delete('User');
+        }
     }
     
 /**
@@ -39,14 +56,42 @@ class UsersController extends AppController {
  * @return void
  */
 	public function auth() {
-            if($this->Cookie->check('GSPPartnerAppUser')) {
-                // get the value, 
-                // check the database for completion of things
-                // redirect to whatever they havent completed or to the directory listing
-            } else {
-                $this->layout = 'auth';
-                $this->set('title', 'GSP Partner App || Partner App');
-            }
+            
+//            $this->autoRender = false;
+            
+            $this->layout = 'auth';
+            $this->set('title', 'GSP Partner App || Login');
+            
+//            if($this->Cookie->check('GSPPartnerAppUser')) {
+//                // get the value, 
+//                $checkAgainstDb = $this->Cookie->read('GSPPartnerAppUser');
+//                
+////                Debugger::dump($checkAgainstDb);
+//                
+//                // check the database for completion of things
+//                $options = array('conditions' => array('User.email' => $checkAgainstDb['email']));
+//                $result = $this->User->find('first', $options);
+//                
+////                Debugger::dump($result);
+//                
+//                // redirect to whatever they havent completed or to the directory listing
+//                if($result) {
+//                    $this->set('email', $result['User']['email']);
+//                    $this->render();
+//                } else {
+//                    $this->set('email', '');
+//                    $this->render();
+//                }
+//            } else {
+//                
+//                $this->set('email', '');
+//                $this->render();
+//            }
+            
+            $this->set('email', $this->Session->read('User.email'));
+            
+//            $this->render();
+            
 	}
         
 /**
@@ -56,17 +101,64 @@ class UsersController extends AppController {
  * @param string $id
  * @return void
  */
-	public function login() {
+//	public function login() {
+//            
+//            $this->autoRender = false;
+//            
+//            if ($this->request->is('post')) {
+//                
+//                $this->response->type('json');
+//                
+//                // query db for email - if email in db, then the next part is true
+//            
+//                if(in_array('mike_newell@gspsf.com', $this->request->data)) {
+//                    $arr = array('response' => true, 'formData' => $this->request->data);
+//                    $this->response->body(json_encode($arr));
+//                } else {
+//                    $arr = array('response' => false, 'formData' => $this->request->data);
+//                    $this->response->body(json_encode($arr));
+//                }
+//                
+//                $this->response->send();
+//                
+//            }
+//	}
+        
+        public function login() {
             
             $this->autoRender = false;
             
             if ($this->request->is('post')) {
-                // check the form data
-//                if () {
-//                    return $this->redirect($this->Auth->redirect());
-//                } else {
-//                    $this->Session->setFlash(__('Username or password is incorrect'), 'default', array(), 'auth');
-//                }
+                
+                $options = array('conditions' => array('User.email' => $this->request->data('User')));
+                $result = $this->User->find('first', $options);
+                
+                if($result) {
+                    
+                    // parse email for name
+                    $nameArr = $this->parseEmailForName($result['User']['email']);
+                    
+                    // set cookie
+                    $this->Cookie->write('GSPPartnerAppUser',
+                        array('email' => $result['User']['email'], 'firstName' => $nameArr[0], 'lastName' => $nameArr[1]),
+                        false,
+                        604800
+                    );
+                    
+                    // set session
+                    $this->Session->write('User.email', $result['User']['email']);
+                    $this->Session->write('User.firstName', $nameArr[0]);
+                    $this->Session->write('User.lastName', $nameArr[1]);
+                    
+                    // determine which activities have been completed and which are still necessary to complete
+                    
+                    // redirect
+                    $this->redirect(array('controller' => 'users', 'action' => 'hoodie'));
+                } else {
+                    // redirect with a flash message that says you suck
+                    $this->redirect(array('controller' => 'users', 'action' => 'auth'));
+                }
+                
             }
 	}
     
@@ -78,8 +170,17 @@ class UsersController extends AppController {
  * @return void
  */
 	public function hoodie() {
+            
+            
             $this->layout = 'public';
             $this->set('title', 'GSP Partner App || Partner App');
+            
+            $userArr = array(
+                                'email' => $this->Session->read('User.email'),
+                                'firstName' => $this->Session->read('User.firstName'),
+                                'lastName' => $this->Session->read('User.lastName')
+                            );
+            $this->set('userInfo', $userArr);
             // shows the directory app to anyone
 	}
 
@@ -171,4 +272,23 @@ class UsersController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
         
+/**
+ * Convenience method for parsing the name
+ *
+ * @param string $email
+ * @return array $names
+ */
+        private function parseEmailForName($e) {
+            
+            $e = str_replace('@gspsf.com', '', $e);
+            
+            $arr = explode('_', $e);
+            
+            $firstName = ucfirst($arr[0]);
+            $lastName = ucfirst($arr[1]);
+            
+            return array($firstName, $lastName);
+        }
+        
 }
+

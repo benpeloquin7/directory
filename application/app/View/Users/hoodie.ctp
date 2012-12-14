@@ -14,12 +14,12 @@
                         <div id="slideContainer">
                             
                             <div class="slide slide1">
-                                <h1>WELCOME <span>LEAH</span></h1>
+                                <h1>WELCOME <span><?php echo $userInfo['firstName']; ?></span></h1>
                                 <p>Should our next holiday party be at slims or sfmoma?</p>
 
                                 <div id="patch"></div>
 
-                                <h2><span id="logoDefault">GOODBY SILVERSTEIN</span> <span id="amp">&</span> <span id="logoFirstName">leah</span></h2>
+                                <h2><span id="logoDefault">GOODBY SILVERSTEIN</span> <span id="amp">&</span> <span id="logoFirstName"><?php echo $userInfo['firstName']; ?></span></h2>
                             </div>
 
                             <div class="slide slide2">

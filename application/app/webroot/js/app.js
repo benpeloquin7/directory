@@ -10,19 +10,50 @@ var App = Base.extend({
         
         var self = this;
         
-        $('.submit input[type=submit]').on('click touchend', function(evt) {
-            evt.preventDefault();
-            var email = $('#email input').val();
-            
-            if(!this.validateEmail(email)) {
-                return false;
-            }
-            
-            // make ajax call to confirm email
-            
-                
-        });
+        console.log('setting up events')
         
+//        $('#UserAuthForm').on('submit', function(evt) {
+//            evt.preventDefault();
+//            
+//            var email = $('.email input').val();
+//            var action = $(this).attr('action');
+//            var eventName = 'UserAuthReturn';
+//            
+//            if(!self.validateEmail(email)) {
+//                return false;
+//            }
+//            
+//            console.log('postData: ' + email + ' action: ' + action + ' eventName: ' + eventName);
+//            
+//            $(window).on(eventName, function(evt, data) {
+//                
+//                console.log(data.response)
+//                
+//                // echo out the data
+//                console.dir(evt);
+//                console.dir(data);
+//            });
+//            
+//            self.sendPostRequest(action, email, eventName);
+//            
+//        });
+        
+    },
+    
+    /**
+     * Send a post request to the specified url
+     * @access  public
+     * @param   string a The url of the request
+     * @param   string d The post data to send
+     * @param   string evtName The name of the event to trigger
+     * @return  null triggers an event to respond to
+     */
+    sendPostRequest: function(a, d, evtName) {
+        $.post(a, { email: d}, function(data) {
+            // trigger event with data
+            console.dir(data);
+            $(window).trigger(evtName, data);
+        });
     },
     
     /**
@@ -57,12 +88,23 @@ var App = Base.extend({
      * @return  true if valid, false if not
      */
     validateEmail: function(email) {
+        
+        if(typeof email === undefined) {
+            return false;
+        }
+        
+        if(email.length <= 5) {
+            return false;
+        }
+        
         var x = email;
         var atpos=x.indexOf("@");
         var dotpos=x.lastIndexOf(".");
+        
         if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
             return false;
         }
+        
         return true;
     }   
 });

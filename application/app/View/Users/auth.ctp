@@ -15,7 +15,8 @@
     ));
     echo $this->Form->input(null, array(
         'type' => 'email',
-        'label' => ''
+        'label' => '',
+        'value' => $email
     ));
     echo $this->Form->end('Submit');
     
