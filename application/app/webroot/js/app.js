@@ -10,7 +10,29 @@ var App = Base.extend({
         
         var self = this;
         
-        console.log('setting up events')
+        $('.size').on('click', function(evt) {
+            evt.preventDefault();
+            self.handleHoodieSize(evt);
+        });
+        
+        $('.sendOrder').on('click', function(evt) {
+            evt.preventDefault();
+            
+            var size = $('#size').val();
+            var id = parseInt($('#HoodyId').val());
+            
+            var valid = self.validateOrder(size, id);
+            console.dir(evt);
+            
+            if(valid) {
+                
+                var action = $('#hoodieFormContainer form').attr('action');
+                
+                $.post(action, { 'User.id': id, 'Hoodie.size': size}, function(data) {
+                    console.dir(data);
+                });
+            }
+        });
         
 //        $('#UserAuthForm').on('submit', function(evt) {
 //            evt.preventDefault();
@@ -106,5 +128,41 @@ var App = Base.extend({
         }
         
         return true;
-    }   
+    },
+    
+    /**
+     * Check a string for a valid email
+     * @access  public
+     * @param   string email an email address
+     * @return  true if valid, false if not
+     */
+    validateOrder: function(size, id) {
+        
+        if(size === 'S' || size === 'M' || size === 'L' || size === 'XL') {
+            if(id > 0) {
+                return true;
+            }
+        }
+        
+        return false;
+        
+    },
+    
+    /**
+     * Handle the size of the hoodie when a new size is clicked
+     * @access  public
+     * @param   e Javascript click event
+     * @return  null
+     */
+    handleHoodieSize: function(evt) {
+        var t = evt.currentTarget;
+        
+        var size = $(t).attr('href').replace('#', '');
+        
+        $('#size').val(size);
+        
+        $('.slide3 h4 span').text(size);
+        
+    }
+    
 });

@@ -98,4 +98,23 @@ class HoodiesController extends AppController {
 		$this->Session->setFlash(__('Hoody was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+        
+        
+/**
+ * delete method
+ *
+ * @throws NotFoundException
+ * @throws MethodNotAllowedException
+ * @param string $id
+ * @return void
+ */
+	public function orderForm () {
+	    $this->layout = 'public';
+            $this->set('title', 'GSP Partner App || Partner App');
+            
+            $this->set('userId', $this->Session->read('User.id'));
+            $this->set('email', $this->Session->read('User.email'));
+            $this->set('firstName', $this->Session->read('User.firstName'));
+            $this->set('lastName', $this->Session->read('User.lastName'));
+	}
 }

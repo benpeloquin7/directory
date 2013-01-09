@@ -1,10 +1,19 @@
 <?php
+
+/*
+ * 
+ * NOTE: THIS PAGE HAS BEEN DEPRECATED IN FAVOR OF controller => hoodies, action => orderForm
+ * 
+ */
+
+
+
 //    $this->Html->script('carousel', array('block' => 'scriptBottom'));
 
     // define custom styles for the <head>
     $this->Html->css(array('hoodie'), 'stylesheet', array('media' => 'only screen and (-webkit-min-device-pixel-ratio: 1)', 'block' => 'hoodieStyle'));
     $this->Html->css(array('hoodie-retina'), 'stylesheet', array('media' => 'only screen and (-webkit-min-device-pixel-ratio: 2)', 'block' => 'hoodieStyleRetina'));
-?>
+?> 
 
             <section id="ajax">
                     
@@ -45,6 +54,26 @@
 
                             <div class="clear"></div>
                         </div>
+                    </div>
+                    
+                    <div id="hoodieFormContainer">
+                        <?php
+
+                            echo $this->Form->create(null, array(
+                                'url' => array('controller' => 'hoodies', 'action' =>  'add'),
+                                'type' => 'post',
+                                'label' => ''
+                            ));
+                            
+                            echo $this->Form->input(null, array(
+                                'type' => 'hidden',
+                                'label' => '',
+                                'value' => $email
+                            ));
+                            
+                            echo $this->Form->end('Submit');
+
+                        ?>
                     </div>
                         
                     <a class="arrow arrowLeft arrowLeftOff" href="#"></a>

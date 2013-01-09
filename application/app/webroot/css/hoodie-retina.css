@@ -163,8 +163,16 @@ ul.sizes li {
     height: 40px;
     margin: 0 auto;
     display: block;
-    
+    cursor: pointer;
     border: none;
     
     background: url('../img/hoodie/send-order@2x.png') scroll no-repeat;
+}
+
+/*
+    hidden form
+*/
+
+#hoodieFormContainer {
+    display: none;
 }
