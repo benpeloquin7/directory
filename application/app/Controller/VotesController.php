@@ -6,6 +6,24 @@ App::uses('AppController', 'Controller');
  * @property Vote $Vote
  */
 class VotesController extends AppController {
+    
+    public $components = array(
+        'Session'
+    );
+    
+    function beforeFilter() {
+        parent::beforeFilter();
+        
+        if(!$this->Session->read('User.id')) {
+            $this->redirect(array('controller' => 'users', 'action' => 'auth'));
+        }
+        
+        $options = array('conditions' => array('Vote.user_id' => $this->Session->read('User.id')));
+        $votes = $this->Vote->find('first', $options);
+        
+        $this->Session->write('Votes.votes', $votes);
+        
+    }
 
 /**
  * index method
@@ -115,15 +133,18 @@ class VotesController extends AppController {
             $this->render(false);
             
             if($this->Session->read('User.id')) {
-                $options = array('conditions' => array('Vote.user_id' => $this->Session->read('User.id')));
-                $votes = $this->Vote->find('first', $options);
                 
-                if(empty($votes)) {
-                    // no entries = they havent completed a poll
-                    $poll = $this->Vote->Poll->find('first');
-                    $this->Session->write('Poll.current', $poll['Poll']['id']);
-                    $this->redirect(array('controller' => 'polls', 'action' => 'viewPoll'));
-                }
+                $this->redirect(array('controller' => 'polls', 'action' => 'takePoll'));
+                
+//                $options = array('conditions' => array('Vote.user_id' => $this->Session->read('User.id')));
+//                $votes = $this->Vote->find('first', $options);
+                
+//                if(empty($votes)) {
+//                    // no entries = they havent completed a poll
+//                    $poll = $this->Vote->Poll->find('first');
+//                    $this->Session->write('Poll.current', $poll['Poll']['id']);
+//                    $this->redirect(array('controller' => 'polls', 'action' => 'takePoll'));
+//                }
                 
                 // do some logic here to find out what polls they've completed
 //                Debugger::dump($votes);

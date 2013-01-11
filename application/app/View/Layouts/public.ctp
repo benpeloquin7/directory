@@ -24,6 +24,9 @@ and open the template in the editor.
         <!-- specific page box layout -->
         <?php echo $this->fetch('hoodieStyle'); ?>
         <?php echo $this->fetch('hoodieStyleRetina'); ?>
+        
+        <?php echo $this->fetch('pollStyle'); ?>
+        <?php echo $this->fetch('pollStyleRetina'); ?>
 
     </head>
     <body>

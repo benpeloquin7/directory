@@ -1,7 +1,15 @@
-
+<?php
+    $this->start('pollStyle');
+    echo '<link rel="stylesheet" type="text/css" href="'.$this->webroot . '/css/poll.css.php" />';
+    $this->end();
+    $this->Html->css('/css/poll-retina.css', 'stylesheet', array('media' => 'only screen and (-webkit-min-device-pixel-ratio: 2)', 'block' => 'pollStyleRetina'));
+?>
             <section id="ajax">
                     
                 <article>
+                    
+                    <h1>Test</h1>
+                    <p>This is some test content.</p>
                     
 <!--                    <div id="slideWindow">
                         <div id="slideContainer">

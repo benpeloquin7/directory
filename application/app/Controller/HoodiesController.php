@@ -6,6 +6,19 @@ App::uses('AppController', 'Controller');
  * @property Hoody $Hoody
  */
 class HoodiesController extends AppController {
+    
+    public $components = array(
+        'Session'
+    );
+    
+    function beforeFilter() {
+        parent::beforeFilter();
+        
+        if(!$this->Session->read('User.id')) {
+            $this->redirect(array('controller' => 'users', 'action' => 'auth'));
+        }
+        
+    }
 
 /**
  * index method

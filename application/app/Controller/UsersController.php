@@ -37,6 +37,7 @@ class UsersController extends AppController {
             if($result) {
                 $nameArr = $this->parseEmailForName($result['User']['email']);
                 
+                $this->Session->write('User.id', $result['User']['id']);
                 $this->Session->write('User.email', $result['User']['email']);
                 $this->Session->write('User.firstName', $nameArr[0]);
                 $this->Session->write('User.lastName', $nameArr[1]);

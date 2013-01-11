@@ -6,6 +6,19 @@ App::uses('AppController', 'Controller');
  * @property Poll $Poll
  */
 class PollsController extends AppController {
+    
+    public $components = array(
+        'Session'
+    );
+    
+    function beforeFilter() {
+        parent::beforeFilter();
+        
+        if(!$this->Session->read('User.id')) {
+            $this->redirect(array('controller' => 'users', 'action' => 'auth'));
+        }
+        
+    }
 
 /**
  * index method
@@ -106,18 +119,65 @@ class PollsController extends AppController {
  * @param string $id
  * @return void
  */
-	public function viewPoll() {
-            
-            $id = $this->Session->read('Poll.current');
-            
-            if (!$this->Poll->exists($id)) {
-                    throw new NotFoundException(__('Invalid poll'));
-            }
+	public function takePoll() {
             
             $this->layout = 'public';
             
-            $options = array('conditions' => array('Poll.' . $this->Poll->primaryKey => $id));
-            $this->set('poll', $this->Poll->find('first', $options));
+            Debugger::dump($this->Session->read());
+            
+            if(!$this->Session->read('Poll.current')) {
+                $current_poll_id = $this->getCurrentPoll();
+                
+                Debugger::dump($current_poll_id);
+                
+                $this->Session->write('Poll.current', $current_poll_id);
+            }
+            
+            Debugger::dump($this->Session->read());
+            
+//            $id = $this->Session->read('Poll.current');
+//            
+//            if (!$this->Poll->exists($id)) {
+//                    throw new NotFoundException(__('Invalid poll'));
+//            }
+//            
+//            $options = array('conditions' => array('Poll.' . $this->Poll->primaryKey => $id));
+//            $this->set('poll', $this->Poll->find('first', $options));
+	}
+        
+/**
+ * get the most recent poll depending on the user
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function getCurrentPoll() {
+            
+            $this->layout = false;
+            $this->render(false);
+            
+            if($this->Session->read('User.id')) {
+                
+
+                $polls = $this->Poll->find('all', array('fields' => array('Poll.id')));
+                $votes = $this->Poll->Vote->find('list', array(
+                    'fields' => array('Vote.poll_id', 'Vote.user_id'),
+                    'conditions' => array('Vote.user_id' => $this->Session->read('User.id'))
+                ));
+                
+//                if(empty($votes)) {
+//                    // we've not voted
+//                    return $polls;
+//                }
+
+                return array($polls, $votes);
+            } else {
+                return 1;
+//                $this->redirect(array('controller' => 'users', 'action' => 'auth'));
+            }
+            
+                
 	}
        
 }
