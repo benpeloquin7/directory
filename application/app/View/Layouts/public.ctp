@@ -56,7 +56,8 @@ and open the template in the editor.
             
         </div>
         <?php echo $this->Html->script('//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'); ?>
-        <?php echo $this->Html->script(array('cufon', 'goodby.font', 'quo', 'class', 'base', 'scroller', 'app')); ?>
+        <?php echo $this->Html->script(array('cufon', 'goodby.font', 'quo', 'class', 'base', 'app')); ?>
+        <?php echo $this->fetch('scrollerJS'); ?>
         <script type="text/javascript">
             (function($) {
                 $(window).load(function() {

@@ -151,16 +151,6 @@ class UsersController extends AppController {
                     $this->Session->write('User.firstName', $nameArr[0]);
                     $this->Session->write('User.lastName', $nameArr[1]);
                     
-                    // determine which activities have been completed and which are still necessary to complete
-                    
-                    // gather data about the user, set a session and redirect
-//                    $userArr = array(
-//                                'email' => $this->Session->read('User.email'),
-//                                'firstName' => $this->Session->read('User.firstName'),
-//                                'lastName' => $this->Session->read('User.lastName')
-//                    );
-//                    $this->Session->write('userInfo', $userArr);
-                    
                     // redirect
                     $this->redirect(array('controller' => 'hoodies', 'action' => 'orderForm'));
                 } else {

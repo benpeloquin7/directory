@@ -100,4 +100,35 @@ class VotesController extends AppController {
 		$this->Session->setFlash(__('Vote was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+        
+/**
+ * determine which votes have been completed
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function checkVotes() {
+            
+//            $this->autoRender = false;
+            $this->layout = false;
+            $this->render(false);
+            
+            if($this->Session->read('User.id')) {
+                $options = array('conditions' => array('Vote.user_id' => $this->Session->read('User.id')));
+                $votes = $this->Vote->find('first', $options);
+                
+                if(empty($votes)) {
+                    // no entries = they havent completed a poll
+                    $poll = $this->Vote->Poll->find('first');
+                    $this->Session->write('Poll.current', $poll['Poll']['id']);
+                    $this->redirect(array('controller' => 'polls', 'action' => 'viewPoll'));
+                }
+                
+                // do some logic here to find out what polls they've completed
+//                Debugger::dump($votes);
+//                Debugger::dump($options);
+//                Debugger::dump($poll);
+            }
+	}
 }

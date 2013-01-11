@@ -18,47 +18,8 @@ var App = Base.extend({
         $('.sendOrder').on('click', function(evt) {
             evt.preventDefault();
             
-            var size = $('#size').val();
-            var id = parseInt($('#HoodyId').val());
-            
-            var valid = self.validateOrder(size, id);
-            console.dir(evt);
-            
-            if(valid) {
-                
-                var action = $('#hoodieFormContainer form').attr('action');
-                
-                $.post(action, { 'User.id': id, 'Hoodie.size': size}, function(data) {
-                    console.dir(data);
-                });
-            }
+            self.handleHoodieSubmit();
         });
-        
-//        $('#UserAuthForm').on('submit', function(evt) {
-//            evt.preventDefault();
-//            
-//            var email = $('.email input').val();
-//            var action = $(this).attr('action');
-//            var eventName = 'UserAuthReturn';
-//            
-//            if(!self.validateEmail(email)) {
-//                return false;
-//            }
-//            
-//            console.log('postData: ' + email + ' action: ' + action + ' eventName: ' + eventName);
-//            
-//            $(window).on(eventName, function(evt, data) {
-//                
-//                console.log(data.response)
-//                
-//                // echo out the data
-//                console.dir(evt);
-//                console.dir(data);
-//            });
-//            
-//            self.sendPostRequest(action, email, eventName);
-//            
-//        });
         
     },
     
@@ -163,6 +124,50 @@ var App = Base.extend({
         
         $('.slide3 h4 span').text(size);
         
+    },
+    
+    /**
+     * Handles the form submission for the hoodie submit button
+     * @access  public
+     * @param   null
+     * @return  null
+     */
+    handleHoodieSubmit: function() {
+        
+        var self = this;
+        
+        var size = $('#size').val();
+        var id = parseInt($('#HoodyUserId').val());
+
+        var valid = self.validateOrder(size, id);
+        console.log('form submit clicked');
+
+        if(valid) {
+
+            var action = $('#hoodieFormContainer form').attr('action');
+            var data = {};
+
+            $('#hoodieFormContainer form input').each(function(idx) {
+                var key = $(this).attr('name');
+                var value = $(this).val();
+
+                data[key] = value;
+            });
+
+            console.log('data coming next')
+            console.dir(data)
+
+            $.post(action, data, function(data) {
+                console.log('response data comping next')
+                console.dir(data);
+                if(data.response === true) {
+                    // I could delay this and have some sort of messaging here
+                    window.location = data.redirect;
+                }
+            });
+        }
     }
+    
+    
     
 });

@@ -100,8 +100,9 @@ class HoodiesController extends AppController {
 	}
         
         
+        
 /**
- * delete method
+ * Display the order form or redirect to the poll
  *
  * @throws NotFoundException
  * @throws MethodNotAllowedException
@@ -109,12 +110,56 @@ class HoodiesController extends AppController {
  * @return void
  */
 	public function orderForm () {
-	    $this->layout = 'public';
-            $this->set('title', 'GSP Partner App || Partner App');
             
-            $this->set('userId', $this->Session->read('User.id'));
-            $this->set('email', $this->Session->read('User.email'));
-            $this->set('firstName', $this->Session->read('User.firstName'));
-            $this->set('lastName', $this->Session->read('User.lastName'));
+            if($this->Session->read('User.id')) {
+                
+                // check to see if they've already done a hoodie
+                $options = array('conditions' => array('Hoody.user_id' => $this->Session->read('User.id')));
+                if(!$this->Hoody->find('first', $options)) {
+                    $this->layout = 'public';
+                    
+                    $this->set('title', 'GSP Partner App || Partner App');
+                    $this->set('userId', $this->Session->read('User.id'));
+                    $this->set('email', $this->Session->read('User.email'));
+                    $this->set('firstName', $this->Session->read('User.firstName'));
+                    $this->set('lastName', $this->Session->read('User.lastName'));
+                    $letter = strtolower(substr($this->Session->read('User.lastName'), 0, 1));
+                    $this->set('letter', $letter);
+                } else {
+                    // redirect to the poll
+                    $this->redirect(array('controller' => 'votes', 'action' => 'checkVotes'));
+                }
+                
+                    
+            } else {
+                $this->redirect(array('controller' => 'users', 'action' => 'auth'));
+            }
+            
 	}
+        
+        
+/**
+ * add the hoody to the db if it hasnt been added
+ *
+ * @return void
+ */
+	public function addHoody() {
+            
+            $this->response->type('json');
+            $url = Router::url(array('controller' => 'hoodies', 'action' => 'orderForm'));
+            $response = array('response' => false, 'redirect' => $url);
+            
+            if ($this->request->is('post')) {
+                $this->Hoody->create();
+                if ($this->Hoody->save($this->request->data)) {
+                    $url = Router::url(array('controller' => 'votes', 'action' => 'checkVotes'));
+                    $response = array('response' => true, 'redirect' => $url);
+                }
+            }
+            
+            $this->response->body(json_encode($response));
+            $this->response->send();
+            
+	}
+        
 }

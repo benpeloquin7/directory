@@ -98,4 +98,26 @@ class PollsController extends AppController {
 		$this->Session->setFlash(__('Poll was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+        
+/**
+ * view the poll according to what poll has been completed
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function viewPoll() {
+            
+            $id = $this->Session->read('Poll.current');
+            
+            if (!$this->Poll->exists($id)) {
+                    throw new NotFoundException(__('Invalid poll'));
+            }
+            
+            $this->layout = 'public';
+            
+            $options = array('conditions' => array('Poll.' . $this->Poll->primaryKey => $id));
+            $this->set('poll', $this->Poll->find('first', $options));
+	}
+       
 }

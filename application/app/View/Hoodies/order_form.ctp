@@ -12,6 +12,8 @@
     echo '<link rel="stylesheet" type="text/css" href="'.$this->webroot . '/css/hoodies.css.php" />';
     $this->end();
     $this->Html->css('/css/hoodie-retina.css', 'stylesheet', array('media' => 'only screen and (-webkit-min-device-pixel-ratio: 2)', 'block' => 'hoodieStyleRetina'));
+
+    $this->Html->script('scroller', array('block' => 'scrollerJS'));
 ?> 
 
             <section id="ajax">
@@ -59,7 +61,7 @@
                         <?php
 
                             echo $this->Form->create(null, array(
-                                'url' => array('controller' => 'hoodies', 'action' =>  'add'),
+                                'url' => array('controller' => 'hoodies', 'action' =>  'addHoody'),
                                 'type' => 'post',
                             ));
                             
@@ -79,10 +81,16 @@
                                 'value' => ''
                             ));
                             
-                            echo $this->Form->input('id', array(
+                            echo $this->Form->input('user_id', array(
                                 'type' => 'hidden',
                                 'label' => '',
                                 'value' => $userId
+                            ));
+                            
+                            echo $this->Form->input('letter', array(
+                                'type' => 'hidden',
+                                'label' => '',
+                                'value' => $letter
                             ));
                             
                         ?>
