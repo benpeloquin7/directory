@@ -60,13 +60,29 @@ and open the template in the editor.
         </div>
         <?php echo $this->Html->script('//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'); ?>
         <?php echo $this->Html->script(array('cufon', 'goodby.font', 'quo', 'class', 'base', 'app')); ?>
-        <?php echo $this->fetch('scrollerJS'); ?>
+        
+        <?php if($this->fetch('scrollerJS')): ?>
+        <?php   echo $this->fetch('scrollerJS'); ?>
+        <?php endif; ?>
+        
+        <?php if($this->fetch('voteJS')): ?>
+        <?php   echo $this->fetch('voteJS'); ?>
+        <?php endif; ?>
+        
         <script type="text/javascript">
             (function($) {
                 $(window).load(function() {
                     
                     var base = new Base();
+                    
+                    <?php if($this->fetch('scrollerJS')): ?>
                     var scroller = new Scroller('#slideContainer');
+                    <?php endif; ?>
+                        
+                    <?php if($this->fetch('voteJS')): ?>
+                    var vote = new Vote();
+                    <?php endif; ?>
+                        
                     var app = new App();
                     
                 });

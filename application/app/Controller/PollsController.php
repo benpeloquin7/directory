@@ -123,26 +123,20 @@ class PollsController extends AppController {
             
             $this->layout = 'public';
             
-            Debugger::dump($this->Session->read());
+            $current_poll_id = $this->getCurrentPoll();
             
-            if(!$this->Session->read('Poll.current')) {
-                $current_poll_id = $this->getCurrentPoll();
-                
-                Debugger::dump($current_poll_id);
-                
-                $this->Session->write('Poll.current', $current_poll_id);
+            $this->updatePoll($current_poll_id);
+            
+            $this->Session->write('Poll.current', $current_poll_id);
+            
+//            Debugger::dump($this->Session->read('Poll.current'));
+            
+            if (!$this->Poll->exists($current_poll_id)) {
+                throw new NotFoundException(__('Invalid poll'));
             }
             
-            Debugger::dump($this->Session->read());
-            
-//            $id = $this->Session->read('Poll.current');
-//            
-//            if (!$this->Poll->exists($id)) {
-//                    throw new NotFoundException(__('Invalid poll'));
-//            }
-//            
-//            $options = array('conditions' => array('Poll.' . $this->Poll->primaryKey => $id));
-//            $this->set('poll', $this->Poll->find('first', $options));
+            $options = array('conditions' => array('Poll.' . $this->Poll->primaryKey => $current_poll_id));
+            $this->set('poll', $this->Poll->find('first', $options));
 	}
         
 /**
@@ -154,29 +148,59 @@ class PollsController extends AppController {
  */
 	public function getCurrentPoll() {
             
-            $this->layout = false;
-            $this->render(false);
+            // get list of polls
+            $polls = $this->Poll->find('all', array('fields' => array('Poll.id')));
             
-            if($this->Session->read('User.id')) {
-                
-
-                $polls = $this->Poll->find('all', array('fields' => array('Poll.id')));
-                $votes = $this->Poll->Vote->find('list', array(
-                    'fields' => array('Vote.poll_id', 'Vote.user_id'),
-                    'conditions' => array('Vote.user_id' => $this->Session->read('User.id'))
-                ));
-                
-//                if(empty($votes)) {
-//                    // we've not voted
-//                    return $polls;
-//                }
-
-                return array($polls, $votes);
-            } else {
-                return 1;
-//                $this->redirect(array('controller' => 'users', 'action' => 'auth'));
+            $poll_ids = array();
+            
+            foreach($polls as $poll) {
+                $poll_ids[] = intval($poll['Poll']['id']);
             }
             
+            // get list of polls voted on
+            $votes = $this->Poll->Vote->find('all', array('order' => array('Vote.poll_id' => 'DESC'), 'conditions' => array('Vote.user_id' => $this->Session->read('User.id'))));
+            
+            if(empty($votes)) {
+                return array(array('Vote' => array('poll_id' => intval(1))));
+            }
+            
+            $vote_poll_ids = array();
+            foreach($votes as $vote) {
+                $vote_poll_ids[] = intval($vote['Vote']['poll_id']);
+            }
+            
+            $stack = array();
+            
+            // find the differences in the array and index keys at "0"
+            $stack = array_values(array_diff($poll_ids, $vote_poll_ids));
+            
+//            Debugger::dump($stack);
+            
+            return $stack[0];
+                
+	}
+        
+/**
+ * Keep the poll up to date with the current vote count
+ *
+ * @throws NotFoundException
+ * @param string $poll_id The ID of the poll to update
+ * @return void
+ */
+	public function updatePoll($poll_id) {
+            
+            if (!$this->Poll->exists($poll_id)) {
+                throw new NotFoundException(__('Invalid poll'));
+            }
+            
+            $poll = $this->Poll->find('first', array('conditions' => array('Poll.id' => $poll_id)));
+            
+            $tally_1 = $this->Poll->Vote->find('count', array('conditions' => array('Vote.poll_id' => $poll_id, 'Vote.answer' => '0')));
+            $tally_2 = $this->Poll->Vote->find('count', array('conditions' => array('Vote.poll_id' => $poll_id, 'Vote.answer' => '1')));
+            
+            $poll['Poll']['tally_1'] = $tally_1;
+            $poll['Poll']['tally_2'] = $tally_2;
+            $this->Poll->save($poll);
                 
 	}
        

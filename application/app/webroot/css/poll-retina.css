@@ -10,3 +10,107 @@ root {
     display: block;
 }
 
+article h1 {
+    color: white;
+    margin: 30px 0 0 150px;
+}
+
+article p {
+    color: #404040;
+    margin: 18px 0 0 150px;
+    width: 340px;
+    font-size: 30px;
+}
+
+article .lightbulb {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 117px;
+    height: 171px;
+    background: url('../img/vote/lightbulb-light@2x.png') scroll 0px 0px no-repeat;
+}
+
+.leftValue, .rightValue {
+    text-align: center;
+}
+
+.leftValue {
+    position: absolute;
+    top: 250px;
+    left: 44px;
+}
+
+.leftValue span.answer {
+    font-size: 60px;
+    color: #ff2222;
+}
+
+.leftValue span.tally {
+    font-size: 30px;
+    color: #ff2222;
+    margin-top: 20px;
+}
+
+.rightValue {
+    position: absolute;
+    top: 250px;
+    right: 51px;
+}
+
+.rightValue span.answer {
+    font-size: 60px;
+    color: #aeaeae;
+}
+
+.rightValue span.tally {
+    font-size: 30px;
+    color: #aeaeae;
+    margin-top: 20px;
+}
+
+#pollFormContainer {
+    display: none;
+}
+
+#buttonsContainer {
+    position: absolute;
+    bottom: 30px;
+    left: 75px;
+    width: 444px;
+    height: 95px;
+}
+
+.rest {
+    background: url('../img/vote/yes-no-sprite@2x.png') scroll 0px 0px no-repeat;
+}
+
+.leftActive {
+    background: url('../img/vote/yes-no-sprite@2x.png') scroll 0px -95px no-repeat;
+}
+
+.rightActive {
+    background: url('../img/vote/yes-no-sprite@2x.png') scroll 0px -190px no-repeat;
+}
+
+.submitActive {
+    background: url('../img/vote/yes-no-sprite@2x.png') scroll 0px -285px no-repeat;
+}
+
+.button {
+    display: block;
+    width: 145px;
+    height: 95px;
+}
+
+.leftButton {
+    float: left;
+}
+
+.rightButton {
+    float: right;
+}
+
+.submitButton {
+    float: left;
+}

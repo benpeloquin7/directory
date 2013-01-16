@@ -19,7 +19,7 @@ class VotesController extends AppController {
         }
         
         $options = array('conditions' => array('Vote.user_id' => $this->Session->read('User.id')));
-        $votes = $this->Vote->find('first', $options);
+        $votes = $this->Vote->find('all', $options);
         
         $this->Session->write('Votes.votes', $votes);
         
@@ -128,28 +128,28 @@ class VotesController extends AppController {
  */
 	public function checkVotes() {
             
-//            $this->autoRender = false;
             $this->layout = false;
             $this->render(false);
             
-            if($this->Session->read('User.id')) {
-                
-                $this->redirect(array('controller' => 'polls', 'action' => 'takePoll'));
-                
-//                $options = array('conditions' => array('Vote.user_id' => $this->Session->read('User.id')));
-//                $votes = $this->Vote->find('first', $options);
-                
-//                if(empty($votes)) {
-//                    // no entries = they havent completed a poll
-//                    $poll = $this->Vote->Poll->find('first');
-//                    $this->Session->write('Poll.current', $poll['Poll']['id']);
-//                    $this->redirect(array('controller' => 'polls', 'action' => 'takePoll'));
-//                }
-                
-                // do some logic here to find out what polls they've completed
-//                Debugger::dump($votes);
-//                Debugger::dump($options);
-//                Debugger::dump($poll);
-            }
+            // votes are already set in the session before I redirect
+            
+            $this->redirect(array('controller' => 'polls', 'action' => 'takePoll'));
+	}
+        
+/**
+ * determine which votes have been completed
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function addVote() {
+            
+            $this->layout = false;
+            $this->render(false);
+            
+            // votes are already set in the session before I redirect
+            
+            $this->redirect(array('controller' => 'polls', 'action' => 'takePoll'));
 	}
 }

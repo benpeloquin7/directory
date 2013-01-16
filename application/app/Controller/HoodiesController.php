@@ -124,28 +124,21 @@ class HoodiesController extends AppController {
  */
 	public function orderForm () {
             
-            if($this->Session->read('User.id')) {
-                
-                // check to see if they've already done a hoodie
-                $options = array('conditions' => array('Hoody.user_id' => $this->Session->read('User.id')));
-                if(!$this->Hoody->find('first', $options)) {
-                    $this->layout = 'public';
-                    
-                    $this->set('title', 'GSP Partner App || Partner App');
-                    $this->set('userId', $this->Session->read('User.id'));
-                    $this->set('email', $this->Session->read('User.email'));
-                    $this->set('firstName', $this->Session->read('User.firstName'));
-                    $this->set('lastName', $this->Session->read('User.lastName'));
-                    $letter = strtolower(substr($this->Session->read('User.lastName'), 0, 1));
-                    $this->set('letter', $letter);
-                } else {
-                    // redirect to the poll
-                    $this->redirect(array('controller' => 'votes', 'action' => 'checkVotes'));
-                }
-                
-                    
+            // check to see if they've already done a hoodie
+            $options = array('conditions' => array('Hoody.user_id' => $this->Session->read('User.id')));
+            if(!$this->Hoody->find('first', $options)) {
+                $this->layout = 'public';
+
+                $this->set('title', 'GSP Partner App || Partner App');
+                $this->set('userId', $this->Session->read('User.id'));
+                $this->set('email', $this->Session->read('User.email'));
+                $this->set('firstName', $this->Session->read('User.firstName'));
+                $this->set('lastName', $this->Session->read('User.lastName'));
+                $letter = strtolower(substr($this->Session->read('User.lastName'), 0, 1));
+                $this->set('letter', $letter);
             } else {
-                $this->redirect(array('controller' => 'users', 'action' => 'auth'));
+                // redirect to the poll
+                $this->redirect(array('controller' => 'votes', 'action' => 'checkVotes'));
             }
             
 	}
