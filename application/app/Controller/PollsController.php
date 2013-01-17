@@ -129,8 +129,6 @@ class PollsController extends AppController {
             
             $this->Session->write('Poll.current', $current_poll_id);
             
-//            Debugger::dump($this->Session->read('Poll.current'));
-            
             if (!$this->Poll->exists($current_poll_id)) {
                 throw new NotFoundException(__('Invalid poll'));
             }
@@ -174,8 +172,6 @@ class PollsController extends AppController {
             // find the differences in the array and index keys at "0"
             $stack = array_values(array_diff($poll_ids, $vote_poll_ids));
             
-//            Debugger::dump($stack);
-            
             return $stack[0];
                 
 	}
@@ -187,7 +183,7 @@ class PollsController extends AppController {
  * @param string $poll_id The ID of the poll to update
  * @return void
  */
-	public function updatePoll($poll_id) {
+	public function updatePoll($poll_id = 3) {
             
             if (!$this->Poll->exists($poll_id)) {
                 throw new NotFoundException(__('Invalid poll'));
@@ -195,11 +191,12 @@ class PollsController extends AppController {
             
             $poll = $this->Poll->find('first', array('conditions' => array('Poll.id' => $poll_id)));
             
-            $tally_1 = $this->Poll->Vote->find('count', array('conditions' => array('Vote.poll_id' => $poll_id, 'Vote.answer' => '0')));
-            $tally_2 = $this->Poll->Vote->find('count', array('conditions' => array('Vote.poll_id' => $poll_id, 'Vote.answer' => '1')));
+            $tally_1 = $this->Poll->Vote->find('count', array('conditions' => array('Vote.poll_id' => $poll_id, 'Vote.answer' => 0)));
+            $tally_2 = $this->Poll->Vote->find('count', array('conditions' => array('Vote.poll_id' => $poll_id, 'Vote.answer' => 1)));
             
             $poll['Poll']['tally_1'] = $tally_1;
             $poll['Poll']['tally_2'] = $tally_2;
+            $this->Poll->create();
             $this->Poll->save($poll);
                 
 	}

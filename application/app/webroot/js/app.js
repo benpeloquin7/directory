@@ -166,8 +166,42 @@ var App = Base.extend({
                 }
             });
         }
+    },
+    
+    handleVoteSubmit: function() {
+        var self = this;
+        
+        var action = $('#PollTakePollForm').attr('action');
+        
+        var answer = $('#answer').val();
+        
+        var data = {};
+        
+        if(answer) {
+            $('#PollTakePollForm input').each(function(idx) {
+                var key = $(this).attr('name');
+                var value = $(this).val();
+
+                data[key] = value;
+            });
+            
+//            console.log('data coming next')
+//            console.dir(data)
+
+            $.post(action, data, function(data) {
+                alert('server responded')
+                console.log('response data coming next')
+                console.dir(data);
+//                if(data.response === true) {
+//                    // I could delay this and have some sort of messaging here
+//                    window.location = data.redirect;
+//                } else {
+//                    alert('unable to submit the vote')
+//                }
+            });
+        } else {
+            alert('Please vote by selecting a response, then try submitting!')
+        }
     }
-    
-    
     
 });

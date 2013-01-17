@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-var Vote = Base.extend({
+var Vote = App.extend({
     
     /**
      * The container for all buttons
@@ -45,7 +45,7 @@ var Vote = Base.extend({
      * @access  public
      * @param   object A container element (dom or string) containing slides
      */
-    init: function(container) {
+    init: function() {
         
         this._super();
         
@@ -72,7 +72,7 @@ var Vote = Base.extend({
             
             if(href === 'submit') {
                 // submit via ajax to controller
-                alert('form submitted!')
+                self.handleVoteSubmit();
             } else {
                 console.log(href)
 
@@ -80,20 +80,6 @@ var Vote = Base.extend({
             }
             
         });
-        
-        
-        
-    },
-    
-    /**
-     * Submit the form to the controller
-     * @access  public
-     * @return  array arr with full name, first name = arr[1], last name = arr[2]
-     *          or -1 if we don't have a valid email format
-     */
-    submit: function() {
-        
-        // TODO: write a function that submits the script and allows the user to move on
         
     }
     

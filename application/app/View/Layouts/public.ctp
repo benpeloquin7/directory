@@ -78,12 +78,12 @@ and open the template in the editor.
                     <?php if($this->fetch('scrollerJS')): ?>
                     var scroller = new Scroller('#slideContainer');
                     <?php endif; ?>
-                        
+                       
+                    var app = new App();
+                    
                     <?php if($this->fetch('voteJS')): ?>
                     var vote = new Vote();
                     <?php endif; ?>
-                        
-                    var app = new App();
                     
                 });
             })(jQuery);

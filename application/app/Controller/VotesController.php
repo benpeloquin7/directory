@@ -146,10 +146,23 @@ class VotesController extends AppController {
 	public function addVote() {
             
             $this->layout = false;
-            $this->render(false);
+//            $this->render(false);
             
-            // votes are already set in the session before I redirect
+            $this->response->type('json');
+            $url = Router::url(array('controller' => 'votes', 'action' => 'checkVotes'));
+            $response = array('response' => false, 'redirect' => $url);
             
-            $this->redirect(array('controller' => 'polls', 'action' => 'takePoll'));
+            if ($this->request->is('post')) {
+                $this->Vote->create();
+                if ($this->Vote->save($this->request->data)) {
+                    $url = Router::url(array('controller' => 'votes', 'action' => 'checkVotes'));
+                    $response['response'] = true;
+                    $response['data'] = $this->request->data;
+                }
+            }
+            
+            $this->response->body(json_encode($response));
+            $this->response->send();
+            
 	}
 }
