@@ -125,6 +125,10 @@ class PollsController extends AppController {
             
             $current_poll_id = $this->getCurrentPoll();
             
+            if($current_poll_id === false) {
+                $this->redirect(array('controller' => 'users', 'action' => 'listUsers'));
+            }
+            
             $this->updatePoll($current_poll_id);
             
             $this->Session->write('Poll.current', $current_poll_id);
@@ -135,6 +139,8 @@ class PollsController extends AppController {
             
             $options = array('conditions' => array('Poll.' . $this->Poll->primaryKey => $current_poll_id));
             $this->set('poll', $this->Poll->find('first', $options));
+            $this->set('session', $this->Session->read());
+            
 	}
         
 /**
@@ -159,7 +165,8 @@ class PollsController extends AppController {
             $votes = $this->Poll->Vote->find('all', array('order' => array('Vote.poll_id' => 'DESC'), 'conditions' => array('Vote.user_id' => $this->Session->read('User.id'))));
             
             if(empty($votes)) {
-                return array(array('Vote' => array('poll_id' => intval(1))));
+//                return array(array('Vote' => array('poll_id' => intval(1))));
+                return 1;
             }
             
             $vote_poll_ids = array();
@@ -172,8 +179,12 @@ class PollsController extends AppController {
             // find the differences in the array and index keys at "0"
             $stack = array_values(array_diff($poll_ids, $vote_poll_ids));
             
+            if(empty($stack)) {
+                return false;
+            } 
+            
             return $stack[0];
-                
+            
 	}
         
 /**

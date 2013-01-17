@@ -17,8 +17,8 @@
                     <p><?php echo $poll['Poll']['poll_text']; ?></p>
                     
                     <?php
-                        $left = ($poll['Poll']['tally_1'] / ($poll['Poll']['tally_1'] + $poll['Poll']['tally_2'])) * 100;
-                        $right = ($poll['Poll']['tally_2'] / ($poll['Poll']['tally_1'] + $poll['Poll']['tally_2'])) * 100;
+                        $left = number_format((($poll['Poll']['tally_1'] / ($poll['Poll']['tally_1'] + $poll['Poll']['tally_2'])) * 100), 0);
+                        $right = number_format((($poll['Poll']['tally_2'] / ($poll['Poll']['tally_1'] + $poll['Poll']['tally_2'])) * 100), 0);
                     ?>
                     
                     <div class="leftValue">
@@ -42,7 +42,7 @@
                     <div id="pollFormContainer">
                         <?php
 
-                            echo $this->Form->create(null, array(
+                            echo $this->Form->create('Vote', array(
                                 'url' => array('controller' => 'votes', 'action' =>  'addVote'),
                                 'type' => 'post',
                             ));
@@ -57,7 +57,7 @@
                             echo $this->Form->input('user_id', array(
                                 'type' => 'hidden',
                                 'label' => '',
-                                'value' => $poll['User']['id']
+                                'value' => $session['User']['id']
                             ));
                             
                             echo $this->Form->input('poll_id', array(
@@ -71,7 +71,7 @@
                     
                 </article>
                 
-                <?php Debugger::dump($poll); ?>
+                <?php Debugger::dump($session); ?>
             </section>
 
  

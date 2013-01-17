@@ -145,9 +145,6 @@ class VotesController extends AppController {
  */
 	public function addVote() {
             
-            $this->layout = false;
-//            $this->render(false);
-            
             $this->response->type('json');
             $url = Router::url(array('controller' => 'votes', 'action' => 'checkVotes'));
             $response = array('response' => false, 'redirect' => $url);
@@ -163,6 +160,10 @@ class VotesController extends AppController {
             
             $this->response->body(json_encode($response));
             $this->response->send();
+            
+//            $this->response->type('json');
+//            $this->response->body('stuff');
+//            $this->response->send();
             
 	}
 }

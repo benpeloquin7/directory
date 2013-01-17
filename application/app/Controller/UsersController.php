@@ -134,6 +134,8 @@ class UsersController extends AppController {
                 $options = array('conditions' => array('User.email' => $this->request->data('User')));
                 $result = $this->User->find('first', $options);
                 
+//                Debugger::dump($result);
+                
                 if($result) {
                     
                     // parse email for name
@@ -289,6 +291,16 @@ class UsersController extends AppController {
             $lastName = ucfirst($arr[1]);
             
             return array($firstName, $lastName);
+        }
+        
+/**
+ * Convenience method for parsing the name
+ *
+ * @param string $email
+ * @return array $names
+ */
+        public function listUsers() {
+            $this->layout = 'public';
         }
         
 }

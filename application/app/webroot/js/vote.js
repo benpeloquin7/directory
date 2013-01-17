@@ -76,7 +76,7 @@ var Vote = App.extend({
             } else {
                 console.log(href)
 
-                self.answerInput.val(href);
+                self.answerInput.val(parseInt(href));
             }
             
         });
