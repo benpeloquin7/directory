@@ -20,13 +20,19 @@ and open the template in the editor.
         <!-- common css with standard box format -->
         <?php echo $this->Html->css(array('common'), 'stylesheet', array('media' => 'only screen and (-webkit-min-device-pixel-ratio: 1)')); ?>
         <?php echo $this->Html->css(array('common-retina'), 'stylesheet', array('media' => 'only screen and (-webkit-min-device-pixel-ratio: 2)')); ?>
+        <?php echo $this->Html->css(array('animation'), 'stylesheet', array('media' => 'only screen and (-webkit-min-device-pixel-ratio: 1)')); ?>
+        <?php echo $this->Html->css(array('animation-retina'), 'stylesheet', array('media' => 'only screen and (-webkit-min-device-pixel-ratio: 2)')); ?>
         
         <!-- specific page box layout -->
-        <?php echo $this->fetch('hoodieStyle'); ?>
-        <?php echo $this->fetch('hoodieStyleRetina'); ?>
+        <?php if($this->fetch('hoodieStyle')) : ?>
+        <?php   echo $this->fetch('hoodieStyle'); ?>
+        <?php   echo $this->fetch('hoodieStyleRetina'); ?>
+        <?php endif; ?>
         
-        <?php echo $this->fetch('pollStyle'); ?>
-        <?php echo $this->fetch('pollStyleRetina'); ?>
+        <?php if($this->fetch('pollStyle')) : ?>
+        <?php   echo $this->fetch('pollStyle'); ?>
+        <?php   echo $this->fetch('pollStyleRetina'); ?>
+        <?php endif; ?>
 
     </head>
     <body>

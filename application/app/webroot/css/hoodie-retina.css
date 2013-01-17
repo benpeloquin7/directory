@@ -54,7 +54,6 @@ section article p {
     width: 361px;
     height: 358px;
     margin: 50px auto;
-    background: url('../img/hoodie/default@2x.png') scroll no-repeat;
 }
 
 section article h2, 
@@ -175,4 +174,112 @@ ul.sizes li {
 
 #hoodieFormContainer {
     display: none;
+}
+
+/*
+    letter classes
+*/
+
+.a {
+    background: url('../img/hoodie/letters/a@2x.png') scroll no-repeat;
+}
+
+.b {
+    background: url('../img/hoodie/letters/b@2x.png') scroll no-repeat;
+}
+
+.c {
+    background: url('../img/hoodie/letters/c@2x.png') scroll no-repeat;
+}
+
+.d {
+    background: url('../img/hoodie/letters/d@2x.png') scroll no-repeat;
+}
+
+.e {
+    background: url('../img/hoodie/letters/e@2x.png') scroll no-repeat;
+}
+
+.f {
+    background: url('../img/hoodie/letters/f@2x.png') scroll no-repeat;
+}
+
+.g {
+    background: url('../img/hoodie/letters/g@2x.png') scroll no-repeat;
+}
+
+.h {
+    background: url('../img/hoodie/letters/h@2x.png') scroll no-repeat;
+}
+
+.i {
+    background: url('../img/hoodie/letters/i@2x.png') scroll no-repeat;
+}
+
+.j {
+    background: url('../img/hoodie/letters/j@2x.png') scroll no-repeat;
+}
+
+.k {
+    background: url('../img/hoodie/letters/k@2x.png') scroll no-repeat;
+}
+
+.l {
+    background: url('../img/hoodie/letters/l@2x.png') scroll no-repeat;
+}
+
+.m {
+    background: url('../img/hoodie/letters/m@2x.png') scroll no-repeat;
+}
+
+.n {
+    background: url('../img/hoodie/letters/n@2x.png') scroll no-repeat;
+}
+
+.o {
+    background: url('../img/hoodie/letters/o@2x.png') scroll no-repeat;
+}
+
+.p {
+    background: url('../img/hoodie/letters/p@2x.png') scroll no-repeat;
+}
+
+.q {
+    background: url('../img/hoodie/letters/q@2x.png') scroll no-repeat;
+}
+
+.r {
+    background: url('../img/hoodie/letters/r@2x.png') scroll no-repeat;
+}
+
+.s {
+    background: url('../img/hoodie/letters/s@2x.png') scroll no-repeat;
+}
+
+.t {
+    background: url('../img/hoodie/letters/t@2x.png') scroll no-repeat;
+}
+
+.u {
+    background: url('../img/hoodie/letters/u@2x.png') scroll no-repeat;
+}
+
+.v {
+    background: url('../img/hoodie/letters/v@2x.png') scroll no-repeat;
+}
+
+.w {
+    background: url('../img/hoodie/letters/w@2x.png') scroll no-repeat;
+}
+
+.x {
+    background: url('../img/hoodie/letters/x@2x.png') scroll no-repeat;
+}
+
+.y {
+    background: url('../img/hoodie/letters/y@2x.png') scroll no-repeat;
+}
+
+.z {
+    background: url('../img/hoodie/letters/z@2x.png') scroll no-repeat;
 }

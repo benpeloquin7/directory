@@ -27,7 +27,7 @@
                                 <h1>WELCOME <span><?php echo $firstName; ?></span></h1>
                                 <p>Should our next holiday party be at slims or sfmoma?</p>
 
-                                <div id="patch"></div>
+                                <div id="patch" class="<?php echo $letter; ?>"></div>
 
                                 <h2><span id="logoDefault">GOODBY SILVERSTEIN</span> <span id="amp">&</span> <span id="logoFirstName"><?php echo $firstName; ?></span></h2>
                             </div>
