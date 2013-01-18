@@ -88,10 +88,14 @@ section article h4 {
 }
 
 .slide {
-    width: 535px;
+    width: 537px;
     height: 718px;
     float: left;
     margin-right: 100px;
+}
+
+.slide1 h2 {
+    text-align: center;
 }
 
 /*
@@ -99,7 +103,8 @@ section article h4 {
 */
 
 .sizes {
-    margin-top: 20px
+    margin-top: 20px;
+    margin-left: 43px;
 }
 
 ul.sizes li {
@@ -109,14 +114,13 @@ ul.sizes li {
 
 .size {
     display: block;
-    margin-right: 14px;
     margin-bottom: 20px;
     text-indent: -9999px;
-    height: 92px;
+    height: 90px;
 }
 
 .small {
-    width: 76px;
+    width: 82px;
     
     background: url('../img/hoodie/sizes-sprite@2x.png') 0 0 scroll no-repeat;
 }
@@ -124,19 +128,35 @@ ul.sizes li {
 .medium {
     width: 97px;
     
-    background: url('../img/hoodie/sizes-sprite@2x.png') -74px 0 scroll no-repeat;
+    background: url('../img/hoodie/sizes-sprite@2x.png') -82px 0 scroll no-repeat;
 }
 
 .large {
-    width: 124px;
+    width: 126px;
     
-    background: url('../img/hoodie/sizes-sprite@2x.png') -173px 0 scroll no-repeat;
+    background: url('../img/hoodie/sizes-sprite@2x.png') -179px 0 scroll no-repeat;
 }
 
 .extraLarge {
-    width: 158px;
+    width: 163px;
     
-    background: url('../img/hoodie/sizes-sprite@2x.png') -299px 0 scroll no-repeat;
+    background: url('../img/hoodie/sizes-sprite@2x.png') -305px 0 scroll no-repeat;
+}
+
+#small .active {
+    background: url('../img/hoodie/sizes-sprite@2x.png') 0 -88px scroll no-repeat;
+}
+
+#medium .active {
+    background: url('../img/hoodie/sizes-sprite@2x.png') -82px -88px scroll no-repeat;
+}
+
+#large .active {
+    background: url('../img/hoodie/sizes-sprite@2x.png') -179px -88px scroll no-repeat;
+}
+
+#extraLarge .active {
+    background: url('../img/hoodie/sizes-sprite@2x.png') -305px -88px scroll no-repeat;
 }
 
 /*

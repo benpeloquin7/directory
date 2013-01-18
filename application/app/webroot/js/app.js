@@ -116,9 +116,13 @@ var App = Base.extend({
      * @return  null
      */
     handleHoodieSize: function(evt) {
-        var t = evt.currentTarget;
+        var t = $(evt.currentTarget);
         
-        var size = $(t).attr('href').replace('#', '');
+        var size = t.attr('href').replace('#', '');
+        
+        $('.size').removeClass('active');
+        
+        t.addClass('active');
         
         $('#size').val(size);
         
