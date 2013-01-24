@@ -95,7 +95,7 @@ and open the template in the editor.
             })(jQuery);
         </script>
         <script type="text/javascript">
-            Cufon.replace('h1, #logoDefault, #amp, #logoFirstName');
+            Cufon.replace('h1, #logoDefault, #amp, #logoFirstName, .cufon');
         </script>
     </body>
 </html>

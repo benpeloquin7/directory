@@ -25,7 +25,7 @@
                             
                             <div class="slide slide1">
                                 <h1 class="anim1">WELCOME <span><?php echo $firstName; ?></span></h1>
-                                <p class="anim2">Should our next holiday party be at slims or sfmoma?</p>
+                                <p class="anim2 cufon">Should our next holiday party be at slims or sfmoma?</p>
 
                                 <div id="patch" class="<?php echo $letter; ?> anim3"></div>
 
@@ -33,8 +33,8 @@
                             </div>
 
                             <div class="slide slide2">
-                                <h2>STEP TWO:</h2>
-                                <p>Please select a size...</p>
+                                <h2 class="cuf">STEP TWO:</h2>
+                                <p class="cuf">Please select a size...</p>
                                 <ul class="sizes">
                                     <li id="small"><a class="size small" href="#S">Small</a></li>
                                     <li id="medium"><a class="size medium" href="#M">Medium</a></li>
@@ -46,10 +46,10 @@
                             </div>
 
                             <div class="slide slide3">
-                                <h3>STEP THREE:</h3>
-                                <p>Are you ready?</p>
+                                <h3 class="cuf">STEP THREE:</h3>
+                                <p class="cuf">Are you ready?</p>
                                 <div class="hoodie"></div>
-                                <h4>SIZE: <span>LARGE</span></h4>
+                                <h4 class="cuf">SIZE: <span>LARGE</span></h4>
                                 <button class="sendOrder" href="#submit"></button>
                             </div>
 
