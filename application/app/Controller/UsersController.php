@@ -281,6 +281,17 @@ class UsersController extends AppController {
  * @param string $email
  * @return array $names
  */
+        public function listUsers() {
+            $this->layout = 'public';
+            
+        }
+        
+/**
+ * Convenience method for parsing the name
+ *
+ * @param string $email
+ * @return array $names
+ */
         private function parseEmailForName($e) {
             
             $e = str_replace('@gspsf.com', '', $e);
@@ -291,16 +302,6 @@ class UsersController extends AppController {
             $lastName = ucfirst($arr[1]);
             
             return array($firstName, $lastName);
-        }
-        
-/**
- * Convenience method for parsing the name
- *
- * @param string $email
- * @return array $names
- */
-        public function listUsers() {
-            $this->layout = 'public';
         }
         
 }

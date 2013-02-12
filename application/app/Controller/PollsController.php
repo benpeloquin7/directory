@@ -126,6 +126,9 @@ class PollsController extends AppController {
             $current_poll_id = $this->getCurrentPoll();
             
             if($current_poll_id === false) {
+                // TODO: show the last poll results without the vote action because
+                // they've already voted
+                
                 $this->redirect(array('controller' => 'users', 'action' => 'listUsers'));
             }
             
@@ -144,13 +147,28 @@ class PollsController extends AppController {
 	}
         
 /**
+ * shows the users last poll if they have completed everything else
+ *
+ * @throws NotFoundException
+ * @param string $poll_id
+ * @return void
+ */
+        
+        public function showLastPoll() {
+            // get the last poll
+            
+            
+        }
+
+        
+/**
  * get the most recent poll depending on the user
  *
  * @throws NotFoundException
  * @param string $id
  * @return void
  */
-	public function getCurrentPoll() {
+	public function getCurrentPoll($last = false) {
             
             // get list of polls
             $polls = $this->Poll->find('all', array('fields' => array('Poll.id')));
@@ -162,14 +180,18 @@ class PollsController extends AppController {
             }
             
             // get list of polls voted on
-            $votes = $this->Poll->Vote->find('all', array('order' => array('Vote.poll_id' => 'DESC'), 'conditions' => array('Vote.user_id' => $this->Session->read('User.id'))));
+            if($last) {
+                $votes = $this->Poll->Vote->find('all', array('order' => array('Vote.poll_id' => 'ASC'), 'conditions' => array('Vote.user_id' => $this->Session->read('User.id'))));
+            } else {
+                $votes = $this->Poll->Vote->find('all', array('order' => array('Vote.poll_id' => 'DESC'), 'conditions' => array('Vote.user_id' => $this->Session->read('User.id'))));
+            }
             
             if(empty($votes)) {
-//                return array(array('Vote' => array('poll_id' => intval(1))));
                 return 1;
             }
             
             $vote_poll_ids = array();
+            
             foreach($votes as $vote) {
                 $vote_poll_ids[] = intval($vote['Vote']['poll_id']);
             }
@@ -181,7 +203,7 @@ class PollsController extends AppController {
             
             if(empty($stack)) {
                 return false;
-            } 
+            }
             
             return $stack[0];
             
