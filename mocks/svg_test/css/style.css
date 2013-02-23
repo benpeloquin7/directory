@@ -1,0 +1,61 @@
+/* 
+    Document   : style
+    Created on : Feb 22, 2013, 2:14:28 PM
+    Author     : mike_newell
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+#wrap {
+    width: 200px;
+    height: 200px;
+    margin: 100px auto;
+    
+    background-color: #444;
+    
+    position: relative;
+}
+
+#yes {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#no {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#overlay {
+    width: 80px;
+    height: 80px;
+    
+    background-color: #444;
+    border-radius: 40px;
+    
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    
+}
+
+#example {
+    position: relative;
+}
+
+.cone {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#test:hover {
+    stroke: yellow;
+    fill: red;
+}
