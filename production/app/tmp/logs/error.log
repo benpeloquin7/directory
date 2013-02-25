@@ -1,0 +1,10 @@
+2013-02-25 03:02:55 Error: [MissingControllerException] Controller class AuthController could not be found.
+Exception Attributes: array (
+  'class' => 'AuthController',
+  'plugin' => NULL,
+)
+Request URL: /GSP/internal/directory/production/
+Stack Trace:
+#0 /opt/lampp/htdocs/GSP/internal/directory/production/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 /opt/lampp/htdocs/GSP/internal/directory/production/index.php(42): require('/opt/lampp/htdo...')
+#2 {main}
