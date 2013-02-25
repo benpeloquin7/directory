@@ -45,6 +45,7 @@ class PeopleController extends AppController {
             $user_cookie = $this->Cookie->read('GSPUser');
             if(isset($user_cookie['email'])) {
                 $this->preset_user_information['email'] = $user_cookie['email'];
+                $this->Session->destroy();
             }
             
         }
@@ -72,12 +73,19 @@ class PeopleController extends AppController {
         $url = Router::url(array('controller' => 'people', 'action' => 'challenge'));
         $response = array('response' => false, 'redirect' => $url, 'message' => 'Sorry but we couldn\'t find you in our records. Please check your email and try again. If the problem persists, please contact your network administrator.');
         
+        
+        
         if($this->request->is('post')) {
-            $options = array('conditions' => array('People.email' => $this->request->data('User.email')));
-            $allowed = $this->Bouncer->find('first', $options);
+            
+//            Debugger::dump($this->request->data('Person.email'));
+            
+            $options = array('conditions' => array('Person.email' => $this->request->data('Person.email')));
+            $allowed = $this->Person->find('first', $options);
+            
+            
             
             if($allowed) {
-                $this->Session->write('User.email', $this->request->data('User.email'));
+                $this->Session->write('User.email', $this->request->data('Person.email'));
                 $url = Router::url(array('controller' => 'users', 'action' => 'initiate'));
                 $response = array('response' => true, 'redirect' => $url, 'message' => 'User authenticated.');
             }
@@ -85,7 +93,8 @@ class PeopleController extends AppController {
         
         $this->response->body(json_encode($response));
         $this->response->send();
-
+        $this->_stop();
+        
     }
     
 }

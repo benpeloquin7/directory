@@ -37,7 +37,11 @@ class PollsController extends AppController {
     }
     
     public function populate() {
-        $this->Session->write($this->Poll->find('all'));
+        
+//        $data = $this->Poll->find('all');
+        $data = $this->Poll->query("SELECT * FROM polls;");
+        
+        $this->Session->write('Polls.all', $data);
         
         $this->redirect(array('controller' => 'votes', 'action' => 'populate'));
     }

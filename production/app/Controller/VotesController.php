@@ -23,7 +23,7 @@ App::uses('AppController', 'Controller');
 
 class VotesController extends AppController {
 
-    public $name = 'Polls';
+    public $name = 'Votes';
         
     public $components = array('Cookie', 'Session');
     
@@ -39,7 +39,8 @@ class VotesController extends AppController {
     public function populate() {
         
         $options = array('conditions' => array('Vote.user_id' => $this->Session->read('User.id')));
-        $this->Session->write($this->Vote->find('all', $options));
+        $votes = $this->Vote->find('all', $options);
+        $this->Session->write('Votes.all', $votes);
         
         $this->redirect(array('controller' => 'users', 'action' => 'main'));
     }

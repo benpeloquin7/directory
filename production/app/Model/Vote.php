@@ -8,7 +8,6 @@ App::uses('AppModel', 'Model');
  */
 class Vote extends AppModel {
     
-    public $useDbConfig = 'partner_app';
 
 /**
  * Validation rules

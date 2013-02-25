@@ -46,19 +46,26 @@ endif;
                     var _submit = $('input:submit');
                     var _email = $('#email');
                     
-                    console.dir(_form);
+//                    console.dir(_form);
                     
                     _submit.on('click', function(evt) {
                         evt.preventDefault();
                         
-                        console.log('submit button clicked');
+//                        console.log('submit button clicked');
                         
                         // validate the email form
                         if(_email.val().length > 0) {
                             if(IsEmail(_email.val())) {
                                 // submit the form via ajax to the action location
-                                $.post(_form[0].action, function(data) {
+                                
+//                                console.dir(_submit);
+                                
+                                $.post(_form[0].action, {'data[Person][email]':_email.val()}, function(data) {
                                     console.dir(data);
+                                    
+                                    if(data.response) {
+                                        window.location = data.redirect;
+                                    }
                                 }, 'json');
                             }
                         }

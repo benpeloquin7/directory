@@ -7,7 +7,6 @@ App::uses('AppModel', 'Model');
  * @property Vote $Vote
  */
 class User extends AppModel {
-    public $useDbConfig = 'partner_app';
     
     public $validate = array(
 		'email' => array(
