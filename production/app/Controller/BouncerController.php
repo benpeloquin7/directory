@@ -40,37 +40,15 @@ class BouncerController extends AppController {
         parent::beforeFilter();
         
         // if we have a cookie but we don't have a session
-        if($this->Cookie->check('GSPUser') && !$this->Session->check('User.email')) {
+        if($this->Cookie->check('GSPUser')) {
             
-            // check the db
             $user_cookie = $this->Cookie->read('GSPUser');
             if(isset($user_cookie['email'])) {
-                $options = array('conditions' => array('People.email' => $user_cookie['email']));
-                $result = $this->Bouncer->find('first', $options);
-                
-                if($result) {
-                    // TODO: the email came back legit, set the challenge email
-                    $nameArr = $this->parseEmailForName($result['Bouncer']['email']);
-                    $this->preset_user_information['first_name'] = $nameArr[0];
-                    $this->preset_user_information['last_name'] = $nameArr[1];
-                    $this->preset_user_information['email'] = $user_cookie['email'];
-                    
-                }
+                $this->preset_user_information['email'] = $user_cookie['email'];
             }
             
-//            if($result) {
-//                $nameArr = $this->parseEmailForName($result['User']['email']);
-//                
-//                $this->Session->write('User.id', $result['User']['id']);
-//                $this->Session->write('User.email', $result['User']['email']);
-//                $this->Session->write('User.firstName', $nameArr[0]);
-//                $this->Session->write('User.lastName', $nameArr[1]);
-//            }
         }
         
-        if(!$this->Cookie->check('GSPUser') && $this->Session->check('User.email')) {
-            $this->Session->delete('User');
-        }
     }
 
     /**
@@ -78,42 +56,33 @@ class BouncerController extends AppController {
      * @return void
      */
     public function challenge() {
-
-        // if the email is already found in a cookie then it will be set here
         $this->set('preset_user_information', $this->preset_user_information);
-        // if session found, redirect to next step
-        
     }
-        
-        
-        
+       
     /**
      * Checks the submitted email against all legit emails in the mgspsf db
-     * @return void
+     * @return boolean True for allowed, False for not allowed
      */
     public function checkTheList() {
-
-        $this->autoRender = false;
-
-        $allowed = $this->Bouncer->checkTheList();
-
-        if($allowed) {
-            $this->redirect(array('controller' => 'hoodies', 'action' => 'check_order'));
-        } else {
-            $this->redirect(array('controller' => 'bouncer', 'action' => 'challenge', 'warning' -> 'NotOnTheList'));
+        
+        $this->response->type('json');
+        $url = Router::url(array('controller' => 'bouncer', 'action' => 'challenge'));
+        $response = array('response' => false, 'redirect' => $url, 'message' => 'Sorry but we couldn\'t find you in our records. Please check your email and try again. If the problem persists, please contact your network administrator.');
+        
+        if($this->request->is('post')) {
+            $options = array('conditions' => array('People.email' => $this->request->data('User.email')));
+            $allowed = $this->Bouncer->find('first', $options);
+            
+            if($allowed) {
+                $this->Session->write('User.email', $this->request->data('User.email'));
+                $url = Router::url(array('controller' => 'users', 'action' => 'initiate'));
+                $response = array('response' => true, 'redirect' => $url, 'message' => 'User authenticated.');
+            }
         }
+        
+        $this->response->body(json_encode($response));
+        $this->response->send();
+
     }
     
-    // parses email and returns an array of first and last names (uppercase)
-    private function parseEmailForName($e) {
-
-        $e = str_replace('@gspsf.com', '', $e);
-
-        $arr = explode('_', $e);
-
-        $firstName = ucfirst($arr[0]);
-        $lastName = ucfirst($arr[1]);
-
-        return array($firstName, $lastName);
-    }
 }
