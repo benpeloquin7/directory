@@ -1,7 +1,5 @@
+<pre>
 <?php
-
-Debugger::dump($session);
-
-Debugger::dump($session['Votes']['all']);
-
+print_r($session);
 ?>
+</pre>
