@@ -32,7 +32,7 @@ class UsersController extends AppController {
         
         // dont have a session but do have a cookie
         if($this->Cookie->check('GSPUser') && !$this->Session->check('User.email')) {
-            $this->redirect(array('controller' => 'bouncer', 'action' => 'challenge'));
+            $this->redirect(array('controller' => 'people', 'action' => 'challenge'));
         }
         
         // dont have cookie but do have session
@@ -49,7 +49,7 @@ class UsersController extends AppController {
         
         // have neither cookie nor session
         if(!$this->Cookie->check('GSPUser') && !$this->Session->check('User.email')) {
-            $this->redirect(array('controller' => 'bouncer', 'action' => 'challenge'));
+            $this->redirect(array('controller' => 'people', 'action' => 'challenge'));
         }
         
         // have cookie and have session
@@ -100,7 +100,7 @@ class UsersController extends AppController {
                 $this->redirect(array('controller' => 'hoodies', 'action' => 'populate'));
             } else {
                 // redirect to login screen???
-                $this->redirect(array('controller' => 'bouncer', 'action' => 'challenge'));
+                $this->redirect(array('controller' => 'people', 'action' => 'challenge'));
             }
         }
         

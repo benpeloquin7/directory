@@ -6,6 +6,6 @@ App::uses('AppModel', 'Model');
  * @property Poll $Poll
  * @property User $User
  */
-class Bouncer extends AppModel {
+class Person extends AppModel {
     public $useDbConfig = 'mgspsf';
 }

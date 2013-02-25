@@ -21,9 +21,9 @@
 
 App::uses('AppController', 'Controller');
 
-class BouncerController extends AppController {
+class PeopleController extends AppController {
 
-    public $name = 'Bouncer';
+    public $name = 'People';
         
     public $components = array('Cookie', 'Session');
     
@@ -34,7 +34,7 @@ class BouncerController extends AppController {
      *
      * @var array
      */
-    public $uses = array('Bouncer');
+    public $uses = array('Person');
         
     function beforeFilter() {
         parent::beforeFilter();
@@ -66,7 +66,7 @@ class BouncerController extends AppController {
     public function checkTheList() {
         
         $this->response->type('json');
-        $url = Router::url(array('controller' => 'bouncer', 'action' => 'challenge'));
+        $url = Router::url(array('controller' => 'people', 'action' => 'challenge'));
         $response = array('response' => false, 'redirect' => $url, 'message' => 'Sorry but we couldn\'t find you in our records. Please check your email and try again. If the problem persists, please contact your network administrator.');
         
         if($this->request->is('post')) {

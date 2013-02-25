@@ -32,7 +32,7 @@ class VotesController extends AppController {
         
         // have cookie and have session
         if(!$this->Session->check('User.id')) {
-            $this->redirect(array('controller' => 'bouncer', 'action' => 'challenge'));
+            $this->redirect(array('controller' => 'people', 'action' => 'challenge'));
         }
     }
     
