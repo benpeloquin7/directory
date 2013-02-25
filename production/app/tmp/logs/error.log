@@ -41,3 +41,13 @@ Stack Trace:
 #11 /opt/lampp/htdocs/GSP/internal/directory/production/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #12 /opt/lampp/htdocs/GSP/internal/directory/production/index.php(42): require('/opt/lampp/htdo...')
 #13 {main}
+2013-02-25 08:48:58 Error: [MissingControllerException] Controller class PagesController could not be found.
+Exception Attributes: array (
+  'class' => 'PagesController',
+  'plugin' => NULL,
+)
+Request URL: /GSP/internal/directory/production/
+Stack Trace:
+#0 /opt/lampp/htdocs/GSP/internal/directory/production/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 /opt/lampp/htdocs/GSP/internal/directory/production/index.php(42): require('/opt/lampp/htdo...')
+#2 {main}

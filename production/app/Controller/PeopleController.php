@@ -63,7 +63,10 @@ class PeopleController extends AppController {
      * Checks the submitted email against all legit emails in the mgspsf db
      * @return boolean True for allowed, False for not allowed
      */
-    public function checkTheList() {
+    public function verify() {
+        
+        $this->autoRender = false;
+        $this->layout = 'ajax';
         
         $this->response->type('json');
         $url = Router::url(array('controller' => 'people', 'action' => 'challenge'));

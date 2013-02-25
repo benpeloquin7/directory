@@ -60,8 +60,6 @@ endif;
                                 $.post(_form[0].action, function(data) {
                                     console.dir(data);
                                 }, 'json');
-                                // wait for a json response
-                                // take action on json response
                             }
                         }
                                 
@@ -83,7 +81,7 @@ endif;
 <?php
 
     echo $this->Form->create(null, array(
-        'url' => array('controller' => 'people', 'action' =>  'checkTheList'),
+        'url' => array('controller' => 'people', 'action' =>  'verify'),
         'type' => 'post',
         'label' => ''
     ));
