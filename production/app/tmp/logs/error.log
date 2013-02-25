@@ -343,3 +343,73 @@ Stack Trace:
 #3 /opt/lampp/htdocs/GSP/internal/directory/production/lib/Cake/Core/App.php(899): App::_checkFatalError()
 #4 [internal function]: App::shutdown()
 #5 {main}
+2013-02-25 20:13:29 Error: Fatal Error (64): Can't use method return value in write context in [/Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/app/Controller/PeopleController.php, line 81]
+2013-02-25 20:13:29 Error: [FatalErrorException] Can't use method return value in write context
+Request URL: /GSP/internal/directory/production/people/verify
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/lib/Cake/Error/ErrorHandler.php(183): ErrorHandler::handleFatalError(64, 'Can't use metho...', '/Applications/X...', 81)
+#1 [internal function]: ErrorHandler::handleError(64, 'Can't use metho...', '/Applications/X...', 81, Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 64, 'Can't use metho...', '/Applications/X...', 81, Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2013-02-25 20:13:48 Error: Fatal Error (64): Can't use method return value in write context in [/Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/app/Controller/PeopleController.php, line 81]
+2013-02-25 20:13:48 Error: [FatalErrorException] Can't use method return value in write context
+Request URL: /GSP/internal/directory/production/people/verify
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/lib/Cake/Error/ErrorHandler.php(183): ErrorHandler::handleFatalError(64, 'Can't use metho...', '/Applications/X...', 81)
+#1 [internal function]: ErrorHandler::handleError(64, 'Can't use metho...', '/Applications/X...', 81, Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 64, 'Can't use metho...', '/Applications/X...', 81, Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2013-02-25 20:15:19 Error: Fatal Error (64): Can't use method return value in write context in [/Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/app/Controller/PeopleController.php, line 81]
+2013-02-25 20:15:19 Error: [FatalErrorException] Can't use method return value in write context
+Request URL: /GSP/internal/directory/production/
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/lib/Cake/Error/ErrorHandler.php(183): ErrorHandler::handleFatalError(64, 'Can't use metho...', '/Applications/X...', 81)
+#1 [internal function]: ErrorHandler::handleError(64, 'Can't use metho...', '/Applications/X...', 81, Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 64, 'Can't use metho...', '/Applications/X...', 81, Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2013-02-25 20:16:08 Error: Fatal Error (64): Can't use method return value in write context in [/Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/app/Controller/PeopleController.php, line 81]
+2013-02-25 20:16:08 Error: [FatalErrorException] Can't use method return value in write context
+Request URL: /GSP/internal/directory/production/
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/lib/Cake/Error/ErrorHandler.php(183): ErrorHandler::handleFatalError(64, 'Can't use metho...', '/Applications/X...', 81)
+#1 [internal function]: ErrorHandler::handleError(64, 'Can't use metho...', '/Applications/X...', 81, Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 64, 'Can't use metho...', '/Applications/X...', 81, Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2013-02-25 20:17:16 Error: Fatal Error (64): Can't use method return value in write context in [/Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/app/Controller/PeopleController.php, line 81]
+2013-02-25 20:17:16 Error: [FatalErrorException] Can't use method return value in write context
+Request URL: /GSP/internal/directory/production/
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/lib/Cake/Error/ErrorHandler.php(183): ErrorHandler::handleFatalError(64, 'Can't use metho...', '/Applications/X...', 81)
+#1 [internal function]: ErrorHandler::handleError(64, 'Can't use metho...', '/Applications/X...', 81, Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 64, 'Can't use metho...', '/Applications/X...', 81, Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2013-02-25 20:17:16 Error: Fatal Error (64): Can't use method return value in write context in [/Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/app/Controller/PeopleController.php, line 81]
+2013-02-25 20:17:16 Error: [FatalErrorException] Can't use method return value in write context
+Request URL: /GSP/internal/directory/production/
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/lib/Cake/Error/ErrorHandler.php(183): ErrorHandler::handleFatalError(64, 'Can't use metho...', '/Applications/X...', 81)
+#1 [internal function]: ErrorHandler::handleError(64, 'Can't use metho...', '/Applications/X...', 81, Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 64, 'Can't use metho...', '/Applications/X...', 81, Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2013-02-25 20:17:41 Error: Fatal Error (64): Can't use method return value in write context in [/Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/app/Controller/PeopleController.php, line 81]
+2013-02-25 20:17:41 Error: [FatalErrorException] Can't use method return value in write context
+Request URL: /GSP/internal/directory/production/
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/lib/Cake/Error/ErrorHandler.php(183): ErrorHandler::handleFatalError(64, 'Can't use metho...', '/Applications/X...', 81)
+#1 [internal function]: ErrorHandler::handleError(64, 'Can't use metho...', '/Applications/X...', 81, Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 64, 'Can't use metho...', '/Applications/X...', 81, Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/GSP/internal/directory/production/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}

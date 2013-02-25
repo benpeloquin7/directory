@@ -56,13 +56,22 @@ class UsersController extends AppController {
         if($this->Cookie->check('GSPUser') && $this->Session->check('User.email')) {
             
             $c = $this->Cookie->read('GSPUser');
-        
+            
+            // TODO clean this section up
+            
+            $nameArr = $this->parseEmailForName($this->Session->read('User.email'));
+            
             if($this->Session->read('User.email') == $c['email']) {
-                $nameArr = $this->parseEmailForName($this->Session->read('User.email'));
                 $this->Session->write('User.firstName', $nameArr[0]);
                 $this->Session->write('User.lastName', $nameArr[1]);
             } else {
                 // TODO rewrite the cookie with the session information
+                $this->Cookie->destroy();
+                $this->Cookie->write('GSPUser',
+                    array('email' =>$this->Session->read('User.email'), 'firstName' => $nameArr[0], 'lastName' => $nameArr[1]),
+                    false,
+                    604800
+                );
             }
             
         }
@@ -70,40 +79,46 @@ class UsersController extends AppController {
     
     public function initiate() {
         
-        // check email against partner_app db
-        $options = array('conditions' => array('User.email' => $this->Session->read('User.email')));
-        $user = $this->User->find('first', $options);
-        
-        if($user) {
-            // TODO double check the format for grabbing the id here
-            $this->Session->write('User.id', $user['User']['id']);
-            $this->redirect(array('controller' => 'hoodies', 'action' => 'populate'));
-        } else {
-            // create new record and then redirect to hoodies
-            
-            $record = array(
-                'User' => 
-                    array(
-                        'firstName' => $this->Session->read('User.firstName'), 
-                        'lastName' => $this->Session->read('User.lastName'), 
-                        'email' => $this->Session->read('User.email')
-                    )
-                );
-            
-            $this->User->create();
-            if($this->User->save($record)) {
-                $options = array('conditions' => array('User.email' => $this->Session->read('User.email')));
-                $user = $this->User->find('first', $options);
-                
+        if($this->Session->check('User.email')) {
+            // check email against partner_app db
+            $options = array('conditions' => array('User.email' => $this->Session->read('User.email')));
+            $user = $this->User->find('first', $options);
+
+            if($user) {
                 $this->Session->write('User.id', $user['User']['id']);
+                $this->Session->write('User.firstName', $user['User']['first_name']);
+                $this->Session->write('User.lastName', $user['User']['last_name']);
                 
                 $this->redirect(array('controller' => 'hoodies', 'action' => 'populate'));
             } else {
-                // redirect to login screen???
-                $this->redirect(array('controller' => 'people', 'action' => 'challenge'));
+                // create new record and then redirect to hoodies
+                $nameArr = $this->parseEmailForName($this->Session->read('User.email'));
+
+                $record = array(
+                    'User' => 
+                        array(
+                            'first_name' => $nameArr['firstName'], 
+                            'last_name' => $nameArr['lastName'], 
+                            'email' => $this->Session->read('User.email')
+                        )
+                    );
+
+                $this->User->create();
+                if($this->User->save($record)) {
+                    $options = array('conditions' => array('User.email' => $this->Session->read('User.email')));
+                    $user = $this->User->find('first', $options);
+
+                    $this->Session->write('User.id', $user['User']['id']);
+                    $this->Session->write('User.firstName', $user['User']['first_name']);
+                    $this->Session->write('User.lastName', $user['User']['last_name']);
+         
+                    $this->redirect(array('controller' => 'hoodies', 'action' => 'populate'));
+                } else {
+                    // redirect to login screen???
+                    $this->redirect(array('controller' => 'people', 'action' => 'challenge'));
+                }
             }
         }
-        
     }
     
     public function main() {
@@ -111,6 +126,8 @@ class UsersController extends AppController {
     }
     
     private function parseEmailForName($e) {
+        
+        // TODO handle an exception where emails have more than one "_" in them - like Margret_brett_kearns@gspsf.com or something
 
         $e = str_replace('@gspsf.com', '', $e);
 
@@ -119,6 +136,6 @@ class UsersController extends AppController {
         $firstName = ucfirst($arr[0]);
         $lastName = ucfirst($arr[1]);
 
-        return array($firstName, $lastName);
+        return array($firstName, $lastName, 'firstName' => $firstName, 'lastName' => $lastName);
     }
 }

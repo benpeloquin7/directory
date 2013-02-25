@@ -27,6 +27,8 @@ class VotesController extends AppController {
         
     public $components = array('Cookie', 'Session');
     
+    private $output = array('response' => false, 'redirect' => '', 'message' => '', 'data' => array());
+    
     function beforeFilter() {
         parent::beforeFilter();
         
@@ -38,10 +40,138 @@ class VotesController extends AppController {
     
     public function populate() {
         
+//        $options = array('conditions' => array('Vote.user_id' => $this->Session->read('User.id')));
+//        $votes = $this->Vote->find('all', $options);
+//        $this->Session->write('Votes.all', $votes);
+        
+        $this->write_votes_to_session();
+        
+        $this->redirect(array('controller' => 'users', 'action' => 'main'));
+    }
+    
+    public function submit() {
+        
+        // set the response up for ajax requests
+        $this->autoRender = false;
+        $this->layout = 'ajax';
+        $this->response->type('json');
+        
+        // default output
+        $url = Router::url(array('controller' => 'users', 'action' => 'main'));
+        $this->output['reponse'] = false;
+        $this->output['redirect'] = $url;
+        $this->output['message'] = 'Sorry, we were unable to process your hoodie order. Please try again later. If the problem persists please send an angry email to your network administrator.';
+        $this->output['data'] = array();
+        
+        // request must be post
+        if($this->request->is('post')) {
+            
+            // gather raw data
+            $answer = $this->request->data('Vote.answer');
+            $poll_id = $this->request->data('Vote.poll_id');
+            
+            // both values required and must not be empty
+            if(!empty($answer) && !empty($poll_id)) {
+                
+                // sanitize - don't trust data
+                $answer = filter_var($answer, FILTER_SANITIZE_STRING);
+                $poll_id = filter_var(intval($poll_id), FILTER_SANITIZE_NUMBER_INT);
+                
+                // check to see if they've already voted
+                $options = array('conditions' => array('Vote.user_id' => $this->Session->read('User.id'), 'Vote.poll_id' => $poll_id));
+                $vote = $this->Vote->find('first', $options);
+                
+                // TODO verify this is pulling the correct vote record
+                
+                // if we already have a hoody order
+                if(isset($vote['Vote']['id'])) {
+                    
+                    $this->update_vote($vote['Vote']['id'], $answer);
+                    
+                } else {
+                    
+                    $this->new_vote($vote['Vote']['poll_id'], $answer);
+                    
+                }
+            }
+        }
+        
+        $this->response->body(json_encode($this->output));
+        $this->response->send();
+        $this->_stop();
+    }
+    
+    /**
+    * Update a record for votes
+    *
+    * @param Required $id Int The id of the vote the user already voted on
+    * @param Required $answer String The answer the user voted expecting either a or b
+    * @return boolean true if the record was updated, false if not
+    */
+    private function update_vote($id, $answer) {
+        
+        $this->Vote->id = $id;
+        
+        if($this->Vote->saveField('answer', $answer)) {
+            $votes = $this->write_votes_to_session();
+            
+            $this->output['response'] = true;
+            $this->output['message'] = 'Successfully updated your vote.';
+            $this->output['data'] = $votes;
+            
+            return true;
+        }
+        
+        $this->output['response'] = false;
+        $this->output['message'] = 'Unable to update your vote.';
+        $this->output['data'] = array();
+
+        return false;
+    }
+    
+    /**
+    * Create a new vote record for the a specific poll/user
+    *
+    * @param Required $poll_id Int The id of the poll associated with the vote
+    * @param Required $answer String expecting a or b the answer they voted with
+    * @return boolean true if the record was created, false if not
+    */
+    private function new_vote($poll_id, $answer) {
+        
+        $record = array(
+            'Vote' => array(
+                'user_id' => $this->Session->read('User.id'),
+                'poll_id' => $poll_id,
+                'answer' => $answer
+            )
+        );
+        
+        $this->Vote->create();
+
+        if($this->Vote->save($record)) {
+            $votes = $this->write_votes_to_session();
+            
+            $this->output['response'] = true;
+            $this->output['message'] = 'Successfully created your vote.';
+            $this->output['data'] = $votes;
+            
+            return true;
+        }
+        
+        $this->output['response'] = false;
+        $this->output['message'] = 'Unable to create your vote.';
+        $this->output['data'] = array();
+
+        return false;
+    }
+    
+    private function write_votes_to_session() {
         $options = array('conditions' => array('Vote.user_id' => $this->Session->read('User.id')));
         $votes = $this->Vote->find('all', $options);
         $this->Session->write('Votes.all', $votes);
         
-        $this->redirect(array('controller' => 'users', 'action' => 'main'));
+        return $votes;
     }
+    
+    
 }

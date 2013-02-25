@@ -45,6 +45,8 @@ class PeopleController extends AppController {
             $user_cookie = $this->Cookie->read('GSPUser');
             if(isset($user_cookie['email'])) {
                 $this->preset_user_information['email'] = $user_cookie['email'];
+                // TODO decide if I should get rid of the cookie here, might be nice to show up and have it load every time
+//                $this->Cookie->destroy();
                 $this->Session->destroy();
             }
             
@@ -73,21 +75,29 @@ class PeopleController extends AppController {
         $url = Router::url(array('controller' => 'people', 'action' => 'challenge'));
         $response = array('response' => false, 'redirect' => $url, 'message' => 'Sorry but we couldn\'t find you in our records. Please check your email and try again. If the problem persists, please contact your network administrator.');
         
-        
-        
+        // request must be post
         if($this->request->is('post')) {
             
-//            Debugger::dump($this->request->data('Person.email'));
+            $email = $this->request->data('Person.email');
             
-            $options = array('conditions' => array('Person.email' => $this->request->data('Person.email')));
-            $allowed = $this->Person->find('first', $options);
-            
-            
-            
-            if($allowed) {
-                $this->Session->write('User.email', $this->request->data('Person.email'));
-                $url = Router::url(array('controller' => 'users', 'action' => 'initiate'));
-                $response = array('response' => true, 'redirect' => $url, 'message' => 'User authenticated.');
+            // email must not be empty
+            if(!empty($email)) {
+                
+                // email must be lowercase
+                $email = strtolower($email);
+                
+                // email must validate as an email
+                if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $options = array('conditions' => array('Person.email' => $email));
+                    $allowed = $this->Person->find('first', $options);
+                    
+                    // we have email in the gsp system
+                    if($allowed) {
+                        $this->Session->write('User.email', $email);
+                        $url = Router::url(array('controller' => 'users', 'action' => 'initiate'));
+                        $response = array('response' => true, 'redirect' => $url, 'message' => 'User authenticated.');
+                    }
+                }
             }
         }
         
