@@ -28,13 +28,17 @@
         echo $this->Html->script('class');
         echo $this->Html->script('base');
         echo $this->Html->script('hoody');
-        echo $this->Html->script('votes');
+        echo $this->Html->script('vote');
         ?>
         <script type="text/javascript">
             (function($) {
                 $(window).load(function() {
                     console.log('working')
                     var hoody = new Hoody();
+                    
+                    var votePoll1 = new Vote('Vote_Poll_1');
+                    var votePoll2 = new Vote('Vote_Poll_2');
+                    var votePoll3 = new Vote('Vote_Poll_3');
                 });
             })(jQuery);
         </script>

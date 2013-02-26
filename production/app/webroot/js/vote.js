@@ -1,11 +1,16 @@
-var Hoody = Base.extend({
+var Vote = Base.extend({
     _form:{},
     _submit: {},
     
-    init: function() {
+    /**
+     *  Initialization function for votes (one per vote form)
+     *  
+     *  @param {string} id the css identifier of the form to track
+     */
+    init: function(id) {
         this._super();
         
-        this._form = $('#HoodyMainForm');
+        this._form = $('#' + id);
         
         this._submit = this._form.find(':submit');
         
@@ -20,6 +25,7 @@ var Hoody = Base.extend({
     handleFormSubmit: function(evt) {
         // gather form data
         var data = this._form.serialize();
+        console.log(data)
         
         // submit to proper url
         $.post(this._form[0].action, data, function(data) {

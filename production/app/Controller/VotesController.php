@@ -58,7 +58,7 @@ class VotesController extends AppController {
         
         // default output
         $url = Router::url(array('controller' => 'users', 'action' => 'main'));
-        $this->output['reponse'] = false;
+        $this->output['response'] = false;
         $this->output['redirect'] = $url;
         $this->output['message'] = 'Sorry, we were unable to process your hoodie order. Please try again later. If the problem persists please send an angry email to your network administrator.';
         $this->output['data'] = array();
@@ -75,7 +75,8 @@ class VotesController extends AppController {
                 
                 // sanitize - don't trust data
                 $answer = filter_var($answer, FILTER_SANITIZE_STRING);
-                $poll_id = filter_var(intval($poll_id), FILTER_SANITIZE_NUMBER_INT);
+                $poll_id = intval($poll_id);
+                $poll_id = filter_var($poll_id, FILTER_SANITIZE_NUMBER_INT);
                 
                 // check to see if they've already voted
                 $options = array('conditions' => array('Vote.user_id' => $this->Session->read('User.id'), 'Vote.poll_id' => $poll_id));
@@ -90,7 +91,7 @@ class VotesController extends AppController {
                     
                 } else {
                     
-                    $this->new_vote($vote['Vote']['poll_id'], $answer);
+                    $this->new_vote($poll_id, $answer);
                     
                 }
             }
@@ -160,7 +161,7 @@ class VotesController extends AppController {
         
         $this->output['response'] = false;
         $this->output['message'] = 'Unable to create your vote.';
-        $this->output['data'] = array();
+        $this->output['data'] = $record;
 
         return false;
     }
