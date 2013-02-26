@@ -40,3 +40,8 @@ if (!defined('CAKE_CORE_INCLUDE_PATH')) {
 }
 
 require APP_DIR . DS . WEBROOT_DIR . DS . 'index.php';
+
+// TODO build in search algo
+// TODO integrate front end design
+// TODO animations & transitions
+// TODO animate svg for pie chart

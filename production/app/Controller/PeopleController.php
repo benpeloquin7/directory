@@ -107,4 +107,132 @@ class PeopleController extends AppController {
         
     }
     
+    public function search() {
+        $this->autoRender = false;
+        $this->layout = 'ajax';
+        $this->response->type('json');
+        
+        $url = Router::url(array('controller' => 'users', 'action' => 'main'));
+        $response = array('response' => false, 'redirect' => $url, 'message' => 'Sorry, no results found.');
+        
+        // request must be post
+        if($this->request->is('post')) {
+            
+            $term = $this->request->data('Person.term');
+            
+            if(!empty($term)) {
+                
+                // we know its not empty - now determine the type
+                $type = determine_type($term);
+                
+                // set the catchall for the results
+                $results;
+                
+                // we know the type, now sanitize according to type
+                switch($term) {
+                    case 'phone':
+                        // below is an example of a search for phone in two fields
+                        $cleaned_term = sanitize_phone($term);
+                        
+                        $fields = array('ext', 'mobile');
+                        
+                        $results = $this->search_fields($fields, $cleaned_term);
+                        
+                        break;
+                    case 'email':
+                        $cleaned_term = filter_var($term, FILTER_SANITIZE_EMAIL);
+                        
+                        $fields = array('email');
+                        
+                        $results = $this->search_fields($fields, $cleaned_term);
+                        
+                        break;
+                    case 'multi-term':
+                        $cleaned_term = filter_var($term, FILTER_SANITIZE_STRING);
+                        
+                        $fields = array();
+                        
+                        $results = $this->search_fields($fields, $cleaned_term);
+                        
+                        
+                        break;
+                    case 'single-term':
+                        $cleaned_term = filter_var($term, FILTER_SANITIZE_STRING);
+                        
+                        $fields = array();
+                        
+                        $results = $this->search_fields($fields, $cleaned_term);
+                        
+                        break;
+                    case 'username':
+                        $cleaned_term = filter_var($term, FILTER_SANITIZE_STRING);
+                        
+                        $fields = array('userName');
+                        
+                        $results = $this->search_fields($fields, $cleaned_term);
+                        
+                        break;
+                    case 'seat':
+                        $cleaned_term = filter_var($term, FILTER_SANITIZE_NUMBER_INT);
+                        
+                        $fields = array('seat');
+                        
+                        $results = $this->search_fields($fields, $cleaned_term);
+                        
+                        break;
+                }
+                
+                // pass the value to the search algo
+                
+                // TODO write the actual database search algo below
+//                $options = array('conditions' => array('Person.email' => $email));
+//                $allowed = $this->Person->find('first', $options);
+                
+            }
+            
+        }
+        
+        $this->response->body(json_encode($response));
+        $this->response->send();
+        $this->_stop();
+    }
+    
+    /**
+     *  Recognizes the search term pattern and returns the 'type'
+     * 
+     *  Acceptible return values are:
+     *  'phone'
+     *  'email'
+     *  'multi-term'
+     *  'single-term'
+     *  'username'
+     *  'seat'
+     * 
+     *  @param string $term The keyword search term a user entered
+     *  @return string Type of search term the user entered
+     */
+    private function determine_type($term) {
+        
+        // TODO recognize the term pattern and return correct associated keyword
+        
+    }
+    
+    /**
+     *  Executes a search based on the fields passed to this function
+     * 
+     *  @param array $fields The fields to search
+     *  @param string $term The search term
+     *  @return array Resulting array of search results
+     */
+    private function search_fields($fields, $term) {
+        $results = array();
+        
+        foreach($fields as $field) {
+            // below is an example search (I would need to run this on all relevant fields)
+            $results[] = $this->Person->query('SELECT * FROM people WHERE '.$field.' LIKE \'%'.$term.'%\' LIMIT 0, 1000');
+        }
+        
+        return $results;
+    }
+    
 }
