@@ -55,7 +55,7 @@ class HoodiesController extends AppController {
         
         // default output
         $url = Router::url(array('controller' => 'users', 'action' => 'main'));
-        $this->output['reponse'] = false;
+        $this->output['response'] = false;
         $this->output['redirect'] = $url;
         $this->output['message'] = 'Sorry, we were unable to process your hoodie order. Please try again later. If the problem persists please send an angry email to your network administrator.';
         $this->output['data'] = array();
@@ -81,7 +81,7 @@ class HoodiesController extends AppController {
                 // if we already have a hoody order
                 if(isset($hoody['Hoody']['id'])) {
                     
-                    $this->update_order($id, $size, $letter);
+                    $this->update_order($hoody['Hoody']['id'], $size, $letter);
                     
                 } else {
                     
@@ -125,7 +125,7 @@ class HoodiesController extends AppController {
             $this->Session->write('Hoody.order', $new_hoody);
             
             $this->output['response'] = true;
-            $this->output['message'] = 'New hoodi ordered successfully.';
+            $this->output['message'] = 'New hoody ordered successfully.';
             $this->output['data'] = $new_hoody;
             
             return true;

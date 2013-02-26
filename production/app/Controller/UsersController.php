@@ -122,7 +122,51 @@ class UsersController extends AppController {
     }
     
     public function main() {
-        $this->set('session', $this->Session->read());
+        
+        $session = $this->Session->read();
+        
+        $hoody_size = '';
+        $hoody_letter = '';
+        
+        if(!empty($session['Hoody']['order'])) {
+            // we a hoodie vote
+            $hoody_size = $session['Hoody']['order']['Hoody']['size'];
+            $hoody_letter = $session['Hoody']['order']['Hoody']['letter'];
+        }
+        
+        
+        
+        // TODO figure out if votes is not empty and set a votes variable
+        
+        $voting_modules = array();
+        
+        foreach($session['Polls']['all'] as $poll) {
+            
+            $poll_id = $poll['polls']['id'];
+            
+            $votes_length = count($session['Votes']['all']);
+            
+            $vote_answer = '';
+            
+            for($i = 0; $i < $votes_length; $i++) {
+                if($session['Votes']['all'][$i]['Vote']['poll_id'] == $poll_id) {
+                    $vote_answer = $session['Votes']['all'][$i]['Vote']['answer'];
+                }
+            }
+            
+            $voting_modules[] = array(
+                'id' => $poll_id,
+                'question' => $poll['polls']['question'],
+                'answer_a' => $poll['polls']['answer_a'],
+                'answer_b' => $poll['polls']['answer_b'],
+                'previous_answer' => $vote_answer
+            );
+        }
+        
+        $this->set('session', $session);
+        $this->set('hoody_size', $hoody_size);
+        $this->set('hoody_letter', $hoody_letter);
+        $this->set('voting_modules', $voting_modules);
     }
     
     private function parseEmailForName($e) {
