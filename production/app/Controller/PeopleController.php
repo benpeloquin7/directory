@@ -211,9 +211,31 @@ class PeopleController extends AppController {
      *  @param string $term The keyword search term a user entered
      *  @return string Type of search term the user entered
      */
-    private function determine_type($term) {
+    private function determine_type($phrase) {
         
         // TODO recognize the term pattern and return correct associated keyword
+        
+        $term_arr = explode(' ', $phrase);
+    
+        $output = array();
+
+        foreach($term_arr as $term) {
+
+            $pattern = '#(([+]?[\(]?[0-9]{3}[\)]?)?.?([0-9]{3}.?[0-9]{4}))#';
+
+            preg_match($pattern, $term, $matches);
+
+            if($matches) {
+                $output[] = $matches;
+            } elseif (filter_var($term, FILTER_VALIDATE_EMAIL)) {
+                $output[] =  array('email' => $term);
+            } else {
+                $output[] = array('no');
+            }
+
+        }
+
+        return $output;
         
     }
     
