@@ -3,26 +3,26 @@
     <head>
         <title><?php echo $title_for_layout; ?></title>
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-        <!-- Include external files and scripts here (See HTML helper for more info.) -->
         <?php
-        echo $this->fetch('meta');
-        echo $this->fetch('css');
-        echo $this->fetch('script');
+        echo $this->Html->css('reset');
+        echo $this->Html->css('style');
         ?>
     </head>
     <body>
 
         <!-- If you'd like some sort of menu to
         show up on all of your views, include it here -->
-        <div id="header">
+<!--        <div id="header">
             <div id="menu">Header</div>
-        </div>
+        </div>-->
 
         <!-- Here's where I want my views to be displayed -->
-        <?php echo $this->fetch('content'); ?>
+        <div id="wrap">
+            <?php echo $this->fetch('content'); ?>    
+        </div>
 
         <!-- Add a footer to each displayed page -->
-        <div id="footer">...</div>
+        <!--<div id="footer">...</div>-->
         <?php
         echo $this->Html->script('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
         echo $this->Html->script('class');

@@ -2,6 +2,7 @@ var Search = Base.extend({
     _form:{},
     _input:{},
     _submit: {},
+    _searchBox: {},
     
     init: function() {
         this._super();
@@ -9,6 +10,8 @@ var Search = Base.extend({
         this._form = $('#PersonSearchForm');
         
         this._input = $('#phrase');
+        
+        this._searchBox = $('#searchBox');
         
         this._submit = this._form.find(':submit');
         
@@ -22,6 +25,11 @@ var Search = Base.extend({
             evt.preventDefault();
             self.handleFormSubmit(evt);
         });
+        
+        this._searchBox.on('click', function(evt) {
+            evt.preventDefault();
+            self.handleSearchBoxClick(evt);
+        })
     },
     
     handleFormSubmit: function(evt) {
@@ -34,5 +42,16 @@ var Search = Base.extend({
             // wait for a response and take action
         }, 'json');
        
+    },
+            
+    handleSearchBoxClick: function(evt) {
+        // expand the hidden div
+        var hs = $('#hiddenSearch');
+        
+        hs.css({
+            'width': '100%',
+            'height' : '100%',
+            'opacity': 0.7
+        })
     }
 });

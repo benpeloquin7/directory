@@ -1,64 +1,23 @@
+<?php
 
-
-<div id="social" class="box boxleft">
-    <h1>I Want to Say</h1>
-</div>
-
-<div id="rightTopPanels" class="boxright">
-    <div class="box empty1"></div>
-    <div class="box empty2"></div>
-    <div class="box empty3"></div>
-    <div class="box empty4"></div>
-</div>
-
-<div class="clear"></div>
-
-<div id="poll" class="box">
-    <h2><?php echo $session['Polls']['all'][0]['polls']['question']; ?></h2>
-</div>
-
-<div id="leftBottomPanels" class="box boxleft">
-    <div class="box empty5"></div>
-    <div class="box empty6"></div>
-    <div class="box empty7"></div>
-    <div class="box empty8"></div>
-</div>
-
-<div id="searchBox" class="box boxright"></div>
-
-<div class="clear"></div>
-
-
-<div id="hiddenSearch">
-    <div id="searchIcon"></div>
-    <div id="searchFormContainer">
-        <?php
-
-            echo $this->Form->create('Person', array(
-                'url' => array('controller' => 'people', 'action' =>  'search'),
-                'type' => 'post',
-                'label' => '',
-                'id' => 'PersonSearchForm'
-            ));
-
-            echo $this->Form->input('phrase', array(
-                'id' => 'phrase',
-                'type' => 'text',
-                'label' => 'Search',
-                'value' => 'Search...'
-            ));
-
-            echo $this->Form->end('Submit');
-
-        ?>
-    </div>
-</div>
-
-
-
-
-<div id="hidden">
+    echo $this->Form->create('Person', array(
+        'url' => array('controller' => 'people', 'action' =>  'search'),
+        'type' => 'post',
+        'label' => '',
+        'id' => 'PersonSearchForm'
+    ));
     
+    echo $this->Form->input('phrase', array(
+        'id' => 'phrase',
+        'type' => 'text',
+        'label' => 'Search',
+        'value' => 'Search...'
+    ));
+    
+    echo $this->Form->end('Submit');
+    
+?>
+
 <?php
 
     echo $this->Form->create('Hoody', array(
@@ -118,4 +77,3 @@ print_r($session);
 ?>
 </pre>
 
-</div>

@@ -1,0 +1,167 @@
+/* 
+    Document   : style
+    Created on : Feb 27, 2013, 1:04:45 AM
+    Author     : mike
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+#wrap {
+    background-color: black;
+    width: 100%;
+    position: relative;
+    height: 100%;
+    padding: 20px;
+}
+
+#social {
+    width: 280px;
+    height: 280px;
+    margin-right: 20px;
+    
+    background: #444 url(http://i2.ytimg.com/vi/Iu3c8fqBQcA/hqdefault.jpg) 0px -41px scroll no-repeat;
+    background-size: 480px 360px;
+}
+
+#social h1 {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 28px;
+    color: white;
+    width: 240px;
+    position: relative;
+    top: 209px;
+}
+
+#rightTopPanels {
+    width: 280px;
+    height: 280px;
+}
+
+.boxleft {
+    float: left;
+    positionL: relative;
+}
+
+.boxright {
+    float: left;
+    position: relative;
+}
+
+.empty1, .empty2,
+.empty3, .empty4 {
+    width: 130px;
+    height: 130px;
+    float: left;
+    background-color: #777;
+}
+
+.empty1, .empty2 {
+    margin-bottom: 20px;
+}
+
+.empty1, .empty3 {
+    margin-right: 20px;
+}
+
+.clear {
+    clear: both;
+}
+
+.box {
+    
+}
+
+#poll {
+    width: 578px;
+    height: 280px;
+    margin-top: 20px;
+    border: 1px solid #222;
+    background-color: black;
+    overflow: hidden;
+    background: url(../img/css/poll_bg.png) 132px 80px scroll no-repeat;
+    background-size: 320px 320px;
+}
+
+#poll h2 {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 48px;
+    color: white;
+    width: 480px;
+    position: relative;
+    top: 245px;
+}
+
+pre {
+    color: white;
+}
+
+#leftBottomPanels {
+    width: 280px;
+    height: 280px;
+    margin-top: 20px;
+}
+
+.empty5, .empty6,
+.empty7, .empty8 {
+    width: 130px;
+    height: 130px;
+    float: left;
+    background-color: #222;
+}
+
+.empty5, .empty6 {
+    margin-bottom: 20px;
+}
+
+.empty5, .empty7 {
+    margin-right: 20px;
+}
+
+#searchBox {
+    width: 280px;
+    height: 280px;
+    margin: 20px 0 0 20px;
+    background: #333 url(../img/css/search.png) 78px 78px scroll no-repeat;
+    background-size: 120px 120px;
+    
+}
+
+#hidden {
+    opacity: 0;
+    
+    transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -webkit-transition: opacity 1s;
+    -o-transition: opacity 1s;
+}
+
+#hidden:hover {
+    opacity: 1;
+}
+
+#hiddenSearch {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    
+    background: #000;
+    
+    transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+}
+
+#searchFormContainer {
+    width: 480px;
+    margin: 0 auto;
+}
