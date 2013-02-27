@@ -29,6 +29,7 @@
         echo $this->Html->script('base');
         echo $this->Html->script('hoody');
         echo $this->Html->script('vote');
+        echo $this->Html->script('search');
         ?>
         <script type="text/javascript">
             (function($) {
@@ -39,6 +40,8 @@
                     var votePoll1 = new Vote('Vote_Poll_1');
                     var votePoll2 = new Vote('Vote_Poll_2');
                     var votePoll3 = new Vote('Vote_Poll_3');
+                    
+                    var search = new Search();
                 });
             })(jQuery);
         </script>

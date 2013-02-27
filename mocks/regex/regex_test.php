@@ -38,7 +38,7 @@ $terms = array(
 );
 
 for($i = 0; $i < count($terms); $i++) {
-    $matches = search_string($terms[$i]);
+    $matches = compile_query($terms[$i]);
     echo '<br />';
     echo 'Matches for string: <strong>' . $terms[$i] . '</strong> are: ';
     echo '<br /><pre>';
@@ -46,7 +46,7 @@ for($i = 0; $i < count($terms); $i++) {
     echo '<br /><br /></pre>';
 }
 
-function search_string($phrase) {
+function compile_query($phrase) {
     
     $term_arr = explode(' ', $phrase);
     $output = array();

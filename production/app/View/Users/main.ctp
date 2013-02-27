@@ -1,5 +1,25 @@
 <?php
 
+    echo $this->Form->create('Person', array(
+        'url' => array('controller' => 'people', 'action' =>  'search'),
+        'type' => 'post',
+        'label' => '',
+        'id' => 'PersonSearchForm'
+    ));
+    
+    echo $this->Form->input('phrase', array(
+        'id' => 'phrase',
+        'type' => 'text',
+        'label' => 'Search',
+        'value' => 'Search...'
+    ));
+    
+    echo $this->Form->end('Submit');
+    
+?>
+
+<?php
+
     echo $this->Form->create('Hoody', array(
         'url' => array('controller' => 'hoodies', 'action' =>  'submit'),
         'type' => 'post',
