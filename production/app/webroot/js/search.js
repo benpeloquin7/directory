@@ -52,6 +52,17 @@ var Search = Base.extend({
             'width': '100%',
             'height' : '100%',
             'opacity': 0.7
+        });
+        
+        var hsc = $('#searchClose');
+        
+        hsc.on('click', function(evt) {
+            evt.preventDefault();
+            hs.css({
+                'width': '0',
+                'height' : '0',
+                'opacity': 0
+            });
         })
     }
 });

@@ -51,7 +51,9 @@
             echo $this->Form->end('Submit');
 
         ?>
+        <div id="searchClose"></div>
     </div>
+    
 </div>
 
 
