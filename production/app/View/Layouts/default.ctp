@@ -25,6 +25,7 @@
         <!--<div id="footer">...</div>-->
         <?php
         echo $this->Html->script('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
+        echo $this->Html->script('raphael');
         echo $this->Html->script('class');
         echo $this->Html->script('base');
         echo $this->Html->script('hoody');
@@ -35,13 +36,27 @@
             (function($) {
                 $(window).load(function() {
                     console.log('working')
+                    
+                    var debug = true;
+                    
+                    var objects = new Array();
+                    
                     var hoody = new Hoody();
+                    objects.push(hoody);
                     
                     var votePoll1 = new Vote('Vote_Poll_1');
                     var votePoll2 = new Vote('Vote_Poll_2');
                     var votePoll3 = new Vote('Vote_Poll_3');
+                    objects.push(votePoll1, votePoll2, votePoll3);
                     
                     var search = new Search();
+                    objects.push(search);
+                    
+                    if(debug) {
+                        for(var i = 0; i < objects.length; i++) {
+                            
+                        }
+                    }
                 });
             })(jQuery);
         </script>

@@ -27,7 +27,7 @@ class VotesController extends AppController {
         
     public $components = array('Cookie', 'Session');
     
-    private $output = array('response' => false, 'redirect' => '', 'message' => '', 'data' => array());
+    private $output = array('response' => false, 'redirect' => '', 'message' => '', 'data' => array(), 'tally' => array());
     
     function beforeFilter() {
         parent::beforeFilter();
@@ -88,12 +88,18 @@ class VotesController extends AppController {
                 // if we already have a hoody order
                 if(isset($vote['Vote']['id'])) {
                     
-                    $this->update_vote($vote['Vote']['id'], $answer);
+                    $result = $this->update_vote($vote['Vote']['id'], $answer);
                     
                 } else {
                     
-                    $this->new_vote($poll_id, $answer);
+                    $result = $this->new_vote($poll_id, $answer);
                     
+                }
+                
+                if($result) {
+                    $tally = $this->get_tally_votes_by_poll_id($poll_id);
+                    
+                    $this->output['tally'] = $tally;
                 }
             }
         }
@@ -187,7 +193,7 @@ class VotesController extends AppController {
             $tally_a = $this->query_votes_tally_by_answer($poll_id, 'a');
             $tally_b = $this->query_votes_tally_by_answer($poll_id, 'b');
             
-            $tally[] = array(
+            $tally[$poll_id] = array(
                 'poll_id' => $poll_id,
                 'tally_a' => $tally_a,
                 'tally_b' => $tally_b
@@ -207,5 +213,22 @@ class VotesController extends AppController {
         return $this->Vote->find('count', $options);
     }
     
-    
+    private function get_tally_votes_by_poll_id($poll_id) {
+        
+        $poll_id = intval($poll_id);
+        
+        $tally = array();
+            
+        $tally_a = $this->query_votes_tally_by_answer($poll_id, 'a');
+        $tally_b = $this->query_votes_tally_by_answer($poll_id, 'b');
+
+        $tally[$poll_id] = array(
+            'poll_id' => $poll_id,
+            'tally_a' => $tally_a,
+            'tally_b' => $tally_b
+        );
+//        $this->Session->write('Votes.tally', $tally);
+        
+        return $tally;
+    }
 }

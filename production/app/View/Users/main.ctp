@@ -15,6 +15,7 @@
 
 <div id="poll" class="box">
     <h2><?php echo $session['Polls']['all'][0]['polls']['question']; ?></h2>
+    <div class="pollHolder"></div>
 </div>
 
 <div id="leftBottomPanels" class="box boxleft">
@@ -89,11 +90,15 @@
 
 <?php
     foreach($voting_modules as $voting_module) {
+        
         echo $this->Form->create('Vote', array(
             'id' => 'Vote_Poll_' . $voting_module['id'],
             'url' => array('controller' => 'votes', 'action' =>  'submit'),
             'type' => 'post',
-            'label' => ''
+            'label' => '',
+            'data-poll-id' => $voting_module['id'],
+            'data-tally-a' => $voting_module['tally']['tally_a'],
+            'data-tally-b' => $voting_module['tally']['tally_b']
         ));
 
         echo $this->Form->input('poll_id', array(

@@ -154,12 +154,15 @@ class UsersController extends AppController {
                 }
             }
             
+            $tally = $this->Session->read('Votes.tally');
+            
             $voting_modules[] = array(
                 'id' => $poll_id,
                 'question' => $poll['polls']['question'],
                 'answer_a' => $poll['polls']['answer_a'],
                 'answer_b' => $poll['polls']['answer_b'],
-                'previous_answer' => $vote_answer
+                'previous_answer' => $vote_answer,
+                'tally' => $tally[$poll_id]
             );
         }
         
