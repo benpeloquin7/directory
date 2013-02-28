@@ -1,0 +1,99 @@
+<!-- 
+    Author: Mike Newell © 2012
+-->
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="js/raphael.js"></script>
+        <script src="js/.js"></script>
+        <script>
+               
+            (function($) {
+                $(window).load(function() {
+//                    var amount = 100;
+
+                    var archtype = Raphael("holder", 500, 300);
+                    
+                    archtype.customAttributes.arc = function (xloc, yloc, value, total, R) {
+                        var alpha = 360 / total * value,
+                            a = (90 - alpha) * Math.PI / 180,
+                            x = xloc + R * Math.cos(a),
+                            y = yloc - R * Math.sin(a),
+                            path;
+                        if (total == value) {
+                            path = [
+                                ["M", xloc, yloc - R],
+                                ["A", R, R, 0, 1, 1, xloc - 0.01, yloc - R]
+                            ];
+                        } else {
+                            path = [  
+                                ["M", xloc, yloc - R],
+                                ["A", R, R, 0, +(alpha > 180), 1, x, y]
+                            ];
+                        }
+                        return {
+                            path: path
+                        };  
+                    };
+                    
+                    archtype.customAttributes.reverseArc = function (xloc, yloc, value, total, R) {
+                        var alpha = 360 / total * value,
+                            a = (90 + alpha) * Math.PI / 180,
+                            x = xloc + R * Math.cos(a),
+                            y = yloc - R * Math.sin(a),
+                            path;
+                        if (total == value) {
+                            path = [
+                                ["M", xloc, yloc - R],
+                                ["A", R, R, 0, 1, 1, xloc - 0.01, yloc - R]
+                            ];
+                        } else {
+                            path = [  
+                                ["M", xloc, yloc - R],
+//                                ["A", R, R, 1, 1, 0, x, y]
+                                ["A", R, R, 0, +(alpha > 180), 0, x, y]
+                            ];
+                        }
+                        return {
+                            path: path
+                        };
+                    };
+
+                    //make an arc at 50,50 with a radius of 30 that grows from 0 to 40 of 100 with a bounce
+                    var yes = archtype.path().attr({
+                        "stroke": "#f00",
+                        "stroke-width": 14,
+                        arc: [150, 150, 0, 100, 60]
+                    });
+
+                    yes.animate({
+                        arc: [150, 150, 78, 100, 60]
+                    }, 1500, "bounce");
+                    
+                    var no = archtype.path().attr({
+                        "stroke": "#000",
+                        "stroke-width": 14,
+                        reverseArc: [150, 150, 0, 100, 60]
+                    });
+                    
+                    no.animate({
+                        reverseArc: [150, 150, 22, 100, 60]
+                    }, 1500, "bounce");
+                });
+                
+            })(jQuery)
+        </script>
+    </head>
+    <body>
+        <div id="wrap">
+            <div id="holder"></div>
+        </div>
+    </body>
+</html>

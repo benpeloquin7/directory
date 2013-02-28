@@ -1,0 +1,57 @@
+<!-- 
+    Author: Mike Newell © 2012
+-->
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html class=" -webkit-">
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <style type="text/css">
+            body {
+                padding: 3em;
+            }
+            
+            .hex {
+                border-radius: 50%;
+                height: 12em;
+                overflow: hidden;
+                position: relative;
+                width: 12em;
+            }
+            
+            .hex:hover {
+                -webkit-animation: spin 999s ease-in infinite;
+            }
+            
+            .hex:after {
+                background-color: hotPink;
+                background-image: -webkit-linear-gradient(22.5deg, hsla(0,0%,100%,.2) 50%, transparent 50%),
+                        -webkit-linear-gradient(-22.5deg, hsla(0,0%,100%,.2) 50%, transparent 50%),
+                        -webkit-linear-gradient(67.5deg, hsla(0,0%,100%,.2) 50%, transparent 50%),
+                        -webkit-linear-gradient(-67.5deg, hsla(0,0%,100%,.2) 50%, transparent 50%);
+                border-radius: 50%;
+                content: '';
+                height: 100%;
+                position: absolute;
+                -webkit-transform: rotate(135deg);
+                width: 100%;
+            }
+
+            @-webkit-keyframes spin {
+                100% {
+                    -webkit-transform: rotate(36000000deg);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <div class="hex"></div>
+        </div>
+    </body>
+</html>
