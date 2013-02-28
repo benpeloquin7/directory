@@ -45,6 +45,7 @@ class VotesController extends AppController {
 //        $this->Session->write('Votes.all', $votes);
         
         $this->write_votes_to_session();
+        $this->tally_votes_to_session();
         
         $this->redirect(array('controller' => 'users', 'action' => 'main'));
     }
@@ -172,6 +173,37 @@ class VotesController extends AppController {
         $this->Session->write('Votes.all', $votes);
         
         return $votes;
+    }
+    
+    private function tally_votes_to_session() {
+        
+        $tally = array();
+        
+        $polls = $this->Session->read('Polls.all');
+        
+        foreach($polls as $poll) {
+            $poll_id = $poll['polls']['id'];
+            
+            $tally_a = $this->query_votes_tally_by_answer($poll_id, 'a');
+            $tally_b = $this->query_votes_tally_by_answer($poll_id, 'b');
+            
+            $tally[$poll_id] = array(
+                'tally_a' => $tally_a,
+                'tally_b' => $tally_b
+            );
+        }
+        
+        $this->Session->write('Votes.tally', $tally);
+        
+        return $tally;
+    }
+    
+    private function query_votes_tally_by_answer($poll_id, $answer) {
+        $options = array(
+            'conditions' => array('Vote.poll_id' => $poll_id, 'Vote.answer' => $answer)
+        );
+
+        return $this->Vote->find('count', $options);
     }
     
     
