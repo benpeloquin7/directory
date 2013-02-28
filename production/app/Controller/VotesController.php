@@ -187,7 +187,8 @@ class VotesController extends AppController {
             $tally_a = $this->query_votes_tally_by_answer($poll_id, 'a');
             $tally_b = $this->query_votes_tally_by_answer($poll_id, 'b');
             
-            $tally[$poll_id] = array(
+            $tally[] = array(
+                'poll_id' => $poll_id,
                 'tally_a' => $tally_a,
                 'tally_b' => $tally_b
             );
