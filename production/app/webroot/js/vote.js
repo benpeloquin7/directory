@@ -60,11 +60,15 @@ var Vote = Base.extend({
         var self = this;
         
         $.post(this._form[0].action, data, function(data) {
-            console.dir(data.tally[0]);
+            console.dir(data);
             
-            this._tally = data.tally[0];
+            
             
             if(data.response == true) {
+                // set the new tally data before we trigger an update
+                var pollId = self._tally.poll_id;
+                self._tally = data.tally[pollId];
+                
                 self._form.trigger('animateVotes');
             }
             
@@ -126,33 +130,39 @@ var Vote = Base.extend({
     createAB: function() {
 
         var archtype = this._archtype;
+        
+        var tallyA = this._tally.tally_a,
+            tallyB = this._tally.tally_b;
 
         var A = archtype.path().attr({
             "stroke": "#f00",
             "stroke-width": 14,
-            arc: [150, 150, 0, 100, 60]
+            arc: [150, 150, 0, (tallyA + tallyB), 60]
         });
         
         var B = archtype.path().attr({
-            "stroke": "#000",
+            "stroke": "#333",
             "stroke-width": 14,
-            reverseArc: [150, 150, 0, 100, 60]
+            reverseArc: [150, 150, 0, (tallyA + tallyB), 60]
         });
         
         this._A = A;
         this._B = B;
     },
     
-    animateAB: function(evt) {
+    animateAB: function() {
         var A = this._A,
             B = this._B;
     
+        var tallyA = this._tally.tally_a,
+            tallyB = this._tally.tally_b;
+    
         A.animate({
-            arc: [150, 150, 78, 100, 60]
+            arc: [150, 150, tallyA, (tallyA + tallyB), 60]
         }, 1500, "bounce");
         
         B.animate({
-            reverseArc: [150, 150, 22, 100, 60]
+            reverseArc: [150, 150, tallyB, (tallyA + tallyB), 60]
         }, 1500, "bounce");
     },
     
@@ -160,12 +170,15 @@ var Vote = Base.extend({
         var A = this._A,
             B = this._B;
     
+        var tallyA = this._tally.tally_a,
+            tallyB = this._tally.tally_b;
+    
         A.animate({
-            arc: [150, 150, 0, 100, 60]
+            arc: [150, 150, 0, (tallyA + tallyB), 60]
         }, 300, "linear");
         
         B.animate({
-            reverseArc: [150, 150, 0, 100, 60]
+            reverseArc: [150, 150, 0, (tallyA + tallyB), 60]
         }, 300, "linear");
     }
     

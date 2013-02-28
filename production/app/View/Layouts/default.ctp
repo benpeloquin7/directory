@@ -35,26 +35,32 @@
         <script type="text/javascript">
             (function($) {
                 $(window).load(function() {
-                    console.log('working')
                     
+                    // debug
                     var debug = true;
                     
-                    var objects = new Array();
-                    
+                    // initialize
                     var hoody = new Hoody();
-                    objects.push(hoody);
                     
                     var votePoll1 = new Vote('Vote_Poll_1');
                     var votePoll2 = new Vote('Vote_Poll_2');
                     var votePoll3 = new Vote('Vote_Poll_3');
-                    objects.push(votePoll1, votePoll2, votePoll3);
                     
                     var search = new Search();
-                    objects.push(search);
                     
+                    // debug
                     if(debug) {
-                        for(var i = 0; i < objects.length; i++) {
+                        var objects = new Array();
+                        objects.push(
+                                hoody,
+                                votePoll1, 
+                                votePoll2, 
+                                votePoll3,
+                                search
+                        );
                             
+                        for(var i = 0; i < objects.length; i++) {
+                            console.dir(objects[i]);
                         }
                     }
                 });
