@@ -59,7 +59,13 @@ class PeopleController extends AppController {
      * @return void
      */
     public function challenge() {
+        
+        $this->set('title_for_layout', 'Login');
+        
         $this->set('preset_user_information', $this->preset_user_information);
+        
+        $this->layout = 'challenge';
+        
     }
        
     /**
@@ -93,7 +99,9 @@ class PeopleController extends AppController {
                     
                     // we have email in the gsp system
                     if($allowed) {
-                        $this->Session->write('User.email', $email);
+                        $this->Session->write('User.email', $allowed['Person']['email']);
+                        $this->Session->write('User.firstName', $allowed['Person']['firstName']);
+                        $this->Session->write('User.lastName', $allowed['Person']['lastName']);
                         $url = Router::url(array('controller' => 'users', 'action' => 'initiate'));
                         $response = array('response' => true, 'redirect' => $url, 'message' => 'User authenticated.');
                     }

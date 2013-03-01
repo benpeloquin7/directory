@@ -36,12 +36,19 @@ class UsersController extends AppController {
         }
         
         // dont have cookie but do have session
-        if(!$this->Cookie->check('GSPUser') && $this->Session->check('User.email')) {
+        if(!$this->Cookie->check('GSPUser') && 
+                $this->Session->check('User.email') &&
+                $this->Session->check('User.firstName') && 
+                $this->Session->check('User.lastName')) {
             
-            $nameArr = $this->parseEmailForName($this->Session->read('User.email'));
+//            $nameArr = $this->parseEmailForName($this->Session->read('User.email'));
             
             $this->Cookie->write('GSPUser',
-                array('email' =>$this->Session->read('User.email'), 'firstName' => $nameArr[0], 'lastName' => $nameArr[1]),
+                array(
+                    'email' =>$this->Session->read('User.email'), 
+                    'firstName' => $this->Session->read('User.firstName'), 
+                    'lastName' => $this->Session->read('User.lastName')
+                ),
                 false,
                 604800
             );
@@ -59,16 +66,26 @@ class UsersController extends AppController {
             
             // TODO clean this section up
             
-            $nameArr = $this->parseEmailForName($this->Session->read('User.email'));
+//            $nameArr = $this->parseEmailForName($this->Session->read('User.email'));
             
-            if($this->Session->read('User.email') == $c['email']) {
-                $this->Session->write('User.firstName', $nameArr[0]);
-                $this->Session->write('User.lastName', $nameArr[1]);
-            } else {
-                // TODO rewrite the cookie with the session information
+//            if($this->Session->read('User.email') == $c['email']) {
+//
+//                $this->Session->write('User.firstName', $nameArr[0]);
+//                $this->Session->write('User.lastName', $nameArr[1]);
+//            } else {
+//                // TODO rewrite the cookie with the session information
+//                $this->Cookie->destroy();
+//                $this->Cookie->write('GSPUser',
+//                    array('email' =>$this->Session->read('User.email'), 'firstName' => $nameArr[0], 'lastName' => $nameArr[1]),
+//                    false,
+//                    604800
+//                );
+//            }
+            
+            if($this->Session->read('User.email') != $c['email']) {
                 $this->Cookie->destroy();
                 $this->Cookie->write('GSPUser',
-                    array('email' =>$this->Session->read('User.email'), 'firstName' => $nameArr[0], 'lastName' => $nameArr[1]),
+                    array('email' =>$this->Session->read('User.email'), 'firstName' => $this->Session->read('User.firstName'), 'lastName' => $this->Session->read('User.lastName')),
                     false,
                     604800
                 );
@@ -92,13 +109,13 @@ class UsersController extends AppController {
                 $this->redirect(array('controller' => 'hoodies', 'action' => 'populate'));
             } else {
                 // create new record and then redirect to hoodies
-                $nameArr = $this->parseEmailForName($this->Session->read('User.email'));
+//                $nameArr = $this->parseEmailForName($this->Session->read('User.email'));
 
                 $record = array(
                     'User' => 
                         array(
-                            'first_name' => $nameArr['firstName'], 
-                            'last_name' => $nameArr['lastName'], 
+                            'first_name' => $this->Session->read('User.firstName'), 
+                            'last_name' => $this->Session->read('User.lastName'), 
                             'email' => $this->Session->read('User.email')
                         )
                     );
@@ -166,23 +183,24 @@ class UsersController extends AppController {
             );
         }
         
+        $this->set('title_for_layout', 'Partner App');
         $this->set('session', $session);
         $this->set('hoody_size', $hoody_size);
         $this->set('hoody_letter', $hoody_letter);
         $this->set('voting_modules', $voting_modules);
     }
     
-    private function parseEmailForName($e) {
-        
-        // TODO handle an exception where emails have more than one "_" in them - like Margret_brett_kearns@gspsf.com or something
-
-        $e = str_replace('@gspsf.com', '', $e);
-
-        $arr = explode('_', $e);
-
-        $firstName = ucfirst($arr[0]);
-        $lastName = ucfirst($arr[1]);
-
-        return array($firstName, $lastName, 'firstName' => $firstName, 'lastName' => $lastName);
-    }
+//    private function parseEmailForName($e) {
+//        
+//        // TODO handle an exception where emails have more than one "_" in them - like Margret_brett_kearns@gspsf.com or something
+//
+//        $e = str_replace('@gspsf.com', '', $e);
+//
+//        $arr = explode('_', $e);
+//
+//        $firstName = ucfirst($arr[0]);
+//        $lastName = ucfirst($arr[1]);
+//
+//        return array($firstName, $lastName, 'firstName' => $firstName, 'lastName' => $lastName);
+//    }
 }

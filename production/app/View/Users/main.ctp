@@ -64,6 +64,25 @@
     
 <?php
 
+    echo $this->Form->create('Idea', array(
+        'url' => array('controller' => 'ideas', 'action' =>  'submit'),
+        'type' => 'post',
+        'label' => ''
+    ));
+    
+    echo $this->Form->input('idea', array(
+        'id' => 'idea',
+        'type' => 'text',
+        'label' => 'Comments/Ideas',
+        'value' => 'Enter your comment or idea'
+    ));
+    
+    echo $this->Form->end('Submit');
+    
+?>
+    
+<?php
+
     echo $this->Form->create('Hoody', array(
         'url' => array('controller' => 'hoodies', 'action' =>  'submit'),
         'type' => 'post',

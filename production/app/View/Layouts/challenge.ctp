@@ -26,7 +26,6 @@
     </head>
     <body>
         <?php 
-        
             var_dump($isMobile);
             var_dump($isTablet);
         ?>
@@ -45,48 +44,47 @@
         <!--<div id="footer">...</div>-->
         <?php
         echo $this->Html->script('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
-        echo $this->Html->script('raphael');
-        echo $this->Html->script('class');
-        echo $this->Html->script('base');
-        echo $this->Html->script('hoody');
-        echo $this->Html->script('vote');
-        echo $this->Html->script('search');
-        echo $this->Html->script('idea');
         ?>
-        <script type="text/javascript">
+        <script>
             (function($) {
                 $(window).load(function() {
+                    var _form = $('#PersonChallengeForm');
+                    var _submit = $('input:submit');
+                    var _email = $('#email');
                     
-                    // debug
-                    var debug = true;
+//                    console.dir(_form);
                     
-                    // initialize
-                    var hoody = new Hoody();
-                    
-                    var votePoll1 = new Vote('Vote_Poll_1');
-                    var votePoll2 = new Vote('Vote_Poll_2');
-                    var votePoll3 = new Vote('Vote_Poll_3');
-                    
-                    var search = new Search();
-                    
-                    var idea = new Idea();
-                    
-                    // debug
-                    if(debug) {
-                        var objects = new Array();
-                        objects.push(
-                                hoody,
-                                votePoll1, 
-                                votePoll2, 
-                                votePoll3,
-                                search,
-                                idea
-                        );
-                            
-                        for(var i = 0; i < objects.length; i++) {
-                            console.dir(objects[i]);
+                    _submit.on('click', function(evt) {
+                        evt.preventDefault();
+                        
+//                        console.log('submit button clicked');
+                        
+                        // validate the email form
+                        if(_email.val().length > 0) {
+                            if(IsEmail(_email.val())) {
+                                // submit the form via ajax to the action location
+                                
+//                                console.dir(_submit);
+                                
+                                $.post(_form[0].action, {'data[Person][email]':_email.val()}, function(data) {
+                                    console.dir(data);
+                                    
+                                    if(data.response) {
+                                        window.location = data.redirect;
+                                    }
+                                }, 'json');
+                            }
                         }
+                                
+                        
+                        
+                    });
+                    
+                    function IsEmail(email) {
+                        var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                        return regex.test(email);
                     }
+                    
                 });
             })(jQuery);
         </script>
