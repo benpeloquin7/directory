@@ -68,6 +68,8 @@
         echo $this->Html->script('vote');
         echo $this->Html->script('search');
         echo $this->Html->script('idea');
+        echo $this->Html->script('overlayBase');
+        echo $this->Html->script('overlay');
         ?>
         <script type="text/javascript">
             (function($) {
@@ -87,6 +89,14 @@
                     
                     var idea = new Idea();
                     
+//                    var ob = new OverlayBase();
+                    var searchOverlay = new Overlay('search'); 
+                    var profileOverlay = new Overlay('profile');
+                    var commentOverlay = new Overlay('comment');
+                    var commentOverlay = new Overlay('shop');
+                    var pollOverlay = new Overlay('poll');
+                    var ideaOverlay = new Overlay('idea');
+                    
                     // debug
                     if(debug) {
                         var objects = new Array();
@@ -96,7 +106,12 @@
                                 votePoll2, 
                                 votePoll3,
                                 search,
-                                idea
+                                idea,
+                                searchOverlay,
+                                profileOverlay,
+                                commentOverlay,
+                                pollOverlay,
+                                ideaOverlay
                         );
                             
                         for(var i = 0; i < objects.length; i++) {
@@ -109,7 +124,7 @@
                         widget_base_dimensions: [65, 86],
                     }).data('gridster').disable();
                     
-                    Cufon.replace('h1, h2');
+                    Cufon.replace('h1, h2, h3, input');
                 });
             })(jQuery);
         </script>
