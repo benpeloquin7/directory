@@ -8,7 +8,7 @@
 
         <li data-row="1" data-col="3" data-sizex="1" data-sizey="1">
             <div class="profile box">
-                
+                <?php echo $this->Html->image('http://goodbysilverstein.com/people/assets/' . $session['User']['userName'] . '_full.jpg', array('alt' => $session['User']['firstName'] . ' ' . $session['User']['lastName'])); ?>
             </div>
         </li>
         <li data-row="2" data-col="3" data-sizex="1" data-sizey="1">
@@ -147,36 +147,44 @@
             
             <h3>Polls.</h3>
             
-            <?php
-                foreach($voting_modules as $voting_module) {
+            <div class="votesContainer">
+            
+                <?php
+                    foreach($voting_modules as $voting_module) {
 
-                    echo $this->Form->create('Vote', array(
-                        'id' => 'Vote_Poll_' . $voting_module['id'],
-                        'url' => array('controller' => 'votes', 'action' =>  'submit'),
-                        'type' => 'post',
-                        'label' => '',
-                        'data-poll-id' => $voting_module['id'],
-                        'data-tally-a' => $voting_module['tally']['tally_a'],
-                        'data-tally-b' => $voting_module['tally']['tally_b']
-                    ));
+                        echo '<div class="vote">';
 
-                    echo $this->Form->input('poll_id', array(
-                        'id' => 'poll_id_' . $voting_module['id'],
-                        'type' => 'hidden',
-                        'label' => 'Poll ID',
-                        'value' => $voting_module['id']
-                    ));
+                            echo $this->Form->create('Vote', array(
+                                'id' => 'Vote_Poll_' . $voting_module['id'],
+                                'url' => array('controller' => 'votes', 'action' =>  'submit'),
+                                'type' => 'post',
+                                'label' => '',
+                                'data-poll-id' => $voting_module['id'],
+                                'data-tally-a' => $voting_module['tally']['tally_a'],
+                                'data-tally-b' => $voting_module['tally']['tally_b']
+                            ));
 
-                    echo $this->Form->input('answer', array(
-                        'id' => 'answer_' . $voting_module['id'],
-                        'type' => 'text',
-                        'label' => 'Poll Answer',
-                        'value' => $voting_module['previous_answer']
-                    ));
+                            echo $this->Form->input('poll_id', array(
+                                'id' => 'poll_id_' . $voting_module['id'],
+                                'type' => 'hidden',
+                                'label' => 'Poll ID',
+                                'value' => $voting_module['id']
+                            ));
 
-                    echo $this->Form->end('Submit');
-                }
-            ?>
+                            echo $this->Form->input('answer', array(
+                                'id' => 'answer_' . $voting_module['id'],
+                                'type' => 'text',
+                                'label' => 'Poll Answer',
+                                'value' => $voting_module['previous_answer']
+                            ));
+
+                            echo $this->Form->end('Submit');
+
+                        echo '</div><!-- end vote -->';
+                    }
+                ?>
+                
+            </div>
             
         </div>
         

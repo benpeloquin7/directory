@@ -39,7 +39,8 @@ class UsersController extends AppController {
         if(!$this->Cookie->check('GSPUser') && 
                 $this->Session->check('User.email') &&
                 $this->Session->check('User.firstName') && 
-                $this->Session->check('User.lastName')) {
+                $this->Session->check('User.lastName') && 
+                $this->Session->check('User.userName')) {
             
 //            $nameArr = $this->parseEmailForName($this->Session->read('User.email'));
             
@@ -47,7 +48,8 @@ class UsersController extends AppController {
                 array(
                     'email' =>$this->Session->read('User.email'), 
                     'firstName' => $this->Session->read('User.firstName'), 
-                    'lastName' => $this->Session->read('User.lastName')
+                    'lastName' => $this->Session->read('User.lastName'),
+                    'userName' => $this->Session->read('User.userName')
                 ),
                 false,
                 604800
@@ -64,28 +66,10 @@ class UsersController extends AppController {
             
             $c = $this->Cookie->read('GSPUser');
             
-            // TODO clean this section up
-            
-//            $nameArr = $this->parseEmailForName($this->Session->read('User.email'));
-            
-//            if($this->Session->read('User.email') == $c['email']) {
-//
-//                $this->Session->write('User.firstName', $nameArr[0]);
-//                $this->Session->write('User.lastName', $nameArr[1]);
-//            } else {
-//                // TODO rewrite the cookie with the session information
-//                $this->Cookie->destroy();
-//                $this->Cookie->write('GSPUser',
-//                    array('email' =>$this->Session->read('User.email'), 'firstName' => $nameArr[0], 'lastName' => $nameArr[1]),
-//                    false,
-//                    604800
-//                );
-//            }
-            
             if($this->Session->read('User.email') != $c['email']) {
                 $this->Cookie->destroy();
                 $this->Cookie->write('GSPUser',
-                    array('email' =>$this->Session->read('User.email'), 'firstName' => $this->Session->read('User.firstName'), 'lastName' => $this->Session->read('User.lastName')),
+                    array('email' =>$this->Session->read('User.email'), 'firstName' => $this->Session->read('User.firstName'), 'lastName' => $this->Session->read('User.lastName'), 'userName' => $this->Session->read('User.userName')),
                     false,
                     604800
                 );
@@ -105,6 +89,7 @@ class UsersController extends AppController {
                 $this->Session->write('User.id', $user['User']['id']);
                 $this->Session->write('User.firstName', $user['User']['first_name']);
                 $this->Session->write('User.lastName', $user['User']['last_name']);
+                $this->Session->write('User.userName', $user['User']['user_name']);
                 
                 $this->redirect(array('controller' => 'hoodies', 'action' => 'populate'));
             } else {
@@ -116,7 +101,8 @@ class UsersController extends AppController {
                         array(
                             'first_name' => $this->Session->read('User.firstName'), 
                             'last_name' => $this->Session->read('User.lastName'), 
-                            'email' => $this->Session->read('User.email')
+                            'email' => $this->Session->read('User.email'),
+                            'user_name' => $this->Session->read('User.userName')
                         )
                     );
 
@@ -128,6 +114,7 @@ class UsersController extends AppController {
                     $this->Session->write('User.id', $user['User']['id']);
                     $this->Session->write('User.firstName', $user['User']['first_name']);
                     $this->Session->write('User.lastName', $user['User']['last_name']);
+                    $this->Session->write('User.userName', $user['User']['user_name']);
          
                     $this->redirect(array('controller' => 'hoodies', 'action' => 'populate'));
                 } else {

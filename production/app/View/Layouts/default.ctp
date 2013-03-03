@@ -27,6 +27,7 @@
         
         echo $this->Html->css('reset');
         echo $this->Html->css('style');
+        echo $this->Html->css('animation');
         ?>
     </head>
     <body>
@@ -125,6 +126,7 @@
                     }).data('gridster').disable();
                     
                     Cufon.replace('h1, h2, h3, input');
+                    
                 });
             })(jQuery);
         </script>

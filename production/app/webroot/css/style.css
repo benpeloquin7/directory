@@ -84,7 +84,24 @@ body {
     background-color: black;
 }
 
+/*
 
+NOTE: transforms make the click detection function work only about 50% of the time
+
+.gridster li:active {
+                        
+    -webkit-transform-style:    preserve-3d;
+    -moz-transform-style:       preserve-3d;
+    -ms-transform-style:        preserve-3d;
+    transform-style:            preserve-3d;
+    
+    -webkit-transform:          rotateY(35deg);
+    -moz-transform:             rotateY(35deg);  
+    -ms-transform:              rotateY(35deg);  
+    -o-transform:               rotateY(35deg);  
+    transform:                  rotateY(35deg);  
+
+}*/
 
 .search {
     background: url(../img/css/search.png) scroll no-repeat;
@@ -95,8 +112,18 @@ body {
 }
 
 .profile {
-    background: url(../img/css/search.png) scroll no-repeat;
+    overflow: hidden;
+    position: relative;
 }
+
+.profile img {
+    width: 90px;
+    position: absolute;
+    top: -15px;
+    left: -10px;
+}
+
+
 
 .comment {
     background: url(../img/css/comment.png) scroll no-repeat;
@@ -114,24 +141,36 @@ body {
     color: #ededed;
     text-align: center;
     padding: 12.5px;
+    overflow: hidden;
+    position: relative;
 }
 
 .welcome h1 {
     text-align: left;
     font-size: 24px;
     text-transform: uppercase;
+    position: absolute;
+    top: 15px;
+    left:-203px;
 }
 
 .welcome img {
     width: 165px;
     margin-top: 15px;
+    position: absolute;
+    top: 39px;
+    left: 282px;
 }
 
 .welcome h2 {
-    margin-top: 5px;
+    width: 259px;
+    /*margin-top: 5px;*/
     /* cant go below 18 */
     font-size: 18px;
     text-transform: uppercase;
+    position: absolute;
+    top:225px;
+    left:-100px;
 }
 
 .logoRed {
@@ -153,6 +192,8 @@ body {
     position: relative;
     cursor: pointer;
 }
+
+
 
 .overlayContainer {
     position: absolute;

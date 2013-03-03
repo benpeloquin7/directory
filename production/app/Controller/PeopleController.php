@@ -102,6 +102,7 @@ class PeopleController extends AppController {
                         $this->Session->write('User.email', $allowed['Person']['email']);
                         $this->Session->write('User.firstName', $allowed['Person']['firstName']);
                         $this->Session->write('User.lastName', $allowed['Person']['lastName']);
+                        $this->Session->write('User.userName', $allowed['Person']['userName']);
                         $url = Router::url(array('controller' => 'users', 'action' => 'initiate'));
                         $response = array('response' => true, 'redirect' => $url, 'message' => 'User authenticated.');
                     }
