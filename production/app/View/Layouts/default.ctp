@@ -20,6 +20,11 @@
         </style>
         <?php endif; ?>
         <?php
+        
+        // gridster
+        echo $this->Html->css('vendor/qunit');
+        echo $this->Html->css('vendor/jquery.gridster.min');
+        
         echo $this->Html->css('reset');
         echo $this->Html->css('style');
         ?>
@@ -27,8 +32,8 @@
     <body>
         <?php 
         
-            var_dump($isMobile);
-            var_dump($isTablet);
+//            var_dump($isMobile);
+//            var_dump($isTablet);
         ?>
         <!-- If you'd like some sort of menu to
         show up on all of your views, include it here -->
@@ -45,7 +50,18 @@
         <!--<div id="footer">...</div>-->
         <?php
         echo $this->Html->script('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
+        
+        // gridster
+        echo $this->Html->script('vendor/jquery.gridster.with-extras.min');
+        echo $this->Html->script('vendor/qunit');
+        echo $this->Html->script('vendor/jquery.collision');
+        echo $this->Html->script('vendor/jquery.coords');
+//        echo $this->Html->script('vendor/jquery.draggable');
+        echo $this->Html->script('vendor/utils');
+        
         echo $this->Html->script('raphael');
+        echo $this->Html->script('vendor/cufon');
+        echo $this->Html->script('vendor/goodby.font');
         echo $this->Html->script('class');
         echo $this->Html->script('base');
         echo $this->Html->script('hoody');
@@ -87,6 +103,13 @@
                             console.dir(objects[i]);
                         }
                     }
+                    
+                    $(".gridster ul").gridster({
+                        widget_margins: [5, 5],
+                        widget_base_dimensions: [65, 86],
+                    }).data('gridster').disable();
+                    
+                    Cufon.replace('h1, h2');
                 });
             })(jQuery);
         </script>

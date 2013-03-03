@@ -1,57 +1,80 @@
+<div class="gridster">
+    <ul>
+        <li data-row="1" data-col="1" data-sizex="2" data-sizey="2">
+            <div class="search box">
+                <div class="overlay searchOverlay">
+                    <?php
 
+                        echo $this->Form->create('Person', array(
+                            'url' => array('controller' => 'people', 'action' =>  'search'),
+                            'type' => 'post',
+                            'label' => '',
+                            'id' => 'PersonSearchForm'
+                        ));
 
-<div id="social" class="box boxleft">
-    <h1>I Want to Say</h1>
-</div>
+                        echo $this->Form->input('phrase', array(
+                            'id' => 'phrase',
+                            'type' => 'text',
+                            'label' => 'Search',
+                            'value' => 'Search...'
+                        ));
 
-<div id="rightTopPanels" class="boxright">
-    <div class="box empty1"></div>
-    <div class="box empty2"></div>
-    <div class="box empty3"></div>
-    <div class="box empty4"></div>
+                        echo $this->Form->end('Submit');
+
+                    ?>
+                </div>
+            </div>
+        </li>
+
+        <li data-row="1" data-col="3" data-sizex="1" data-sizey="1">
+            <div class="profile box">
+                
+            </div>
+        </li>
+        <li data-row="2" data-col="3" data-sizex="1" data-sizey="1">
+            
+            <div class="shop box">
+                
+            </div>
+        </li>
+        <li data-row="1" data-col="4" data-sizex="1" data-sizey="1">
+            <div class="comment box">
+                
+            </div>
+        </li> 
+        <li data-row="2" data-col="4" data-sizex="1" data-sizey="1">
+            <div class="poll box">
+                
+            </div>
+        </li>
+
+        <li class="black" data-row="3" data-col="1" data-sizex="4" data-sizey="3">
+            <div class="welcome box">
+                <h1>Welcome <?php echo $session['User']['firstName']; ?></h1>
+                <?php echo $this->Html->image('letters/' . strtolower(substr($session['User']['lastName'], 0, 1)) . '@2x.png', array('alt' => 'Goodby Silverstein & ' . $session['User']['lastName'])); ?>
+                <h2><?php echo 'Goodby Silverstein <span class="logoRed">&</span> ' . $session['User']['lastName']; ?></h2>
+            </div>
+        </li>
+
+        <li data-row="6" data-col="1" data-sizex="3" data-sizey="1">
+            <div class="quote box">
+                
+            </div>
+        </li> 
+        <li data-row="6" data-col="4" data-sizex="1" data-sizey="1">
+            <div class="idea box">
+                
+            </div>
+        </li>
+    </ul>
 </div>
 
 <div class="clear"></div>
-
-<div id="poll" class="box">
-    <h2><?php echo $session['Polls']['all'][0]['polls']['question']; ?></h2>
-    <div class="pollHolder"></div>
-</div>
-
-<div id="leftBottomPanels" class="box boxleft">
-    <div class="box empty5"></div>
-    <div class="box empty6"></div>
-    <div class="box empty7"></div>
-    <div class="box empty8"></div>
-</div>
-
-<div id="searchBox" class="box boxright"></div>
-
-<div class="clear"></div>
-
 
 <div id="hiddenSearch">
     <div id="searchIcon"></div>
     <div id="searchFormContainer">
-        <?php
-
-            echo $this->Form->create('Person', array(
-                'url' => array('controller' => 'people', 'action' =>  'search'),
-                'type' => 'post',
-                'label' => '',
-                'id' => 'PersonSearchForm'
-            ));
-
-            echo $this->Form->input('phrase', array(
-                'id' => 'phrase',
-                'type' => 'text',
-                'label' => 'Search',
-                'value' => 'Search...'
-            ));
-
-            echo $this->Form->end('Submit');
-
-        ?>
+        
         <div id="searchClose"></div>
     </div>
     
@@ -137,11 +160,5 @@
         echo $this->Form->end('Submit');
     }
 ?>
-
-<pre>
-<?php
-print_r($session);
-?>
-</pre>
 
 </div>

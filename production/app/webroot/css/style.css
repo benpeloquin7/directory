@@ -10,191 +10,148 @@ root {
     display: block;
 }
 
-#wrap {
+body {
     background-color: black;
-    width: 100%;
-    position: relative;
-    height: 100%;
-    padding: 20px;
 }
 
-#social {
-    width: 280px;
-    height: 280px;
-    margin-right: 20px;
+#wrap {
+    width: 300px;
+    position: relative;
+    height: 568px;
+    padding: 9px;
     
-    background: #444 url(http://i2.ytimg.com/vi/Iu3c8fqBQcA/hqdefault.jpg) 0px -41px scroll no-repeat;
-    background-size: 480px 360px;
+    /* Note: This gradient may render differently in browsers that don't support the unprefixed gradient syntax */
+
+    /* IE10 Consumer Preview */ 
+    background-image: -ms-linear-gradient(top left, #3c3c3c 0%, #141414 100%);
+
+    /* Mozilla Firefox */ 
+    background-image: -moz-linear-gradient(top left, #3c3c3c 0%, #141414 100%);
+
+    /* Opera */ 
+    background-image: -o-linear-gradient(top left, #3c3c3c 0%, #141414 100%);
+
+    /* Webkit (Safari/Chrome 10) */ 
+    background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, #3c3c3c), color-stop(1, #141414));
+
+    /* Webkit (Chrome 11+) */ 
+    background-image: -webkit-linear-gradient(top left, #3c3c3c 0%, #141414 100%);
+
+    /* W3C Markup, IE10 Release Preview */ 
+    background-image: linear-gradient(to bottom right, #3c3c3c 0%, #141414 100%);
 }
 
-#social h1 {
-    margin: 0 auto;
+.gridster li {
+    text-indent: none;
+    text-decoration: none;
+    list-style-type: none;
+    
+    position: relative;
+    overflow: hidden;
+
+    border: 1px solid #4d4d4d;
+
+    -moz-box-shadow:       0px 3px 5px #161616;
+    -webkit-box-shadow:    0px 3px 5px #161616;
+    box-shadow:            0px 3px 5px #161616;
+
+ 
+    /* IE10 Consumer Preview */ 
+    background-image: -ms-radial-gradient(center, circle closest-corner, #353535 0%, #121212 100%);
+
+    /* Mozilla Firefox */ 
+    background-image: -moz-radial-gradient(center, circle closest-corner, #353535 0%, #121212 100%);
+
+    /* Opera */ 
+    background-image: -o-radial-gradient(center, circle closest-corner, #353535 0%, #121212 100%);
+
+    /* Webkit (Safari/Chrome 10) */ 
+    background-image: -webkit-gradient(radial, center center, 0, center center, 497, color-stop(0, #353535), color-stop(1, #121212));
+
+    /* Webkit (Chrome 11+) */ 
+    background-image: -webkit-radial-gradient(center, circle closest-corner, #353535 0%, #121212 100%);
+
+    /* W3C Markup, IE10 Release Preview */ 
+    background-image: radial-gradient(circle closest-corner at center, #353535 0%, #121212 100%);
+}
+
+.gridster li.black {
+    background-image: none;
+    background-color: black;
+}
+
+
+
+.search {
+    background: url(../img/css/search.png) scroll no-repeat;
+}
+
+.searchOverlay {
+    
+}
+
+.profile {
+    background: url(../img/css/search.png) scroll no-repeat;
+}
+
+.comment {
+    background: url(../img/css/comment.png) scroll no-repeat;
+}
+
+.shop {
+    background: url(../img/css/shop.png) scroll no-repeat;
+}
+
+.poll {
+    background: url(../img/css/poll.png) scroll no-repeat;
+}
+
+.welcome {
+    color: #ededed;
     text-align: center;
-    font-size: 28px;
-    color: white;
-    width: 240px;
-    position: relative;
-    top: 209px;
+    padding: 12.5px;
 }
 
-#rightTopPanels {
-    width: 280px;
-    height: 280px;
+.welcome h1 {
+    text-align: left;
+    font-size: 24px;
+    text-transform: uppercase;
 }
 
-.boxleft {
-    float: left;
-    positionL: relative;
+.welcome img {
+    width: 165px;
+    margin-top: 15px;
 }
 
-.boxright {
-    float: left;
-    position: relative;
+.welcome h2 {
+    margin-top: 5px;
+    /* cant go below 18 */
+    font-size: 18px;
+    text-transform: uppercase;
 }
 
-.empty1, .empty2,
-.empty3, .empty4 {
-    width: 130px;
-    height: 130px;
-    float: left;
-    background-color: #777;
+.logoRed {
+    color: red;
 }
 
-.empty1, .empty2 {
-    margin-bottom: 20px;
+.quote {
+    
 }
 
-.empty1, .empty3 {
-    margin-right: 20px;
-}
-
-.clear {
-    clear: both;
+.idea {
+    background: url(../img/css/idea.png) scroll no-repeat;
 }
 
 .box {
-    
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+    position: relative;
 }
 
-#poll {
-    width: 578px;
-    height: 280px;
-    margin-top: 20px;
-    border: 1px solid #222;
-    background-color: black;
+.overlay {
+    opacity:0;
+    width: 1px;
+    height: 1px;
     overflow: hidden;
-    background: url(../img/css/poll_bg.png) 132px 80px scroll no-repeat;
-    background-size: 320px 320px;
-}
-
-#poll h2 {
-    margin: 0 auto;
-    text-align: center;
-    font-size: 48px;
-    color: white;
-    width: 480px;
-    position: relative;
-    top: 245px;
-}
-
-pre {
-    color: white;
-}
-
-#leftBottomPanels {
-    width: 280px;
-    height: 280px;
-    margin-top: 20px;
-}
-
-.empty5, .empty6,
-.empty7, .empty8 {
-    width: 130px;
-    height: 130px;
-    float: left;
-    background-color: #222;
-}
-
-.empty5, .empty6 {
-    margin-bottom: 20px;
-}
-
-.empty5, .empty7 {
-    margin-right: 20px;
-}
-
-#searchBox {
-    width: 280px;
-    height: 280px;
-    margin: 20px 0 0 20px;
-    background: #333 url(../img/css/search.png) 78px 78px scroll no-repeat;
-    background-size: 120px 120px;
-    
-}
-
-#hidden {
-    opacity: 0;
-    
-    transition: opacity 1s;
-    -moz-transition: opacity 1s;
-    -webkit-transition: opacity 1s;
-    -o-transition: opacity 1s;
-}
-
-#hidden:hover {
-    opacity: 1;
-}
-
-#hiddenSearch {
-    width: 0;
-    height: 0;
-    opacity: 0;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    
-    background: #000;
-    
-    transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    -webkit-transition: all 0.5s;
-    -o-transition: all 0.5s;
-}
-
-#searchFormContainer {
-    width: 480px;
-    min-height:320px;
-    margin: 0 auto;
-    position: relative;
-    top: 220px;
-}
-
-#phrase {
-    width: 440px;
-    height: 40px;
-    margin-top: 100px;
-    border: 2px solid black;
-    background-color: white;
-    color: #222;
-    font-size: 32px;
-    padding: 5px 20px;
-}
-
-input[type=submit] {
-    border: 2px solid black;
-    background-color: white;
-    color: black;
-    text-align: center;
-    margin: 20px 0 0 175px;
-    font-size: 28px;
-    padding: 5px 20px;
-}
-
-#searchClose {
-    width: 50px;
-    height: 50px;
-    background-color: red;
-    position: absolute;
-    top: 20px;
-    right: 20px;
 }

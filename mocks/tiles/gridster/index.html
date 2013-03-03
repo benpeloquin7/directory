@@ -1,0 +1,112 @@
+<!-- 
+    Author: Mike Newell © 2012
+-->
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="dist/jquery.gridster.with-extras.min.js"></script>
+        <script src="libs/qunit/qunit.js"></script>
+        <script src="src/jquery.collision.js"></script>
+        <script src="src/jquery.coords.js"></script>
+        <script src="src/jquery.draggable.js"></script>
+        <script src="src/utils.js"></script>
+        <link rel="stylesheet" type="text/css" href="libs/qunit/qunit.css" />
+        <link rel="stylesheet" type="text/css" href="dist/jquery.gridster.min.css" />
+        <style>
+            
+            ul {
+/*                width: 520px;*/
+            }
+            
+            li {
+                text-indent: none;
+                text-decoration: none;
+                list-style-type: none;
+                
+                /* IE10 Consumer Preview */ 
+                background-image: -ms-radial-gradient(center, circle closest-corner, #474747 0%, #000000 100%);
+
+                /* Mozilla Firefox */ 
+                background-image: -moz-radial-gradient(center, circle closest-corner, #474747 0%, #000000 100%);
+
+                /* Opera */ 
+                background-image: -o-radial-gradient(center, circle closest-corner, #474747 0%, #000000 100%);
+
+                /* Webkit (Safari/Chrome 10) */ 
+                background-image: -webkit-gradient(radial, center center, 0, center center, 497, color-stop(0, #474747), color-stop(1, #000000));
+
+                /* Webkit (Chrome 11+) */ 
+                background-image: -webkit-radial-gradient(center, circle closest-corner, #474747 0%, #000000 100%);
+
+                /* W3C Markup, IE10 Release Preview */ 
+                background-image: radial-gradient(circle closest-corner at center, #474747 0%, #000000 100%);
+            }
+            
+            li.black {
+                background-image: none;
+                background-color: black;
+            }
+            
+        </style>
+        <script>
+            (function($) {
+                $(window).load(function() {
+                    $(function(){ // DOM Ready
+
+                        $(".gridster ul").gridster({
+                            widget_margins: [5, 5],
+                            widget_base_dimensions: [130, 150]
+                        });
+
+                    });
+                });
+            })(jQuery);
+        </script>
+    </head>
+    <body>
+        <div id="wrap">
+            <div class="gridster">
+                <ul>
+                    
+                    
+                    <li data-row="1" data-col="1" data-sizex="2" data-sizey="2"></li>
+                    
+                    <li data-row="1" data-col="3" data-sizex="1" data-sizey="1"></li>
+                    <li data-row="2" data-col="3" data-sizex="1" data-sizey="1"></li>
+                    <li data-row="1" data-col="4" data-sizex="1" data-sizey="1"></li> 
+                    <li data-row="2" data-col="4" data-sizex="1" data-sizey="1"></li>
+                    
+                    <li class="black" data-row="3" data-col="1" data-sizex="4" data-sizey="2"></li>
+                    
+                    <li data-row="5" data-col="1" data-sizex="3" data-sizey="1"></li> 
+                    <li data-row="5" data-col="4" data-sizex="1" data-sizey="1"></li>
+                    
+                    
+<!--                    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1"></li>
+                    <li data-row="2" data-col="1" data-sizex="1" data-sizey="1"></li>
+                    <li data-row="3" data-col="1" data-sizex="1" data-sizey="1"></li>
+
+                    <li data-row="1" data-col="2" data-sizex="2" data-sizey="1"></li>
+                    <li data-row="2" data-col="2" data-sizex="2" data-sizey="2"></li>
+
+                    <li data-row="1" data-col="4" data-sizex="1" data-sizey="1"></li>
+                    <li data-row="2" data-col="4" data-sizex="2" data-sizey="1"></li>
+                    <li data-row="3" data-col="4" data-sizex="1" data-sizey="1"></li>
+
+                    <li data-row="1" data-col="5" data-sizex="1" data-sizey="1"></li>
+                    <li data-row="3" data-col="5" data-sizex="1" data-sizey="1"></li>
+
+                    <li data-row="1" data-col="6" data-sizex="1" data-sizey="1"></li>
+                    <li data-row="2" data-col="6" data-sizex="1" data-sizey="2"></li>-->
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
