@@ -84,6 +84,12 @@ body {
     background-color: black;
 }
 
+/*.gridster li:hover,*/
+.gridster li:active {
+    background-color: #ff2222;
+    background-image:none;
+}
+
 /*
 
 NOTE: transforms make the click detection function work only about 50% of the time
@@ -107,6 +113,24 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     background: url(../img/css/search.png) scroll no-repeat;
 }
 
+/*.search:hover,*/
+.search:active {
+    background: url(../img/css/search-ro.png) scroll no-repeat;
+}
+
+/*.search:hover,
+.search:active,
+.comment:hover,
+.comment:active,
+.shop:hover,
+.shop:active,
+.poll:hover,
+.poll:active,
+.idea:hover,
+.idea:active {
+    background-color: #ff2222;
+}*/
+
 .searchOverlay {
     
 }
@@ -129,12 +153,27 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     background: url(../img/css/comment.png) scroll no-repeat;
 }
 
+/*.comment:hover,*/
+.comment:active {
+    background: url(../img/css/comment-ro.png) scroll no-repeat;
+}
+
 .shop {
     background: url(../img/css/shop.png) scroll no-repeat;
 }
 
+/*.shop:hover,*/
+.shop:active {
+    background: url(../img/css/shop-ro.png) scroll no-repeat;
+}
+
 .poll {
     background: url(../img/css/poll.png) scroll no-repeat;
+}
+
+/*.poll:hover,*/
+.poll:active {
+    background: url(../img/css/poll-ro.png) scroll no-repeat;
 }
 
 .welcome {
@@ -189,12 +228,22 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     background: url(../img/css/idea.png) scroll no-repeat;
 }
 
+/*.idea:hover,*/
+.idea:active {
+    background: url(../img/css/idea-ro.png) scroll no-repeat;
+}
+
 .box {
     width: 100%;
     height: 100%;
     background-size: 100% 100%;
     position: relative;
     cursor: pointer;
+}
+
+/*.box:hover,*/
+.box:active {
+    background-size: 100% 100%;
 }
 
 
@@ -284,24 +333,24 @@ NOTE: transforms make the click detection function work only about 50% of the ti
 }
 
 #PersonChallengeForm input[type=submit] {
-    border: none;
+/*    border: none;
     border-radius: 0;
     -webkit-border-radius: 0;
-    -moz-border-radius: 0;
+    -moz-border-radius: 0;*/
     
-    display: block;
+/*    display: block;
     color: #ededed;
     background-color: red;
     width: 115px;
     height: 30;
     font-size: 18px;
-    text-align: center;
+    text-align: center;*/
     float: right;
     margin: 15px 10px 0 0;
-    letter-spacing: 2px;
+/*    letter-spacing: 2px;
     text-transform: uppercase;
     
-    -webkit-appearance: none;
+    -webkit-appearance: none;*/
 }
 
 /*
@@ -338,24 +387,20 @@ NOTE: transforms make the click detection function work only about 50% of the ti
 }
 
 .overlay #PersonSearchForm input[type=submit] {
-    border: none;
+/*    border: none;
     border-radius: 0;
     -webkit-border-radius: 0;
-    -moz-border-radius: 0;
+    -moz-border-radius: 0;*/
     
-    display: block;
-    color: #ededed;
-    background-color: red;
-    width: 115px;
-    height: 30;
-    font-size: 18px;
-    text-align: center;
+    /*display: block;*/
+    /*color: #ededed;*/
+    /*background-color: red;*/
+    /*width: 115px;*/
+    /*height: 30;*/
+    /*font-size: 18px;*/
+    /*text-align: center;*/
     float: right;
     margin: 15px 10px 0 0;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    
-    -webkit-appearance: none;
 }
 
 .searchResultsContainer {
@@ -465,14 +510,105 @@ NOTE: transforms make the click detection function work only about 50% of the ti
 }
 
 .overlay #IdeaMainForm input[type=submit] {
-    border: none;
+    float: right;
+    margin: 15px 10px 0 0;
+}
+
+/*
+    POLL/VOTE
+*/
+
+.votesContainer {
+    width: 293px;
+    height: 423px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.vote {
+    position: relative;
+    width: 293px;
+    height: 423px;
+}
+
+.vote h3 {
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 2px;
+    float: left;
+    color: #ededed;
+    margin: 9px 0 15px 15px;
+    width: 261px;
+    
+    transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out; 
+    -webkit-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+}
+
+.vote p {
+    font-size: 16px;
+    color: #444;
+    margin: 0px 0 0 15px;
+}
+
+.resultTallyContainerA,
+.resultTallyContainerB {
+    position: absolute;
+    top: 157px;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+}
+
+.vote .resultTallyContainerA {
+    left: 25px;
+    color: #ff2222;
+}
+
+.vote .resultTallyContainerB { 
+    right: 25px;
+    color: #aeaeae;
+}
+
+.resultTallyContainerA h4,
+.resultTallyContainerB h4 {
+    font-size: 36px;
+}
+
+.resultTallyContainerA span,
+.resultTallyContainerB span {
+    font-size: 24px;
+}
+
+.vote svg {
+    position: absolute;
+    top: -6px;
+    left: -8px;
+}
+
+/*
+
+    UTILITY
+    
+*/
+
+.redButton {
     display: block;
     color: #ededed;
     background-color: red;
     width: 115px;
-    height: 30;
+    /*height: 30px;*/
     font-size: 18px;
     text-align: center;
-    float: right;
-    margin: 15px 10px 0 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px 0;
+
+    -webkit-appearance: none;
+    
+    border: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
 }

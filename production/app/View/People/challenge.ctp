@@ -14,6 +14,10 @@
         'value' => $preset_user_information['email']
     ));
     
-    echo $this->Form->end('Submit');
+    echo $this->Form->submit('Submit', array(
+        'class' => 'redButton'
+    ));
+    
+    echo $this->Form->end();
     
 ?>

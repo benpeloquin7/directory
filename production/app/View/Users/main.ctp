@@ -71,7 +71,11 @@
                     'value' => 'Search...'
                 ));
 
-                echo $this->Form->end('Submit');
+                echo $this->Form->submit('Submit', array(
+                    'class' => 'redButton'
+                ));
+                
+                echo $this->Form->end();
 
             ?>
             
@@ -108,7 +112,11 @@
                     'value' => ''
                 ));
 
-                echo $this->Form->end('Submit');
+                echo $this->Form->submit('Submit', array(
+                    'class' => 'redButton'
+                ));
+                
+                echo $this->Form->end();
 
             ?>
             
@@ -141,7 +149,11 @@
                     'value' => $hoody_letter
                 ));
 
-                echo $this->Form->end('Submit');
+                echo $this->Form->submit('Submit', array(
+                    'class' => 'redButton'
+                ));
+                
+                echo $this->Form->end();
 
             ?>
             
@@ -158,17 +170,18 @@
                         $total = $voting_module['tally']['tally_a'] + $voting_module['tally']['tally_b'];
 
                         echo '<div class="vote">';
-                        
-                            echo $this->Html->image('css/idea.png', array('alt' => ''));
-                            echo '<h3>PARTNER VOTE:</h3>';
+
+                            echo '<h3>Tell Us What You Think:</h3>';
                             echo '<p>'.$voting_module['question'].'</p>';
+                            echo '<p>A. '.$voting_module['answer_a'].'</p>';
+                            echo '<p>B. '.$voting_module['answer_b'].'</p>';
                             echo '<div class="resultTallyContainerA">';
-                                echo '<h4>'.$voting_module['answer_a'].'</h4>';
+                                echo '<h4>A</h4>';
                                 echo '<span>'.ceil(($voting_module['tally']['tally_a'] / ($total))*100).'%</span>';
                             echo '</div>';
                             
                             echo '<div class="resultTallyContainerB">';
-                                echo '<h4>'.$voting_module['answer_b'].'</h4>';
+                                echo '<h4>B</h4>';
                                 echo '<span>'.ceil(($voting_module['tally']['tally_b'] / ($total))*100).'%</span>';
                             echo '</div>';
                             
@@ -196,8 +209,13 @@
                                 'value' => $voting_module['previous_answer']
                             ));
 
-                            echo $this->Form->end('Submit');
-
+                            echo $this->Form->submit('Submit', array(
+                                'class' => 'redButton'
+                            ));
+                            
+                            echo $this->Form->end();
+                            
+                            echo '<div class="clear"></div>';
                         echo '</div><!-- end vote -->';
                     }
                 ?>
