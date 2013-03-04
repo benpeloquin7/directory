@@ -49,7 +49,11 @@ var Vote = Base.extend({
                 s.createAB();
                 s.animateAB();
             }, 700);
+            
+            // TODO write something here that changes the percentage readouts when we vote
         });
+        
+        
     },
     
     handleFormSubmit: function(evt) {
@@ -131,18 +135,20 @@ var Vote = Base.extend({
 
         var archtype = this._archtype;
         
+        var stroke = 23;
+        
         var tallyA = this._tally.tally_a,
             tallyB = this._tally.tally_b;
 
         var A = archtype.path().attr({
-            "stroke": "#f00",
-            "stroke-width": 14,
+            "stroke": "#333",
+            "stroke-width": stroke,
             arc: [150, 150, 0, (tallyA + tallyB), 60]
         });
         
         var B = archtype.path().attr({
-            "stroke": "#333",
-            "stroke-width": 14,
+            "stroke": "#f00",
+            "stroke-width": stroke,
             reverseArc: [150, 150, 0, (tallyA + tallyB), 60]
         });
         

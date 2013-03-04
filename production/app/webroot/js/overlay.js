@@ -43,9 +43,6 @@ var Overlay = OverlayBase.extend({
             console.log('should have opacity 1')
         }, 300);
         
-            
-        
-        
     },
             
     handleOverlayClose: function(evt) {
@@ -56,8 +53,7 @@ var Overlay = OverlayBase.extend({
         var overlay = this._ov;
         
         oc.trigger('sendToBack');
-        
-        
+        oc.trigger('contract');
         
         setTimeout(function() {
             overlay.css({
@@ -68,6 +64,7 @@ var Overlay = OverlayBase.extend({
                 display: 'none'
             });
         }, 300);
+        
     }
-    
+     
 });

@@ -74,6 +74,11 @@
                 echo $this->Form->end('Submit');
 
             ?>
+            
+            <div class="searchResultsContainer">
+                <?php echo $this->Html->image('css/ajax-loader.gif', array('alt' => 'Loading...', 'class' => 'loader')); ?>
+            </div>
+            
         </div>
         
         <div class="overlay profileOverlay">
@@ -145,15 +150,28 @@
         <div class="overlay pollOverlay">
             <span class="close">Close&nbsp;&nbsp;<strong>X</strong></span>
             
-            <h3>Polls.</h3>
-            
             <div class="votesContainer">
-            
+                
                 <?php
                     foreach($voting_modules as $voting_module) {
+                        
+                        $total = $voting_module['tally']['tally_a'] + $voting_module['tally']['tally_b'];
 
                         echo '<div class="vote">';
-
+                        
+                            echo $this->Html->image('css/idea.png', array('alt' => ''));
+                            echo '<h3>PARTNER VOTE:</h3>';
+                            echo '<p>'.$voting_module['question'].'</p>';
+                            echo '<div class="resultTallyContainerA">';
+                                echo '<h4>'.$voting_module['answer_a'].'</h4>';
+                                echo '<span>'.ceil(($voting_module['tally']['tally_a'] / ($total))*100).'%</span>';
+                            echo '</div>';
+                            
+                            echo '<div class="resultTallyContainerB">';
+                                echo '<h4>'.$voting_module['answer_b'].'</h4>';
+                                echo '<span>'.ceil(($voting_module['tally']['tally_b'] / ($total))*100).'%</span>';
+                            echo '</div>';
+                            
                             echo $this->Form->create('Vote', array(
                                 'id' => 'Vote_Poll_' . $voting_module['id'],
                                 'url' => array('controller' => 'votes', 'action' =>  'submit'),

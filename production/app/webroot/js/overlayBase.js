@@ -14,6 +14,14 @@ var OverlayBase = Class.extend({
         this._oc.on('sendToBack', function(evt) {
             self.handleSendToBack(evt);
         });
+        
+        this._oc.on('expand', function(evt) {
+            self.handleOverlayExpand(evt);
+        });
+        
+        this._oc.on('contract', function(evt) {
+            self.handleOverlayContract(evt);
+        });
     },
             
     handleBringToFront: function(evt) {
@@ -31,6 +39,22 @@ var OverlayBase = Class.extend({
         oc.css({
             'opacity': '0',
             'z-index': '1'
+        });
+    },
+            
+    handleOverlayExpand: function(evt) {
+        var oc = this._oc;
+        
+        oc.css({
+            'height': '575px'
+        });
+    },
+            
+    handleOverlayContract: function(evt) {
+        var oc = this._oc;
+        
+        oc.css({
+            'height': '472px'
         });
     }
             

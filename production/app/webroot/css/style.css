@@ -152,6 +152,8 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     position: absolute;
     top: 15px;
     left:-203px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 .welcome img {
@@ -171,6 +173,8 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     position: absolute;
     top:225px;
     left:-100px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 .logoRed {
@@ -228,6 +232,23 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     -o-transition: opacity .5s; /* Opera */
 }
 
+.overlay .close {
+    float: right;
+    display: block;
+    cursor: pointer;
+    padding: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/*
+    SEARCH
+*/
+
+.overlay form {
+    display: block;
+}
+
 .overlay #phrase {
     width: 260px;
     height: 36px;
@@ -236,13 +257,29 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     font-size: 28px;
     margin: 0 auto;
     border: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
     padding: 10px 7px;
     float: right;
     margin: 145px 10px 0 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    
+    transition: margin .3s ease-out;
+    -moz-transition: margin .3s ease-out; 
+    -webkit-transition: margin .3s ease-out;
+    -o-transition: margin .3s ease-out;
+    
+    -webkit-appearance: none;
 }
 
 .overlay #PersonSearchForm input[type=submit] {
     border: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    
     display: block;
     color: #ededed;
     background-color: red;
@@ -252,19 +289,104 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     text-align: center;
     float: right;
     margin: 15px 10px 0 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    
+    -webkit-appearance: none;
 }
 
-.overlay .close {
-    float: right;
-    display: block;
-    cursor: pointer;
-    padding: 15px;
+.searchResultsContainer {
+    position: relative;
+    margin: 0px 0 0 9px;
+    width: 274px;
+    height: 404px;
+    top: 16px;
+    display: none;
+    overflow-y: scoll;
+    overflow-x: hidden;
 }
+
+.searchResultsContainer .result {
+    width: 100%;
+    height: 76px;
+    position: relative;
+    margin-top: 15px;
+    
+    padding: 0 0 15px 0;
+    border-bottom: 1px solid #444;
+}
+
+.searchResultsContainer .loader {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    margin-top: 59%;
+    top:-16px;
+    margin-left: 50%;
+    left: -16px;
+}
+
+.searchResultsContainer .result .profileImg {
+    width: 67px;
+    max-height: 74px;
+    float: left;
+    
+    transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out; 
+    -webkit-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+}
+
+.searchResultsContainer .result h5 {
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 2px;
+    float: left;
+    color: #ededed;
+    margin: 15px 0 0 15px;
+    width: 167px;
+    
+    transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out; 
+    -webkit-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+}
+
+.searchResultsContainer .result p {
+    font-size: 12px;
+    float: left;
+    color: #444;
+    margin: 10px 0 0 15px;
+    
+    transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out; 
+    -webkit-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+}
+
+.searchResultsContainer .result .contactButton {
+    float: right;
+    width: 50px;
+    height: 20px;
+    
+    transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out; 
+    -webkit-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+}
+
+/*
+    COMMENT
+*/
 
 .commentOverlay h3 {
     float: left;
     font-size: 20px
 }
+
+/*
+    IDEA
+*/
 
 .overlay #idea {
     width: 260px;

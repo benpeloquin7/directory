@@ -125,7 +125,7 @@
                         widget_base_dimensions: [65, 86],
                     }).data('gridster').disable();
                     
-                    Cufon.replace('h1, h2, h3, input');
+                    Cufon.replace('h1, h2, h3, h4, h5, p, input');
                     
                 });
             })(jQuery);
