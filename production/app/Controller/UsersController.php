@@ -129,7 +129,7 @@ class UsersController extends AppController {
         
         $session = $this->Session->read();
         
-        $hoody_size = '';
+        $hoody_size = 's';
         $hoody_letter = '';
         
         if(!empty($session['Hoody']['order'])) {

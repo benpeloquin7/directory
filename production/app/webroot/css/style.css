@@ -546,6 +546,87 @@ NOTE: transforms make the click detection function work only about 50% of the ti
 }
 
 /*
+    HOODIE
+*/
+
+.shopOverlay p {
+    color: #555;
+    margin: 0px 0 0 15px;
+    
+    float: left;
+    display: block;
+    width: 200px;
+}
+
+.sizesContainer {
+    position: relative;
+    float: left;
+    width: 240px;
+    margin: 30px 0 0 50%;
+    left: -120px;
+    
+}
+
+.size {
+    display: block;
+    width: 46px;
+    height: 41.5px;
+    /*background-color: #616161;*/
+    float: left;
+    margin: 0 10px 0 0;
+}
+
+.size:last-child {
+    margin-right: 0;
+}
+
+.size:active,
+.size.active {
+    background-color: #ed1c24;
+}
+
+.sizeS {
+    background: #616161 url(../img/css/sizes-small.png) scroll no-repeat;
+    background-size: 46px 41.5px;
+}
+
+.sizeM {
+    background: #616161 url(../img/css/sizes-medium.png) scroll no-repeat;
+    background-size: 46px 41.5px;
+}
+
+.sizeL {
+    background: #616161 url(../img/css/sizes-large.png) scroll no-repeat;
+    background-size: 46px 41.5px;
+}
+
+.sizeXL {
+    background: #616161 url(../img/css/sizes-extra-large.png) scroll no-repeat;
+    background-size: 46px 41.5px;
+}
+
+.hoodieContainer {
+    position: relative;
+    float: left;
+    margin: 25px 50% 15px;
+    width: 190px;
+    height: 208px;
+    left: -95px;
+}
+
+.hoodieImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 190px;
+    height: 208px;
+}
+
+#HoodyMainForm .redButton {
+    margin: 15px auto;
+}
+
+/*
     POLL/VOTE
 */
 

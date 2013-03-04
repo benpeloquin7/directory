@@ -125,7 +125,21 @@
         <div class="overlay shopOverlay">
             <span class="close">Close&nbsp;&nbsp;<strong>X</strong></span>
             
-            <h3>Hoody Order Form.</h3>
+            <p>Pick your size.</p>
+            
+            <div class="sizesContainer">
+                <a href="#" class="sizeS size s" data-size="s"></a>
+                <a href="#" class="sizeM size m" data-size="m"></a>
+                <a href="#" class="sizeL size l" data-size="l"></a>
+                <a href="#" class="sizeXL size xl" data-size="xl"></a>
+                <div class="clear"></div>
+            </div>
+            
+            <div class="hoodieContainer">
+                <?php echo $this->Html->image('css/hoodie.png', array('alt' => 'Hoodie Image', 'class' => 'hoodieImage')); ?>
+            </div>
+            
+            <div class="clear"></div>
             
             <?php
 
@@ -137,14 +151,14 @@
 
                 echo $this->Form->input('size', array(
                     'id' => 'size',
-                    'type' => 'text',
+                    'type' => 'hidden',
                     'label' => 'Hoodie Size',
                     'value' => $hoody_size
                 ));
 
                 echo $this->Form->input('letter', array(
                     'id' => 'letter',
-                    'type' => 'text',
+                    'type' => 'hidden',
                     'label' => 'Hoodie Letter',
                     'value' => $hoody_letter
                 ));

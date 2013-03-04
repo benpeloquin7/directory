@@ -64,8 +64,8 @@ class HoodiesController extends AppController {
         if($this->request->is('post')) {
             
             // gather raw data
-            $size = $this->request->data('Hoody.size');
-            $letter = $this->request->data('Hoody.letter');
+            $size = strtolower($this->request->data('Hoody.size'));
+            $letter = strtolower($this->request->data('Hoody.letter'));
             
             // both values required and must not be empty
             if(!empty($size) && !empty($letter)) {
