@@ -20,21 +20,14 @@
         </style>
         <?php endif; ?>
         <?php
+        
         echo $this->Html->css('reset');
         echo $this->Html->css('style');
+        echo $this->Html->css('animation');
         ?>
     </head>
     <body>
-        <?php 
-            var_dump($isMobile);
-            var_dump($isTablet);
-        ?>
-        <!-- If you'd like some sort of menu to
-        show up on all of your views, include it here -->
-<!--        <div id="header">
-            <div id="menu">Header</div>
-        </div>-->
-
+        
         <!-- Here's where I want my views to be displayed -->
         <div id="wrap">
             <?php echo $this->fetch('content'); ?>    

@@ -242,6 +242,69 @@ NOTE: transforms make the click detection function work only about 50% of the ti
 }
 
 /*
+    CHALLENGE
+*/
+
+.loginLogo {
+    width: 200px;
+    position: relative;
+    margin-left:50%;
+    margin-top: 75px;
+    left: -100px;
+}
+
+#PersonChallengeForm {
+    display: block;
+}
+
+#email {
+    width: 268px;
+    height: 36px;
+    background-color: #616161;
+    color: black;
+    font-size: 17px;
+    margin: 0 auto;
+    border: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    padding: 10px 7px;
+    float: right;
+    margin: 50px 10px 0 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    
+    transition: margin .3s ease-out;
+    -moz-transition: margin .3s ease-out; 
+    -webkit-transition: margin .3s ease-out;
+    -o-transition: margin .3s ease-out;
+    
+    -webkit-appearance: none;
+}
+
+#PersonChallengeForm input[type=submit] {
+    border: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    
+    display: block;
+    color: #ededed;
+    background-color: red;
+    width: 115px;
+    height: 30;
+    font-size: 18px;
+    text-align: center;
+    float: right;
+    margin: 15px 10px 0 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    
+    -webkit-appearance: none;
+}
+
+/*
     SEARCH
 */
 

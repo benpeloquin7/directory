@@ -1,8 +1,4 @@
-<pre>
-<?php
-    print_r($preset_user_information);
-?>
-</pre>
+<?php echo $this->Html->image('letters/p@2x.png', array('alt' => 'Goodby Silverstein & Partners', 'class' => 'loginLogo')); ?>
 <?php
 
     echo $this->Form->create(null, array(

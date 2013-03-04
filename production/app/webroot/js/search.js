@@ -109,8 +109,6 @@ var Search = Base.extend({
                 
             }
             
-            
-                
         } else {
             source = '<p>'+data.message+'</p>';
         }
