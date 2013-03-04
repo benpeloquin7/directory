@@ -1,0 +1,712 @@
+/* 
+    Document   : style
+    Created on : Feb 27, 2013, 1:04:45 AM
+    Author     : mike
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body {
+    background-color: black;
+}
+
+#wrap {
+    width: 300px;
+    position: relative;
+    height: 568px;
+    padding: 9px;
+    
+    /* Note: This gradient may render differently in browsers that don't support the unprefixed gradient syntax */
+
+    /* IE10 Consumer Preview */ 
+    background-image: -ms-linear-gradient(top left, #3c3c3c 0%, #141414 100%);
+
+    /* Mozilla Firefox */ 
+    background-image: -moz-linear-gradient(top left, #3c3c3c 0%, #141414 100%);
+
+    /* Opera */ 
+    background-image: -o-linear-gradient(top left, #3c3c3c 0%, #141414 100%);
+
+    /* Webkit (Safari/Chrome 10) */ 
+    background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, #3c3c3c), color-stop(1, #141414));
+
+    /* Webkit (Chrome 11+) */ 
+    background-image: -webkit-linear-gradient(top left, #3c3c3c 0%, #141414 100%);
+
+    /* W3C Markup, IE10 Release Preview */ 
+    background-image: linear-gradient(to bottom right, #3c3c3c 0%, #141414 100%);
+}
+
+.gridster {
+    z-index: 2;
+}
+
+.gridster li {
+    text-indent: none;
+    text-decoration: none;
+    list-style-type: none;
+    
+    position: relative;
+    /*overflow: hidden;*/
+
+    border: 1px solid #4d4d4d;
+
+    -moz-box-shadow:       0px 3px 5px #161616;
+    -webkit-box-shadow:    0px 3px 5px #161616;
+    box-shadow:            0px 3px 5px #161616;
+
+ 
+    /* IE10 Consumer Preview */ 
+    background-image: -ms-radial-gradient(center, circle closest-corner, #353535 0%, #121212 100%);
+
+    /* Mozilla Firefox */ 
+    background-image: -moz-radial-gradient(center, circle closest-corner, #353535 0%, #121212 100%);
+
+    /* Opera */ 
+    background-image: -o-radial-gradient(center, circle closest-corner, #353535 0%, #121212 100%);
+
+    /* Webkit (Safari/Chrome 10) */ 
+    background-image: -webkit-gradient(radial, center center, 0, center center, 497, color-stop(0, #353535), color-stop(1, #121212));
+
+    /* Webkit (Chrome 11+) */ 
+    background-image: -webkit-radial-gradient(center, circle closest-corner, #353535 0%, #121212 100%);
+
+    /* W3C Markup, IE10 Release Preview */ 
+    background-image: radial-gradient(circle closest-corner at center, #353535 0%, #121212 100%);
+}
+
+.gridster li.black {
+    background-image: none;
+    background-color: black;
+}
+
+/*.gridster li:hover,*/
+.gridster li:active {
+    background-color: #ff2222;
+    background-image:none;
+}
+
+/*
+
+NOTE: transforms make the click detection function work only about 50% of the time
+
+.gridster li:active {
+                        
+    -webkit-transform-style:    preserve-3d;
+    -moz-transform-style:       preserve-3d;
+    -ms-transform-style:        preserve-3d;
+    transform-style:            preserve-3d;
+    
+    -webkit-transform:          rotateY(35deg);
+    -moz-transform:             rotateY(35deg);  
+    -ms-transform:              rotateY(35deg);  
+    -o-transform:               rotateY(35deg);  
+    transform:                  rotateY(35deg);  
+
+}*/
+
+.search {
+    background: url(../img/css/search.png) scroll no-repeat;
+}
+
+/*.search:hover,*/
+.search:active {
+    background: url(../img/css/search-ro.png) scroll no-repeat;
+}
+
+/*.search:hover,
+.search:active,
+.comment:hover,
+.comment:active,
+.shop:hover,
+.shop:active,
+.poll:hover,
+.poll:active,
+.idea:hover,
+.idea:active {
+    background-color: #ff2222;
+}*/
+
+.searchOverlay {
+    
+}
+
+.profile {
+    overflow: hidden;
+    position: relative;
+}
+
+.profile img {
+    width: 90px;
+    position: absolute;
+    top: -15px;
+    left: -10px;
+}
+
+
+
+.comment {
+    background: url(../img/css/comment.png) scroll no-repeat;
+}
+
+/*.comment:hover,*/
+.comment:active {
+    background: url(../img/css/comment-ro.png) scroll no-repeat;
+}
+
+.shop {
+    background: url(../img/css/shop.png) scroll no-repeat;
+}
+
+/*.shop:hover,*/
+.shop:active {
+    background: url(../img/css/shop-ro.png) scroll no-repeat;
+}
+
+.poll {
+    background: url(../img/css/poll.png) scroll no-repeat;
+}
+
+/*.poll:hover,*/
+.poll:active {
+    background: url(../img/css/poll-ro.png) scroll no-repeat;
+}
+
+.welcome {
+    color: #ededed;
+    text-align: center;
+    padding: 12.5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.welcome h1 {
+    text-align: left;
+    font-size: 24px;
+    text-transform: uppercase;
+    position: absolute;
+    top: 15px;
+    left:-203px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.welcome img {
+    width: 165px;
+    margin-top: 15px;
+    position: absolute;
+    top: 39px;
+    left: 282px;
+}
+
+.welcome h2 {
+    width: 259px;
+    /*margin-top: 5px;*/
+    /* cant go below 18 */
+    font-size: 18px;
+    text-transform: uppercase;
+    position: absolute;
+    top:225px;
+    left:-100px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.logoRed {
+    color: red;
+}
+
+.quote {
+    
+}
+
+.idea {
+    background: url(../img/css/idea.png) scroll no-repeat;
+}
+
+/*.idea:hover,*/
+.idea:active {
+    background: url(../img/css/idea-ro.png) scroll no-repeat;
+}
+
+.box {
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+    position: relative;
+    cursor: pointer;
+}
+
+/*.box:hover,*/
+.box:active {
+    background-size: 100% 100%;
+}
+
+
+
+.overlayContainer {
+    position: absolute;
+    top: 14px;
+    left: 13px;
+    width: 293px;
+    height: 472px;
+    background: url(../img/css/overlay-bg.png) scroll repeat;
+    
+    z-index: 1;
+    opacity: 0;
+    
+    transition: all .5s;
+    -moz-transition: all .5s; /* Firefox 4 */
+    -webkit-transition: all .5s; /* Safari and Chrome */
+    -o-transition: all .5s; /* Opera */
+}
+
+.overlayWrap {
+    position: relative;
+}
+
+.overlay {
+    color: #ededed;
+    
+    opacity: 0;
+    display: none;
+    
+    transition: opacity .5s;
+    -moz-transition: opacity .5s; /* Firefox 4 */
+    -webkit-transition: opacity .5s; /* Safari and Chrome */
+    -o-transition: opacity .5s; /* Opera */
+}
+
+.overlay .close {
+    float: right;
+    display: block;
+    cursor: pointer;
+    padding: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/*
+    CHALLENGE
+*/
+
+.wrapChallenge {
+    text-align: center;
+}
+
+.loginLogo {
+    width: 200px;
+    position: relative;
+    margin-left:50%;
+    margin-top: 50px;
+    left: -100px;
+}
+
+.loginLogoText {
+    width: 310px;
+    position: relative;
+    margin-top: 9px;
+    margin-left: -14px;
+}
+
+#PersonChallengeForm {
+    display: block;
+}
+
+#email {
+    width: 268px;
+    height: 36px;
+    background-color: #616161;
+    color: black;
+    font-size: 17px;
+    /*margin: 0 auto;*/
+    border: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    padding: 10px 7px;
+    float: right;
+    margin: 11px 10px 0 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    
+    transition: margin .3s ease-out;
+    -moz-transition: margin .3s ease-out; 
+    -webkit-transition: margin .3s ease-out;
+    -o-transition: margin .3s ease-out;
+    
+    -webkit-appearance: none;
+}
+
+#PersonChallengeForm input[type=submit] {
+/*    border: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;*/
+    
+/*    display: block;
+    color: #ededed;
+    background-color: red;
+    width: 115px;
+    height: 30;
+    font-size: 18px;
+    text-align: center;*/
+    float: right;
+    margin: 15px 10px 0 0;
+/*    letter-spacing: 2px;
+    text-transform: uppercase;
+    
+    -webkit-appearance: none;*/
+}
+
+/*
+    SEARCH
+*/
+
+.overlay form {
+    display: block;
+}
+
+.overlay #phrase {
+    width: 260px;
+    height: 36px;
+    background-color: #616161;
+    color: black;
+    font-size: 28px;
+    margin: 0 auto;
+    border: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    padding: 10px 7px;
+    float: right;
+    margin: 145px 10px 0 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    
+    transition: margin .3s ease-out;
+    -moz-transition: margin .3s ease-out; 
+    -webkit-transition: margin .3s ease-out;
+    -o-transition: margin .3s ease-out;
+    
+    -webkit-appearance: none;
+}
+
+.overlay #PersonSearchForm input[type=submit] {
+/*    border: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;*/
+    
+    /*display: block;*/
+    /*color: #ededed;*/
+    /*background-color: red;*/
+    /*width: 115px;*/
+    /*height: 30;*/
+    /*font-size: 18px;*/
+    /*text-align: center;*/
+    float: right;
+    margin: 15px 10px 0 0;
+}
+
+.searchResultsContainer {
+    position: relative;
+    margin: 0px 0 0 9px;
+    width: 274px;
+    height: 404px;
+    top: 16px;
+    display: none;
+    overflow-y: scoll;
+    overflow-x: hidden;
+}
+
+.searchResultsContainer .result {
+    width: 100%;
+    height: 100px;
+    position: relative;
+    margin-top: 16px;
+    
+    padding: 0 0 15px 0;
+    border-bottom: 1px solid #444;
+}
+
+.searchResultsContainer .loader {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    margin-top: 59%;
+    top:-16px;
+    margin-left: 50%;
+    left: -16px;
+}
+
+.searchResultsContainer .result .profileImg {
+    width: 90px;
+    max-height: 99px;
+    float: left;
+    
+    transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out; 
+    -webkit-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+}
+
+.searchResultsContainer .result h5 {
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 2px;
+    float: left;
+    color: #ededed;
+    margin: 0px 0 0 15px;
+    width: 150px;
+    
+    transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out; 
+    -webkit-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+}
+
+.searchResultsContainer .result p {
+    font-size: 12px;
+    float: left;
+    color: #666;
+    margin: 10px 0 0 15px;
+    
+    display:block;
+    width: 150px;
+    
+    transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out; 
+    -webkit-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+}
+
+.searchResultsContainer .result .contactButton {
+/*    float: left;
+    width: 50px;
+    margin-top: 15px;*/
+    
+/*    transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out; 
+    -webkit-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;*/
+}
+
+.contactButton img {
+    width: 50px;
+    /*height: 39px;*/
+}
+
+.contactEmail {
+    position: absolute;
+    bottom: 15px;
+    right: 55px;
+}
+
+.contactTele {
+    position: absolute;
+    bottom: 15px;
+    right: 0px;
+}
+
+/*
+    COMMENT
+*/
+
+.commentOverlay h3 {
+    float: left;
+    font-size: 20px
+}
+
+/*
+    IDEA
+*/
+
+.overlay #idea {
+    width: 260px;
+    height: 36px;
+    background-color: #616161;
+    color: black;
+    font-size: 28px;
+    margin: 0 auto;
+    border: none;
+    padding: 10px 7px;
+    float: right;
+    margin: 145px 10px 0 0;
+}
+
+.overlay #IdeaMainForm input[type=submit] {
+    float: right;
+    margin: 15px 10px 0 0;
+}
+
+/*
+    POLL/VOTE
+*/
+
+.pollOverlay h3 {
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 2px;
+    float: left;
+    color: #ededed;
+    margin: 0px 0 15px 15px;
+    width: 261px;
+}
+
+.votesContainer {
+    width: 293px;
+    height: 372px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.vote {
+    position: relative;
+    width: 293px;
+    height: 372px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    border-bottom:1px solid #555;
+}
+
+.vote:first-child {
+    padding-top: 0;
+}
+
+.vote h4 {
+    /*text-transform: uppercase;*/
+    font-size: 16px;
+    letter-spacing: 1px;
+    float: left;
+    color: #555;
+    margin: 0px 0 15px 15px;
+    width: 261px;
+}
+
+.vote p {
+    font-size: 16px;
+    color: #555;
+    margin: 0px 0 0 15px;
+    letter-spacing: 1px;
+}
+
+.resultTallyContainerA,
+.resultTallyContainerB {
+    position: absolute;
+    top: 106px;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+}
+
+.vote .resultTallyContainerA {
+    left: 25px;
+    color: #ff2222;
+}
+
+.vote .resultTallyContainerB { 
+    right: 25px;
+    color: #aeaeae;
+}
+
+.resultTallyContainerA h5,
+.resultTallyContainerB h5 {
+    font-size: 36px;
+}
+
+.resultTallyContainerA span,
+.resultTallyContainerB span {
+    font-size: 24px;
+}
+
+.vote form {
+    height: 228px;
+    overflow: hidden;
+}
+
+.vote svg {
+    position: absolute;
+    top: -6px;
+    left: -8px;
+}
+
+.vote input[type=submit] {
+    display: none;
+}
+
+.vote .redButton {
+    display: block;
+    
+    width: 44px;
+    float: left;
+    margin: 15px 15px 15px 25px;
+}
+
+.vote .greyButton {
+    display: block;
+    
+    width: 44px;
+    float: left;
+    margin: 15px;
+}
+
+/*
+
+    UTILITY
+    
+*/
+
+.redButton {
+    display: block;
+    color: white;
+    background-color: #ff2222;
+    /*width: 115px;*/
+    /*height: 30px;*/
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 9px 28px;
+
+    -webkit-appearance: none;
+    
+    border: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+}
+
+.greyButton {
+    display: block;
+    color: white;
+    background-color: #aeaeae;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 9px 28px;
+
+    -webkit-appearance: none;
+    
+    border: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+}
+
+.selected {
+    padding: 6px 25px;
+    border: 3px solid white;
+}
+
+.clear {
+    clear: both;
+}

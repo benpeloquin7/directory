@@ -1,0 +1,158 @@
+/* 
+    Document   : animation
+    Created on : Mar 3, 2013, 11:11:32 AM
+    Author     : mike_newell
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.profile img {
+/*    animation: profileFloat 15s infinite linear;
+    -moz-animation: profileFloat 15s infinite linear; 
+    -webkit-animation: profileFloat 15s infinite linear; 
+    -o-animation: profileFloat 15s infinite linear; */
+}
+
+@keyframes profileFloat
+{
+    0%   {top: 0; left: 0;}
+    25%  {top: -49px; left: -25px;}
+    50%  {top: -23px; left: 0px;}
+    100% {top: 0; left: 0;}
+}
+
+@-moz-keyframes profileFloat /* Firefox */
+{
+    0%   {top: 0; left: 0;}
+    25%  {top: -49px; left: -25px;}
+    50%  {top: -23px; left: 0px;}
+    100% {top: 0; left: 0;}
+}
+
+@-webkit-keyframes profileFloat /* Safari and Chrome */
+{
+    0%   {top: 0; left: 0;}
+    25%  {top: -49px; left: -25px;}
+    50%  {top: -23px; left: 0px;}
+    100% {top: 0; left: 0;}
+}
+
+@-o-keyframes profileFloat /* Opera */
+{
+    0%   {top: 0; left: 0;}
+    25%  {top: -49px; left: -25px;}
+    50%  {top: -23px; left: 0px;}
+    100% {top: 0; left: 0;}
+}
+
+.welcome h1 {
+    animation: h1RollIn 750ms cubic-bezier(0.230, 1.000, 0.320, 1.000);
+    -moz-animation: h1RollIn 750ms cubic-bezier(0.230, 1.000, 0.320, 1.000); 
+    -webkit-animation: h1RollIn 750ms cubic-bezier(0.230, 1.000, 0.320, 1.000); 
+    -o-animation: h1RollIn 750ms cubic-bezier(0.230, 1.000, 0.320, 1.000); 
+    
+    animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+}
+
+@keyframes h1RollIn
+{
+    0%   {left: -203px;}
+    100% {left: 15px;}
+}
+
+@-moz-keyframes h1RollIn /* Firefox */
+{
+    0%   {left: -203px;}
+    100% {left: 15px;}
+}
+
+@-webkit-keyframes h1RollIn /* Safari and Chrome */
+{
+    0%   {left: -203px;}
+    100% {left: 15px;}
+}
+
+@-o-keyframes h1RollIn /* Opera */
+{
+    0%   {left: -203px;}
+    100% {left: 15px;}
+}
+
+.welcome img {
+    animation: logoRollIn 750ms cubic-bezier(0.230, 1.000, 0.320, 1.000);
+    -moz-animation: logoRollIn 750ms cubic-bezier(0.230, 1.000, 0.320, 1.000); 
+    -webkit-animation: logoRollIn 750ms cubic-bezier(0.230, 1.000, 0.320, 1.000); 
+    -o-animation: logoRollIn 750ms cubic-bezier(0.230, 1.000, 0.320, 1.000); 
+    
+    animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+}
+
+@keyframes logoRollIn
+{
+    0%   {left: 282px;}
+    100% {left: 60px;}
+}
+
+@-moz-keyframes logoRollIn /* Firefox */
+{
+    0%   {left: 282px;}
+    100% {left: 60px;}
+}
+
+@-webkit-keyframes logoRollIn /* Safari and Chrome */
+{
+    0%   {left: 282px;}
+    100% {left: 60px;}
+}
+
+@-o-keyframes logoRollIn /* Opera */
+{
+    0%   {left: 282px;}
+    100% {left: 60px;}
+}
+
+.welcome h2 {
+    animation: h2RollIn 750ms cubic-bezier(0.230, 1.000, 0.320, 1.000);
+    -moz-animation: h2RollIn 750ms cubic-bezier(0.230, 1.000, 0.320, 1.000); 
+    -webkit-animation: h2RollIn 750ms cubic-bezier(0.230, 1.000, 0.320, 1.000); 
+    -o-animation: h2RollIn 750ms cubic-bezier(0.230, 1.000, 0.320, 1.000); 
+    
+    animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+}
+
+@keyframes h2RollIn
+{
+    0%   {left: -203px;}
+    100% {left: 15px;}
+}
+
+@-moz-keyframes h2RollIn /* Firefox */
+{
+    0%   {left: -203px;}
+    100% {left: 15px;}
+}
+
+@-webkit-keyframes h2RollIn /* Safari and Chrome */
+{
+    0%   {left: -203px;}
+    100% {left: 15px;}
+}
+
+@-o-keyframes h2RollIn /* Opera */
+{
+    0%   {left: -203px;}
+    100% {left: 15px;}
+}
