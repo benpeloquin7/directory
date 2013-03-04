@@ -162,7 +162,11 @@
         <div class="overlay pollOverlay">
             <span class="close">Close&nbsp;&nbsp;<strong>X</strong></span>
             
+            <h3>Tell Us What You Think:</h3>
+            
             <div class="votesContainer">
+                
+                
                 
                 <?php
                     foreach($voting_modules as $voting_module) {
@@ -170,18 +174,16 @@
                         $total = $voting_module['tally']['tally_a'] + $voting_module['tally']['tally_b'];
 
                         echo '<div class="vote">';
-
-                            echo '<h3>Tell Us What You Think:</h3>';
-                            echo '<p>'.$voting_module['question'].'</p>';
+                            echo '<h4>'.$voting_module['question'].'</h4>';
                             echo '<p>A. '.$voting_module['answer_a'].'</p>';
                             echo '<p>B. '.$voting_module['answer_b'].'</p>';
                             echo '<div class="resultTallyContainerA">';
-                                echo '<h4>A</h4>';
+                                echo '<h5>A</h5>';
                                 echo '<span>'.ceil(($voting_module['tally']['tally_a'] / ($total))*100).'%</span>';
                             echo '</div>';
                             
                             echo '<div class="resultTallyContainerB">';
-                                echo '<h4>B</h4>';
+                                echo '<h5>B</h5>';
                                 echo '<span>'.ceil(($voting_module['tally']['tally_b'] / ($total))*100).'%</span>';
                             echo '</div>';
                             
@@ -204,16 +206,15 @@
 
                             echo $this->Form->input('answer', array(
                                 'id' => 'answer_' . $voting_module['id'],
-                                'type' => 'text',
+                                'type' => 'hidden',
                                 'label' => 'Poll Answer',
                                 'value' => $voting_module['previous_answer']
                             ));
 
-                            echo $this->Form->submit('Submit', array(
-                                'class' => 'redButton'
-                            ));
+                            echo $this->Form->end('Submit');
                             
-                            echo $this->Form->end();
+                            echo '<a class="redButton">A</a>';
+                            echo '<a class="greyButton">B</a>';
                             
                             echo '<div class="clear"></div>';
                         echo '</div><!-- end vote -->';

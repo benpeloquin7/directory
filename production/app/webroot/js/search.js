@@ -102,8 +102,9 @@ var Search = Base.extend({
                 source +=      '<img class="profileImg" src="http://goodbysilverstein.com/people/thumbnails/'+data.data[i]['people']['userName']+'.jpg" alt="Profile Image" onerror="'+script+'" />';
                 source +=      '<h5>'+data.data[i]['people']['firstName'] + ' ' + data.data[i]['people']['lastName'] +'</h5>';
                 source +=      '<p>'+data.data[i]['people']['title']+'</p>';
-                source +=      '<a class="contactButton" href="mailto:'+data.data[i]['people']['email']+'"><img src="" alt="Email" /></a>';
-                source +=      '<a class="contactButton" href="tel:'+data.data[i]['people']['ext']+'"><img src="" alt="Telephone" /></a>';
+                source +=      '<div class="clear"></div>';
+                source +=      '<a class="contactButton contactEmail" href="mailto:'+data.data[i]['people']['email']+'"><img class="contactEmailImg" src="../img/css/contact-email.png" alt="Email" /></a>';
+                source +=      '<a class="contactButton contactTele" href="tel:'+data.data[i]['people']['ext']+'"><img class="contactTeleImg" src="../img/css/contact-tele.png" alt="Telephone" /></a>';
                 source +=      '<div class="clear"></div>';
                 source +=  '</div>';
                 

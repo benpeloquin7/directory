@@ -427,9 +427,9 @@ NOTE: transforms make the click detection function work only about 50% of the ti
 
 .searchResultsContainer .result {
     width: 100%;
-    height: 76px;
+    height: 100px;
     position: relative;
-    margin-top: 15px;
+    margin-top: 16px;
     
     padding: 0 0 15px 0;
     border-bottom: 1px solid #444;
@@ -446,8 +446,8 @@ NOTE: transforms make the click detection function work only about 50% of the ti
 }
 
 .searchResultsContainer .result .profileImg {
-    width: 67px;
-    max-height: 74px;
+    width: 90px;
+    max-height: 99px;
     float: left;
     
     transition: all .3s ease-out;
@@ -462,8 +462,8 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     letter-spacing: 2px;
     float: left;
     color: #ededed;
-    margin: 15px 0 0 15px;
-    width: 167px;
+    margin: 0px 0 0 15px;
+    width: 150px;
     
     transition: all .3s ease-out;
     -moz-transition: all .3s ease-out; 
@@ -474,8 +474,11 @@ NOTE: transforms make the click detection function work only about 50% of the ti
 .searchResultsContainer .result p {
     font-size: 12px;
     float: left;
-    color: #444;
+    color: #666;
     margin: 10px 0 0 15px;
+    
+    display:block;
+    width: 150px;
     
     transition: all .3s ease-out;
     -moz-transition: all .3s ease-out; 
@@ -484,14 +487,31 @@ NOTE: transforms make the click detection function work only about 50% of the ti
 }
 
 .searchResultsContainer .result .contactButton {
-    float: right;
+/*    float: left;
     width: 50px;
-    height: 20px;
+    margin-top: 15px;*/
     
-    transition: all .3s ease-out;
+/*    transition: all .3s ease-out;
     -moz-transition: all .3s ease-out; 
     -webkit-transition: all .3s ease-out;
-    -o-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;*/
+}
+
+.contactButton img {
+    width: 50px;
+    /*height: 39px;*/
+}
+
+.contactEmail {
+    position: absolute;
+    bottom: 15px;
+    right: 55px;
+}
+
+.contactTele {
+    position: absolute;
+    bottom: 15px;
+    right: 0px;
 }
 
 /*
@@ -529,9 +549,19 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     POLL/VOTE
 */
 
+.pollOverlay h3 {
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 2px;
+    float: left;
+    color: #ededed;
+    margin: 0px 0 15px 15px;
+    width: 261px;
+}
+
 .votesContainer {
     width: 293px;
-    height: 423px;
+    height: 372px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -539,34 +569,37 @@ NOTE: transforms make the click detection function work only about 50% of the ti
 .vote {
     position: relative;
     width: 293px;
-    height: 423px;
+    height: 372px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    border-bottom:1px solid #555;
 }
 
-.vote h3 {
-    text-transform: uppercase;
-    font-size: 18px;
-    letter-spacing: 2px;
+.vote:first-child {
+    padding-top: 0;
+}
+
+.vote h4 {
+    /*text-transform: uppercase;*/
+    font-size: 16px;
+    letter-spacing: 1px;
     float: left;
-    color: #ededed;
-    margin: 9px 0 15px 15px;
+    color: #555;
+    margin: 0px 0 15px 15px;
     width: 261px;
-    
-    transition: all .3s ease-out;
-    -moz-transition: all .3s ease-out; 
-    -webkit-transition: all .3s ease-out;
-    -o-transition: all .3s ease-out;
 }
 
 .vote p {
     font-size: 16px;
-    color: #444;
+    color: #555;
     margin: 0px 0 0 15px;
+    letter-spacing: 1px;
 }
 
 .resultTallyContainerA,
 .resultTallyContainerB {
     position: absolute;
-    top: 157px;
+    top: 106px;
     width: 45px;
     height: 45px;
     text-align: center;
@@ -582,8 +615,8 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     color: #aeaeae;
 }
 
-.resultTallyContainerA h4,
-.resultTallyContainerB h4 {
+.resultTallyContainerA h5,
+.resultTallyContainerB h5 {
     font-size: 36px;
 }
 
@@ -592,10 +625,30 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     font-size: 24px;
 }
 
+.vote form {
+    height: 228px;
+}
+
 .vote svg {
     position: absolute;
     top: -6px;
     left: -8px;
+}
+
+.vote input[type=submit] {
+    display: none;
+}
+
+.vote .redButton {
+    width: 44px;
+    float: left;
+    margin: 15px 15px 15px 25px;
+}
+
+.vote .greyButton {
+    width: 44px;
+    float: left;
+    margin: 15px;
 }
 
 /*
@@ -606,7 +659,7 @@ NOTE: transforms make the click detection function work only about 50% of the ti
 
 .redButton {
     display: block;
-    color: #ededed;
+    color: white;
     background-color: #ff2222;
     /*width: 115px;*/
     /*height: 30px;*/
@@ -614,7 +667,7 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     text-align: center;
     letter-spacing: 5px;
     text-transform: uppercase;
-    padding: 8px 28px;
+    padding: 9px 28px;
 
     -webkit-appearance: none;
     
@@ -622,4 +675,26 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     border-radius: 0;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
+}
+
+.greyButton {
+    display: block;
+    color: white;
+    background-color: #aeaeae;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    padding: 9px 28px;
+
+    -webkit-appearance: none;
+    
+    border: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+}
+
+.clear {
+    clear: both;
 }
