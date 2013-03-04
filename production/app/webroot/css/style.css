@@ -627,6 +627,7 @@ NOTE: transforms make the click detection function work only about 50% of the ti
 
 .vote form {
     height: 228px;
+    overflow: hidden;
 }
 
 .vote svg {
@@ -640,12 +641,16 @@ NOTE: transforms make the click detection function work only about 50% of the ti
 }
 
 .vote .redButton {
+    display: block;
+    
     width: 44px;
     float: left;
     margin: 15px 15px 15px 25px;
 }
 
 .vote .greyButton {
+    display: block;
+    
     width: 44px;
     float: left;
     margin: 15px;
@@ -667,6 +672,7 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     text-align: center;
     letter-spacing: 5px;
     text-transform: uppercase;
+    text-decoration: none;
     padding: 9px 28px;
 
     -webkit-appearance: none;
@@ -685,6 +691,7 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     text-align: center;
     letter-spacing: 5px;
     text-transform: uppercase;
+    text-decoration: none;
     padding: 9px 28px;
 
     -webkit-appearance: none;
@@ -693,6 +700,11 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     border-radius: 0;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
+}
+
+.selected {
+    padding: 6px 25px;
+    border: 3px solid white;
 }
 
 .clear {

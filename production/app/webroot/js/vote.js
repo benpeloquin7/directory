@@ -1,10 +1,15 @@
 var Vote = Base.extend({
+    _vote: {},
+    _redButton: {},
+    _greyButton: {},
     _form:{},
+    _answer: {},
     _submit: {},
     _archtype: {},
     _A: {},
     _B: {},
     _tally: {},
+    _pollId: 1,
     
     /**
      *  Initialization function for votes (one per vote form)
@@ -15,6 +20,14 @@ var Vote = Base.extend({
         this._super();
         
         this._form = $('#' + id);
+        
+        this._vote = this._form.parent('.vote');
+        
+        this._redButton = this._vote.find('.redButton');
+        
+        this._greyButton = this._vote.find('.greyButton');
+        
+        this._answer = this._form.find('.answer');
         
         this._submit = this._form.find(':submit');
         
@@ -27,6 +40,8 @@ var Vote = Base.extend({
             tally_a: tallyA,
             tally_b: tallyB
         };
+        
+        this._pollId = pollId;
         
         this.createArchtype(id);
         this.createAB();
@@ -53,6 +68,19 @@ var Vote = Base.extend({
             // TODO write something here that changes the percentage readouts when we vote
         });
         
+        this._redButton.on('click', function(evt) {
+            evt.preventDefault();
+            console.log('sanity')
+            self.handleRedButtonClick(evt);
+        });
+        
+        this._greyButton.on('click', function(evt) {
+            evt.preventDefault();
+            console.log('sanity')
+            self.handleGreyButtonClick(evt);
+        });
+        
+        this.updateFormSelection();
         
     },
     
@@ -66,18 +94,48 @@ var Vote = Base.extend({
         $.post(this._form[0].action, data, function(data) {
             console.dir(data);
             
-            
-            
             if(data.response == true) {
                 // set the new tally data before we trigger an update
                 var pollId = self._tally.poll_id;
                 self._tally = data.tally[pollId];
                 
                 self._form.trigger('animateVotes');
+                
+                // replace the current percentage values based on the new tally
+                
+                // force an update of selection
+                self.updateFormSelection();
             }
             
         }, 'json');
        
+    },
+            
+    handleRedButtonClick: function(evt) {
+        this._answer.val('a');
+        this._submit.trigger('click');
+    },
+            
+    handleGreyButtonClick: function(evt) {
+        this._answer.val('b');
+        this._submit.trigger('click');
+    },
+            
+    updateFormSelection: function() {
+        var answer = this._answer;
+        var v = answer.val();
+        var red = this._redButton;
+        var grey = this._greyButton;
+        
+        if(v == 'a') {
+            grey.removeClass('selected');
+            red.addClass('selected');
+        }
+        
+        if(v == 'b') {
+            red.removeClass('selected');
+            grey.addClass('selected');
+        }
     },
             
     createArchtype: function(id) {

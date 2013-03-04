@@ -206,6 +206,7 @@
 
                             echo $this->Form->input('answer', array(
                                 'id' => 'answer_' . $voting_module['id'],
+                                'class' => 'answer',
                                 'type' => 'hidden',
                                 'label' => 'Poll Answer',
                                 'value' => $voting_module['previous_answer']
@@ -213,8 +214,8 @@
 
                             echo $this->Form->end('Submit');
                             
-                            echo '<a class="redButton">A</a>';
-                            echo '<a class="greyButton">B</a>';
+                            echo '<a class="redButton" href="#">A</a>';
+                            echo '<a class="greyButton" href="#">B</a>';
                             
                             echo '<div class="clear"></div>';
                         echo '</div><!-- end vote -->';
