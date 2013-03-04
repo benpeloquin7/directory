@@ -31,7 +31,6 @@ var Vote = Base.extend({
         
         this._submit = this._form.find(':submit');
         
-        // TODO set the true data here from data-attr of the form
         var pollId = this._form.data('poll-id');
         var tallyA = this._form.data('tally-a');
         var tallyB = this._form.data('tally-b');
@@ -126,6 +125,8 @@ var Vote = Base.extend({
         var v = answer.val();
         var red = this._redButton;
         var grey = this._greyButton;
+        var pollId = this._pollId;
+        var tally = this._tally;
         
         if(v == 'a') {
             grey.removeClass('selected');
@@ -136,6 +137,15 @@ var Vote = Base.extend({
             red.removeClass('selected');
             grey.addClass('selected');
         }
+        
+        var a = tally['tally_a'];
+        var b = tally['tally_b'];
+        var total = a + b
+        
+        // update the numbers
+        var found = this._vote.find('.resultTallyContainerA span').text(Math.round((a/total)*100)+'%');
+        console.log(found)
+        this._vote.find('.resultTallyContainerB span').text(Math.round((b/total)*100)+'%');
     },
             
     createArchtype: function(id) {
@@ -222,11 +232,11 @@ var Vote = Base.extend({
             tallyB = this._tally.tally_b;
     
         A.animate({
-            arc: [150, 150, tallyA, (tallyA + tallyB), 60]
+            arc: [150, 150, tallyB, (tallyA + tallyB), 60]
         }, 1500, "bounce");
         
         B.animate({
-            reverseArc: [150, 150, tallyB, (tallyA + tallyB), 60]
+            reverseArc: [150, 150, tallyA, (tallyA + tallyB), 60]
         }, 1500, "bounce");
     },
     
