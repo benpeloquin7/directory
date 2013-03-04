@@ -29,7 +29,7 @@
     <body>
         
         <!-- Here's where I want my views to be displayed -->
-        <div id="wrap">
+        <div id="wrap" class="wrapChallenge">
             <?php echo $this->fetch('content'); ?>    
         </div>
 

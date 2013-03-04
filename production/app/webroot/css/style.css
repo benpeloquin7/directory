@@ -294,12 +294,23 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     CHALLENGE
 */
 
+.wrapChallenge {
+    text-align: center;
+}
+
 .loginLogo {
     width: 200px;
     position: relative;
     margin-left:50%;
-    margin-top: 75px;
+    margin-top: 50px;
     left: -100px;
+}
+
+.loginLogoText {
+    width: 310px;
+    position: relative;
+    margin-top: 9px;
+    margin-left: -14px;
 }
 
 #PersonChallengeForm {
@@ -312,14 +323,14 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     background-color: #616161;
     color: black;
     font-size: 17px;
-    margin: 0 auto;
+    /*margin: 0 auto;*/
     border: none;
     border-radius: 0;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     padding: 10px 7px;
     float: right;
-    margin: 50px 10px 0 0;
+    margin: 11px 10px 0 0;
     letter-spacing: 2px;
     text-transform: uppercase;
     text-align: center;
@@ -596,14 +607,14 @@ NOTE: transforms make the click detection function work only about 50% of the ti
 .redButton {
     display: block;
     color: #ededed;
-    background-color: red;
-    width: 115px;
+    background-color: #ff2222;
+    /*width: 115px;*/
     /*height: 30px;*/
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
-    letter-spacing: 2px;
+    letter-spacing: 5px;
     text-transform: uppercase;
-    padding: 10px 0;
+    padding: 8px 28px;
 
     -webkit-appearance: none;
     
