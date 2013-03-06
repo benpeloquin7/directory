@@ -130,7 +130,8 @@ class UsersController extends AppController {
         $session = $this->Session->read();
         
         $hoody_size = 's';
-        $hoody_letter = '';
+        // TODO programatically find out what the first letter of the last name is
+        $hoody_letter = strtolower(substr($session['User']['lastName'], 0, 1));
         
         if(!empty($session['Hoody']['order'])) {
             // we a hoodie vote

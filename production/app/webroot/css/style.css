@@ -85,7 +85,12 @@ body {
 }
 
 /*.gridster li:hover,*/
-.gridster li:active {
+/*.gridster li:active {
+    background-color: #ff2222;
+    background-image:none;
+}*/
+
+.activeTile:active {
     background-color: #ff2222;
     background-image:none;
 }
@@ -738,6 +743,37 @@ NOTE: transforms make the click detection function work only about 50% of the ti
 }
 
 /*
+    MESSAGE
+*/
+
+.message {
+    z-index: 999;
+    width: 290px;
+    /*height: 120px;*/
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    margin-top: -75px;
+    margin-left: -160px;
+    background: url(../img/css/overlay-bg.png) scroll repeat;
+    color: white;
+    padding: 30px 15px 30px 15px;
+    
+    opacity: 0;
+    display: none;
+    
+    transition: all .3s linear;
+    -moz-transition: all .3s linear; 
+    -webkit-transition: all .3s linear;
+    -o-transition: all .3s linear;
+}
+
+.content {
+    text-align: center;
+    font-size: 24px;
+}
+
+/*
 
     UTILITY
     
@@ -764,6 +800,17 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     -moz-border-radius: 0;
 }
 
+.redButton:active {
+    border: 3px solid #aeaeae;
+    padding: 6px 25px;
+
+    -webkit-appearance: none;
+
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+}
+
 .greyButton {
     display: block;
     color: white;
@@ -778,6 +825,17 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     -webkit-appearance: none;
     
     border: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+}
+
+.greyButton:active {
+    border: 3px solid #aeaeae;
+    padding: 6px 25px;
+
+    -webkit-appearance: none;
+
     border-radius: 0;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;

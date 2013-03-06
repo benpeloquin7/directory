@@ -71,6 +71,7 @@
         echo $this->Html->script('idea');
         echo $this->Html->script('overlayBase');
         echo $this->Html->script('overlay');
+        echo $this->Html->script('message');
         ?>
         <script type="text/javascript">
             (function($) {
@@ -94,9 +95,10 @@
                     var searchOverlay = new Overlay('search'); 
                     var profileOverlay = new Overlay('profile');
                     var commentOverlay = new Overlay('comment');
-                    var commentOverlay = new Overlay('shop');
+                    var shopOverlay = new Overlay('shop');
                     var pollOverlay = new Overlay('poll');
                     var ideaOverlay = new Overlay('idea');
+                    var message = new Message();
                     
                     // debug
                     if(debug) {
@@ -111,8 +113,10 @@
                                 searchOverlay,
                                 profileOverlay,
                                 commentOverlay,
+                                shopOverlay,
                                 pollOverlay,
-                                ideaOverlay
+                                ideaOverlay,
+                                message
                         );
                             
                         for(var i = 0; i < objects.length; i++) {

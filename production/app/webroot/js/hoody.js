@@ -26,21 +26,29 @@ var Hoody = Base.extend({
         $('.size').on('click', function(evt) {
             evt.preventDefault();
             
-            console.log('sanity')
-            
+            // presentation logic
             $('.size').removeClass('active');
             $(this).addClass('active');
             
-            // update the form value with the correc size
+            // keep track of size
             var s = $(this).data('size');
-            self._sizeElem.val(s);
+            self._size = s;
             
+        });
+        
+        // TODO refactor this so we're not listening for the same even in two different classes
+        $('.shop').on('click', function(evt) {
+            self.updateSizeSelection();
         });
         
         this.updateSizeSelection();
     },
-    
+      
     handleFormSubmit: function(evt) {
+
+        // update the form size field
+        this._sizeElem.val(this._size);
+
         // gather form data
         var data = this._form.serialize();
         
@@ -48,9 +56,15 @@ var Hoody = Base.extend({
         
         // submit to proper url
         $.post(this._form[0].action, data, function(data) {
+            
             console.dir(data);
+            
             // wait for a response and take action
             self.updateSizeSelection();
+            
+            // show the success or failure message
+            $('.message').trigger('showMessage', [data.message]);
+            
         }, 'json');
        
     },
@@ -62,8 +76,6 @@ var Hoody = Base.extend({
         var si = sizeForm.val();
         
         this._size = si;
-        
-        console.log('size found to be: ' + si + ' removing all classes and adding active')
         
         $('.size').removeClass('active');
         

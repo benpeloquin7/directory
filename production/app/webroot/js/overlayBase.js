@@ -1,4 +1,4 @@
-var OverlayBase = Class.extend({
+var OverlayBase = Base.extend({
     
     _oc: {},
     

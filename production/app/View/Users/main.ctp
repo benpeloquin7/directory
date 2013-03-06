@@ -1,6 +1,6 @@
 <div class="gridster">
     <ul>
-        <li data-row="1" data-col="1" data-sizex="2" data-sizey="2">
+        <li class="activeTile" data-row="1" data-col="1" data-sizex="2" data-sizey="2">
             <div class="search box">
                 
             </div>
@@ -11,18 +11,18 @@
                 <?php echo $this->Html->image('http://goodbysilverstein.com/people/assets/' . $session['User']['userName'] . '_full.jpg', array('alt' => $session['User']['firstName'] . ' ' . $session['User']['lastName'])); ?>
             </div>
         </li>
-        <li data-row="2" data-col="3" data-sizex="1" data-sizey="1">
+        <li class="activeTile" data-row="2" data-col="3" data-sizex="1" data-sizey="1">
             
             <div class="shop box">
                 
             </div>
         </li>
-        <li data-row="1" data-col="4" data-sizex="1" data-sizey="1">
+        <li class="activeTile" data-row="1" data-col="4" data-sizex="1" data-sizey="1">
             <div class="comment box">
                 
             </div>
         </li> 
-        <li data-row="2" data-col="4" data-sizex="1" data-sizey="1">
+        <li class="activeTile" data-row="2" data-col="4" data-sizex="1" data-sizey="1">
             <div class="poll box">
                 
             </div>
@@ -41,7 +41,7 @@
                 
             </div>
         </li> 
-        <li data-row="6" data-col="4" data-sizex="1" data-sizey="1">
+        <li class="activeTile" data-row="6" data-col="4" data-sizex="1" data-sizey="1">
             <div class="idea box">
                 
             </div>
@@ -255,11 +255,6 @@
     
 </div>
 
-
-
-
-<div id="hidden">
-   
-
-
+<div class="message">
+    <p class="content"></p>
 </div>

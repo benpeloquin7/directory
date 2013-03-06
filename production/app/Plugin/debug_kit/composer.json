@@ -24,7 +24,8 @@
     },
     "require": {
         "php": ">=5.3.0",
-        "composer/installers": "*"
+        "composer/installers": "*",
+        "cakephp/debug_kit": "2.2.*"
     },
     "extra": {
         "branch-alias": {
