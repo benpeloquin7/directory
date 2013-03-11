@@ -105,7 +105,7 @@
                     'label' => ''
                 ));
 
-                echo $this->Form->input('idea', array(
+                echo $this->Form->textarea('idea', array(
                     'id' => 'idea',
                     'type' => 'text',
                     'label' => '',

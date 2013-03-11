@@ -11,7 +11,7 @@ root {
 }
 
 body {
-    background-color: pink;
+    background-color: black;
 }
 
 #wrap {
@@ -525,24 +525,30 @@ NOTE: transforms make the click detection function work only about 50% of the ti
 
 .commentOverlay h3 {
     float: left;
-    font-size: 20px
+    font-size: 20px;
+    /*margin-left: 10px;
+    margin-right: 20px;*/
+    margin: 15px 10px -15px 10px;
 }
 
 /*
     IDEA
 */
 
+/*need to change the <input tag to a textarea tag*/
 .overlay #idea {
     width: 260px;
-    height: 36px;
+    height: 275px;
     background-color: #616161;
     color: black;
-    font-size: 28px;
+    font-size: 20px;
     margin: 0 auto;
     border: none;
     padding: 10px 7px;
     float: right;
-    margin: 145px 10px 0 0;
+    margin: 20px 10px 0 0;
+    text-align: justify;
+
 }
 
 .overlay #IdeaMainForm input[type=submit] {
