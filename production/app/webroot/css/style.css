@@ -428,6 +428,12 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     display: none;
     overflow-y: scoll;
     overflow-x: hidden;
+    border-top: 1px solid #444;
+    border-bottom: 1px solid #444;
+}
+
+.searchResultsContainer p {
+    margin-top: 20px;
 }
 
 .searchResultsContainer .result {
@@ -437,7 +443,7 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     margin-top: 16px;
     
     padding: 0 0 15px 0;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px dashed #444;
 }
 
 .searchResultsContainer .loader {
@@ -454,6 +460,7 @@ NOTE: transforms make the click detection function work only about 50% of the ti
     width: 90px;
     max-height: 99px;
     float: left;
+    border: 1px solid rgb(180, 176, 176);
     
     transition: all .3s ease-out;
     -moz-transition: all .3s ease-out; 
