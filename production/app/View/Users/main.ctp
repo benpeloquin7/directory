@@ -87,9 +87,14 @@
         
         <div class="overlay profileOverlay">
             <span class="close">Close&nbsp;&nbsp;<strong>X</strong></span>
-            
-            <h3>GS<span class="logoRed">&AMP;</span>P Directory Search</h3>
-            
+            <!-- <h3>GS<span class="logoRed">&AMP;</span>P Directory Search</h3> -->
+            <div class="profileImage">
+                <?php echo $this->Html->image('http://goodbysilverstein.com/people/assets/' . $session['User']['userName'] . '_full.jpg', array('alt' => $session['User']['firstName'] . ' ' . $session['User']['lastName'])); ?>
+            </div>
+            <h3><?php echo $session['User']['firstName']; ?>... you look great today</h3>
+            <div class = "profileVitals">
+                <p>info regarding voting history, sweater order, etc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac nibh dolor, eget malesuada lectus. Aenean massa est, porttitor vel tempor in, faucibus sed neque. Aenean pulvinar augue sapien, mattis dapibus diam. In tellus eros, convallis id fermentum sit amet</p>
+            </div>
         </div>
         
         <div class="overlay commentOverlay">
